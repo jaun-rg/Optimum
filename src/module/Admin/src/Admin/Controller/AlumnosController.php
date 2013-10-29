@@ -2,34 +2,51 @@
 
 namespace Admin\Controller;
 
-class AlumnosController extends Zend\Mvc\Controller\AbstractActionController
-{
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
-    public function indexAction()
+class AlumnosController extends AbstractActionController {
+	
+	protected $alumnosTable;
+	
+	public function getAlumnosTable()
     {
-        return new ViewModel();
+        if (!$this->alumnosTable) {
+            $sm = $this->getServiceLocator();
+            $this->albumTable = $sm->get('Admin\Model\AlumnosTable');
+        }
+        return $this->albumTable;
     }
-	public function todosAction()
-    {
-        return new ViewModel();
-    }
-	public function agregaAction()
-    {
-        return new ViewModel();
-    }
-	public function muestraAction()
-    {
-        return new ViewModel();
-    }
-    public function actualizaAction()
-    {
-        return new ViewModel();
-    }
-	public function borraAction()
-    {
-        return new ViewModel();
-    }
+	
+	
+	public function indexAction() {
+		return new ViewModel(array(
+            'alumnos' => $this->getAlumnosTable()->fetchAll(),
+        ));
+	}
 
+	public function agregarAction() {
+		return new ViewModel();
+	}
+
+	public function inscripcionAction() {
+		return new ViewModel();
+	}
+
+	public function pagoAction() {
+		return new ViewModel();
+	}
+
+	public function buscarAction() {
+		return new ViewModel();
+	}
+
+	public function mostrarAction() {
+		return new ViewModel();
+	}
+
+	public function borrarAction() {
+		return new ViewModel();
+	}
 
 }
-

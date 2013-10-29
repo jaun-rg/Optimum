@@ -5,13 +5,12 @@ namespace Admin\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class CursosController extends AbstractActionController {
+class CalificacionesController extends AbstractActionController {
 
-     public function indexAction()
+    public function indexAction()
     {
         return new ViewModel();
     }
-	
 
 
 }
