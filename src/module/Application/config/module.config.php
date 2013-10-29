@@ -73,7 +73,12 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+             'Alumnos\Controller\Alumnos'  => 'Alumnos\Controller\AlumnosController',
+             'Calificaciones\Controller\Calificaciones'  => 'Calificaciones\Controller\CalificacionesController',
+             'Cursos\Controller\Cursos'    => 'Cursos\Controller\CursosController',
+             'Profesores\Controller\Profesores'  => 'Profesores\Controller\ProfesoresController',
+             
         ),
     ),
     'view_manager' => array(

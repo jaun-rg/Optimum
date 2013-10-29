@@ -8,9 +8,10 @@
 return array(
     'modules' => array(
         'Application',
-        'Login',
-        'Admin',
-        'Alumnos'
+        'Alumnos',
+        'Calificaciones',
+        'Cursos',
+        'Profesores'
         ),
     'module_listener_options' => array(
         'module_paths' => array(
