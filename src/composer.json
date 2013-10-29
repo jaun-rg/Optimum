@@ -11,9 +11,10 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.*",
         "zendframework/zftool": "dev-master",
-        "zendframework/zend-developer-tools": "dev-master",
-        "zendframework/zendpdf": "dev-master",
         "doctrine/annotations": "dev-master",
-        "zendframework/zendservice-livedocx": "dev-master"
+        "zendframework/zendpdf": "dev-master",
+        "zendframework/zend-developer-tools": "dev-master",
+        "zendframework/zendservice-livedocx": "dev-master",
+        "doctrine/lexer": "dev-master"
     }
 }

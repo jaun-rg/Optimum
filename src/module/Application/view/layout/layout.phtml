@@ -17,9 +17,9 @@
                         ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') 
 						 */
-						 ->prependStylesheet($this->basePath() . '/jquery.mobile/jquey.mobile-1.3.1.min.css')
-						 ->prependStylesheet($this->basePath() . '/jquery.mobile/jquey.mobile.theme-1.3.1.min.css')
-						 ->prependStylesheet($this->basePath() . '/jquery.mobile/jquey.structure-1.3.1.min.css')
+						 ->prependStylesheet($this->basePath() . '/css/jquey.mobile-1.3.1.min.css')
+						 ->prependStylesheet($this->basePath() . '/css/jquey.mobile.theme-1.3.1.min.css')
+						 ->prependStylesheet($this->basePath() . '/css/jquey.structure-1.3.1.min.css')
                         ?>
 
         <!-- Scripts -->
@@ -28,7 +28,7 @@
 		-> prependFile($this -> basePath() . '/js/bootstrap.min.js') 
         -> prependFile($this -> basePath() . '/js/jquery.min.js') 
 		 */
-		-> prependFile($this -> basePath() . '/jquery.mobile/jquery.mobile-1.3.1.min.js')   
+		-> prependFile($this -> basePath() . '/js/jquery.mobile-1.3.1.min.js')   
         -> prependFile($this -> basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9', )) 
         -> prependFile($this -> basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9', )); ?>
 
@@ -39,9 +39,10 @@
     <a href="#" data-icon="gear" class="ui-btn-right">Options</a>
     <div data-role="navbar">
         <ul>
-            <li><a href="#">One</a></li>
-            <li><a href="#">Two</a></li>
-            <li><a href="#">Three</a></li>
+            <li><a href="/alumnos">Alumnos</a></li>
+            <li><a href="/profesores">Profesores</a></li>
+            <li><a href="/cursos">Cursos</a></li>
+            <li><a href="/calificaciones">Calificaciones</a></li>
         </ul>
     </div><!-- /navbar -->
 </div><!-- /header -->
@@ -68,7 +69,7 @@
             <?php echo $this -> content; ?>
             <hr>
             <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+                <p>&copy; <?php echo date('Y') ?> by Optimum Ltd. </p>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>

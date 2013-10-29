@@ -1,5 +1,11 @@
 <?php
 namespace Login;
+/*
+use Login\Model\Login;
+use Login\Model\LoginTable;
+ */
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
 
 class Module
 {
@@ -18,18 +24,25 @@ class Module
             ),
         );
     }
+	
+	/*
+	public function getServiceConfig() {
+		return array('factories' => array(
+		
+		'Admin\Model\LoginTable' => function($sm) {
+			$tableGateway = $sm -> get('LoginTableGateway');
+			$table = new LoginTable($tableGateway);
+			return $table;
+		}, 'LoginTableGateway' => function($sm) {
+			$dbAdapter = $sm -> get('Zend\Db\Adapter\Adapter');
+			$resultSetPrototype = new ResultSet();
+			$resultSetPrototype -> setArrayObjectPrototype(new Login());
+			return new TableGateway('login', $dbAdapter, null, $resultSetPrototype);
+		},
+	
+
+		), );
+	}
+	*/
+	
 }
-
-
-/*
- * Apoyados con composer degfinimos
- * 
-    getAutoloaderConfig() { }
- * 
- * y agregamos a composer.json:
- * 
- 	"autoload": {
-    	"psr-0": { "Album": "module/Album/src/" }
-	},
- * 
- * */

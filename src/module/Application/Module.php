@@ -37,17 +37,3 @@ class Module
         );
     }
 }
-
-
-/*
- * Apoyados con composer degfinimos
- * 
-    getAutoloaderConfig() { }
- * 
- * y agregamos a composer.json:
- * 
- 	"autoload": {
-    	"psr-0": { "Album": "module/Album/src/" }
-	},
- * 
- * */
