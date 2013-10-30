@@ -1,0 +1,19 @@
+		<?php 
+		//estilos para la seccion
+			$this->headLink()
+					->prependStylesheet($this->basePath() . '/css/green-bootstrap.min.css')	
+		?>
+			
+		<?php
+			$title = 'Calificaciones';
+			$this -> headTitle($title);
+		?>
+		
+		<?php $this->headScript()->captureStart() ?>
+			function activeNav() {
+				document.getElementById('nav-<?php echo $title; ?>').className = "active";
+			}
+
+			window.addEventListener('load', activeNav, false);
+		<?php $this->headScript()->captureEnd() ?>
+		

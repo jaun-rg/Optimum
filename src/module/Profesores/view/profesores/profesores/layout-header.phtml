@@ -1,0 +1,23 @@
+		<?php 
+		//estilos para la seccion
+			$this->headLink()
+					->prependStylesheet($this->basePath() . '/css/blue-bootstrap.min.css')	
+		?>
+			
+		<?php
+		$title = 'Profesores';
+		$this -> headTitle($title);
+		?>
+	
+		<?php echo $this->inlineScript() ?>
+		
+		<?php $this->headScript()->captureStart() ?>
+			function activeNav() {
+				var elemento = document.getElementById('nav-<?php  echo $title; ?>');
+				elemento.className = "active";
+			}
+
+			window.addEventListener('load', activeNav, false);
+		<?php $this->headScript()->captureEnd() ?>
+
+	
