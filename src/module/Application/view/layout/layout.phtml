@@ -22,11 +22,21 @@
 		<!-- Scripts -->
 		<?php echo $this -> headScript()
 			-> prependFile($this -> basePath() . '/js/bootstrap.min.js')
+<<<<<<< HEAD
 			-> prependFile($this -> basePath() . '/js/jquery.min.js')		
 			-> prependFile($this -> basePath() . '/js/respond.min.js', 	'text/javascript', array('conditional' => 'lt IE 9', )) 
 			-> prependFile($this -> basePath() . '/js/html5shiv.js', 	'text/javascript', array('conditional' => 'lt IE 9', ));
  ?>
 
+=======
+			-> prependFile($this -> basePath() . '/js/jquery.min.js')
+			-> prependFile($this -> basePath() . '/js/fullscreen.js')			
+			-> prependFile($this -> basePath() . '/js/respond.min.js', 	'text/javascript', array('conditional' => 'lt IE 9', )) 
+			-> prependFile($this -> basePath() . '/js/html5shiv.js', 	'text/javascript', array('conditional' => 'lt IE 9', ));
+ ?>
+		
+		
+>>>>>>> origin/ramirez
 	</head>
 	<body>
 		
@@ -45,6 +55,7 @@
 						&nbsp;Cursos Propedéuticos</a>
 				</div>
 				<div class="collapse navbar-collapse pull-right">
+<<<<<<< HEAD
 					<ul class="nav navbar-nav">
 						<li>
 							<a id="nav-students" href="<?php echo $this->url('alumnos', array('action'=>'index'));?>">
@@ -60,6 +71,23 @@
 						</li>
 						<li>
 							<a id="nav-califc" href="<?php echo $this->url('calificaciones', array('action'=>'index'));?>">
+=======
+					<ul class="nav navbar-nav main-navbar">
+						<li id="nav-Alumnos">
+							<a href="<?php echo $this->url('alumnos', array('action'=>'index'));?>">
+								Alumnos</a>
+						</li>
+						<li id="nav-Profesores">
+							<a href="<?php echo $this->url('profesores', array('action'=>'index'));?>">
+								Profesores</a>
+						</li>
+						<li id="nav-Cursos">
+							<a href="<?php echo $this->url('cursos', array('action'=>'index'));?>">
+								Cursos</a>
+						</li>
+						<li id="nav-Calificaciones">
+							<a href="<?php echo $this->url('calificaciones', array('action'=>'index'));?>">
+>>>>>>> origin/ramirez
 								Calificaciones</a>
 						</li>
 					</ul>
@@ -87,10 +115,14 @@
 			</div>
 		</footer>
 		-->
+<<<<<<< HEAD
 		
 		
 		
 		<?php echo $this->inlineScript() ?>
 		
+=======
+				
+>>>>>>> origin/ramirez
 	</body>
 </html>
