@@ -1,0 +1,95 @@
+<?php echo $this -> doctype(); ?>
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<?php echo $this->headTitle($this->translate('Cursos Propedéuticos'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+		<?php echo $this->headMeta()
+		->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+		?>
+
+		<!-- Le styles -->
+		<?php echo $this->headLink(array(	'rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', '
+											href' => $this->basePath() . '/img/favicon.png'))
+		->prependStylesheet($this->basePath() . '/css/style.css')
+		//->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+		->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+		
+		?>
+
+		<!-- Scripts -->
+		<?php echo $this -> headScript()
+			-> prependFile($this -> basePath() . '/js/bootstrap.min.js')
+			-> prependFile($this -> basePath() . '/js/jquery.min.js')
+			-> prependFile($this -> basePath() . '/js/fullscreen.js')			
+			-> prependFile($this -> basePath() . '/js/respond.min.js', 	'text/javascript', array('conditional' => 'lt IE 9', )) 
+			-> prependFile($this -> basePath() . '/js/html5shiv.js', 	'text/javascript', array('conditional' => 'lt IE 9', ));
+ ?>
+		
+		
+	</head>
+	<body>
+		
+
+
+		
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="<?php echo $this->url('alumnos', array('action'=>'index'));?>">
+						&nbsp;Cursos Propedéuticos</a>
+				</div>
+			<!--	<div class="collapse navbar-collapse pull-right"> -->
+				<div class="collapse navbar-collapse main-menu">	
+					<ul class="nav navbar-nav main-navbar">
+						<li id="nav-Alumnos">
+							<a href="<?php echo $this->url('alumnos', array('action'=>'index'));?>">
+								Alumnos</a>
+						</li>
+						<li id="nav-Profesores">
+							<a href="<?php echo $this->url('profesores', array('action'=>'index'));?>">
+								Profesores</a>
+						</li>
+						<li id="nav-Cursos">
+							<a href="<?php echo $this->url('cursos', array('action'=>'index'));?>">
+								Cursos</a>
+						</li>
+						<li id="nav-Calificaciones">
+							<a href="<?php echo $this->url('calificaciones', array('action'=>'index'));?>">
+								Calificaciones</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	
+		<div class="container main-container">
+			<?php echo $this -> content; ?>
+			
+			
+			
+		</div>
+		<!-- /container -->
+		
+		<!--
+			<hr>
+		<footer class="navbar navbar-fixed-bottom" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<p>
+						&copy; <?php echo date('Y') ?> by Cursos Propedéuticos Ltd.
+					</p>
+				</div>
+			</div>
+		</footer>
+		-->
+				
+	</body>
+</html>

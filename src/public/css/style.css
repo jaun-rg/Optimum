@@ -1,0 +1,151 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	padding-top: 50px;
+}
+
+/*****/
+@media (min-width: 860px) {
+	.main-menu {
+		float: right;
+	}
+	.navbar-brand {
+		font-size: 2em;
+	}
+	.main-menu,a[class*="btn-"] {
+		font-size: 1.5em;
+	}
+}
+
+/****/
+.main-container {
+	height: 89%;
+	max-width: 100%;
+}
+.row {
+	height: 113%;
+}
+.aside-menu {
+
+	color: #fff;
+	text-align: center;
+	/*margin-left: -8.4%;*/
+	height: 100%;
+	-webkit-animation: myAnimation2 1.5s 1; /* Chrome, Safari 5+ */
+	-moz-animation: myAnimation2 1.5s 1; /* Firefox 5-15 */
+	-o-animation: myAnimation2 1.5s 1; /* Opera 12.00 */
+	animation: myAnimation2 1.5s 1; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+.main-content {
+	height: 100%;
+	-webkit-animation: myAnimation 2s 1; /* Chrome, Safari 5+ */
+	-moz-animation: myAnimation 2s 1; /* Firefox 5-15 */
+	-o-animation: myAnimation 2s 1; /* Opera 12.00 */
+	animation: myAnimation 2s 1; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+.section-menu {
+
+	bottom: 4%;
+	left: 0;
+	position: absolute;
+}
+
+#nav-Alumnos a:hover, #nav-Alumnos.active a {
+	color: #FACC2E;
+}
+
+#nav-Calificaciones a:hover, #nav-Calificaciones.active a {
+	color: #088A08;
+}
+#nav-Cursos a:hover, #nav-Cursos.active a {
+	color: #563D7C;
+}
+#nav-Profesores a:hover, #nav-Profesores.active a {
+	color: #428BCA;
+}
+a[class*="btn-"] {
+	color: #fff;
+	padding: 1em;
+}
+
+a[class*="btn-"]:hover {
+	color: #333;
+}
+
+.btn-Alumnos {
+	background: #B18904;
+}
+.btn-Alumnos:hover, .btn-Alumnos.active {
+
+	background: #FACC2E;
+}
+
+.btn-Calificaciones {
+	background: #043804;
+}
+.btn-Calificaciones:hover, .btn-Calificaciones.active {
+	background: #088A08;
+}
+.btn-Cursos {
+
+	background: #231932;
+}
+
+.btn-Cursos:hover, .btn-Cursos.active {
+	backgroud: #563D7C;
+}
+.btn-Profesores {
+	background: #0B3861;
+}
+.btn-Profesores:hover, .btn-Profesores.active {
+	background: #428BCA;
+}
+
+@-webkit-keyframes myAnimation {
+0%   { opacity: 0.0; -webkit-transform: translate(20%, 0);}
+75%   { opacity: 0.5;}
+100% { opacity: 1.0; -webkit-transform: translate(0, 0); }
+}
+@-moz-keyframes myAnimation {
+0%   { opacity: 0.0; -moz-transform: translate(20%, 0);}
+75%   { opacity: 0.5;}
+100% { opacity: 1.0; -moz-transform: translate(0, 0);}
+}
+@-o-keyframes myAnimation {
+0%   { opacity: 0.0; -o-transform: translate(20%, 0);}
+75%   { opacity: 0.5;}
+100% { opacity: 1.0; -o-transform: translate(0, 0);}
+}
+@-keyframes myAnimation {
+0%   { opacity: 0.0; transform: translate(20%, 0);}
+75%   { opacity: 0.5;}
+100% { opacity: 1.0; transform: translate(0, 0);}
+}
+
+@-webkit-keyframes myAnimation2 {
+0%   { opacity: 0.0; -webkit-transform: translate(-60%, 0);}
+
+100% { opacity: 1.0; -webkit-transform: translate(0, 0); }
+}
+@-moz-keyframes myAnimation2 {
+0%   { opacity: 0.0; -moz-transform: translate(-60%, 0);}
+
+100% { opacity: 1.0; -moz-transform: translate(0, 0);}
+}
+@-o-keyframes myAnimation2 {
+0%   { opacity: 0.0; -o-transform: translate(-60%, 0);}
+
+100% { opacity: 1.0; -o-transform: translate(0, 0);}
+}
+@-keyframes myAnimation2 {
+0%   { opacity: 0.0; transform: translate(-60%, 0);}
+
+100% { opacity: 1.0; transform: translate(0, 0);}
+}
