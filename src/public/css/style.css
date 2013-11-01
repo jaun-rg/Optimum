@@ -5,11 +5,27 @@ html, body {
 	height: 100%;
 	overflow: hidden;
 }
-body{
+body {
 	padding-top: 50px;
 }
-.main-container{
+
+/*****/
+@media (min-width: 860px) {
+	.main-menu {
+		float: right;
+	}
+	.navbar-brand {
+		font-size: 2em;
+	}
+	.main-menu,a[class*="btn-"] {
+		font-size: 1.5em;
+	}
+}
+
+/****/
+.main-container {
 	height: 89%;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 	
@@ -18,126 +34,142 @@ body{
 	-o-animation: myAnimation 2s 1 linear; /* Opera 12.00 */
 	animation: myAnimation 2s 1 linear; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
 >>>>>>> origin/ramirez
+=======
+	max-width: 100%;
+>>>>>>> ramirez
 }
-.row{
-	height:115%;
+.row {
+	height: 113%;
 }
+<<<<<<< HEAD
 .aside-menu{
 <<<<<<< HEAD
 	margin-left: -8.4%;
 	height: 100%;
 }
 =======
+=======
+.aside-menu {
+
+>>>>>>> ramirez
 	color: #fff;
 	text-align: center;
-	margin-left: -8.4%;
+	/*margin-left: -8.4%;*/
 	height: 100%;
-	
+	-webkit-animation: myAnimation2 1.5s 1; /* Chrome, Safari 5+ */
+	-moz-animation: myAnimation2 1.5s 1; /* Firefox 5-15 */
+	-o-animation: myAnimation2 1.5s 1; /* Opera 12.00 */
+	animation: myAnimation2 1.5s 1; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
 }
-#nav-Alumnos a:hover, #nav-Alumnos.active a{
+
+.main-content {
+	height: 100%;
+	-webkit-animation: myAnimation 2s 1; /* Chrome, Safari 5+ */
+	-moz-animation: myAnimation 2s 1; /* Firefox 5-15 */
+	-o-animation: myAnimation 2s 1; /* Opera 12.00 */
+	animation: myAnimation 2s 1; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+.section-menu {
+
+	bottom: 4%;
+	left: 0;
+	position: absolute;
+}
+
+#nav-Alumnos a:hover, #nav-Alumnos.active a {
 	color: #FACC2E;
 }
 
-#nav-Calificaciones a:hover, #nav-Calificaciones.active a{
+#nav-Calificaciones a:hover, #nav-Calificaciones.active a {
 	color: #088A08;
 }
-#nav-Cursos a:hover, #nav-Cursos.active a{
+#nav-Cursos a:hover, #nav-Cursos.active a {
 	color: #563D7C;
 }
-#nav-Profesores a:hover, #nav-Profesores.active a{
+#nav-Profesores a:hover, #nav-Profesores.active a {
 	color: #428BCA;
 }
-
-.btn-Alumnos,.btn-Calificaciones, .btn-Cursos,.btn-Profesores{
-	color:#fff;
-}
-.btn-Alumnos:hover,.btn-Calificaciones:hover, .btn-Cursos:hover,.btn-Profesores:hover{
-	color:#999;
+a[class*="btn-"] {
+	color: #fff;
+	padding: 1em;
 }
 
-.btn-Alumnos{
-	background: #FADE81;
+a[class*="btn-"]:hover {
+	color: #333;
 }
-.btn-Alumnos:hover{
-	
+
+.btn-Alumnos {
+	background: #B18904;
+}
+.btn-Alumnos:hover, .btn-Alumnos.active {
+
 	background: #FACC2E;
 }
 
-.btn-Calificaciones{
-	background: #9DB91;
+.btn-Calificaciones {
+	background: #043804;
 }
-.btn-Calificaciones:hover{
-	background:  #088A08;
+.btn-Calificaciones:hover, .btn-Calificaciones.active {
+	background: #088A08;
 }
-.btn-Cursos{
-	backgroud: #AA8FD2;
+.btn-Cursos {
+
+	background: #231932;
 }
 
-.btn-Cursos:hover{
+.btn-Cursos:hover, .btn-Cursos.active {
 	backgroud: #563D7C;
 }
-.btn-Profesores{
-	background: #90BCE2;
+.btn-Profesores {
+	background: #0B3861;
 }
-.btn-Profesores:hover{
+.btn-Profesores:hover, .btn-Profesores.active {
 	background: #428BCA;
 }
 
-
 @-webkit-keyframes myAnimation {
-0%   { opacity: 0.0; -webkit-transform: translate(40%, 0);}
+0%   { opacity: 0.0; -webkit-transform: translate(20%, 0);}
+75%   { opacity: 0.5;}
 100% { opacity: 1.0; -webkit-transform: translate(0, 0); }
 }
 @-moz-keyframes myAnimation {
-0%   { opacity: 0.0; -moz-transform: translate(40%, 0);}
+0%   { opacity: 0.0; -moz-transform: translate(20%, 0);}
+75%   { opacity: 0.5;}
 100% { opacity: 1.0; -moz-transform: translate(0, 0);}
 }
 @-o-keyframes myAnimation {
-0%   { opacity: 0.0; -o-transform: translate(40%, 0);}
+0%   { opacity: 0.0; -o-transform: translate(20%, 0);}
+75%   { opacity: 0.5;}
 100% { opacity: 1.0; -o-transform: translate(0, 0);}
 }
 @-keyframes myAnimation {
-0%   { opacity: 0.0; transform: translate(40%, 0);}
+0%   { opacity: 0.0; transform: translate(20%, 0);}
+75%   { opacity: 0.5;}
 100% { opacity: 1.0; transform: translate(0, 0);}
 }
 
+<<<<<<< HEAD
 >>>>>>> origin/ramirez
+=======
+@-webkit-keyframes myAnimation2 {
+0%   { opacity: 0.0; -webkit-transform: translate(-60%, 0);}
+>>>>>>> ramirez
 
-/*body {
-    padding-top: 60px;
-    padding-bottom: 40px;
+100% { opacity: 1.0; -webkit-transform: translate(0, 0); }
 }
+@-moz-keyframes myAnimation2 {
+0%   { opacity: 0.0; -moz-transform: translate(-60%, 0);}
 
-.zf-green {
-    color: #68b604;
+100% { opacity: 1.0; -moz-transform: translate(0, 0);}
 }
+@-o-keyframes myAnimation2 {
+0%   { opacity: 0.0; -o-transform: translate(-60%, 0);}
 
-.btn-success {
-  background-color: #57a900;
-  background-image: -moz-linear-gradient(top, #70d900, #57a900);
-  background-image: -ms-linear-gradient(top, #70d900, #57a900);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
-  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
-  background-image: -o-linear-gradient(top, #70d900, #57a900);
-  background-image: linear-gradient(top, #70d900, #57a900);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+100% { opacity: 1.0; -o-transform: translate(0, 0);}
 }
+@-keyframes myAnimation2 {
+0%   { opacity: 0.0; transform: translate(-60%, 0);}
 
-.btn-success:hover,
-.btn-success:active,
-.btn-success.active,
-.btn-success.disabled,
-.btn-success[disabled] {
-  background-color: #57a900;
+100% { opacity: 1.0; transform: translate(0, 0);}
 }
-
-.btn-success:active, .btn-success.active {
-  background-color: #57a900;
-}
-
-div.container a.brand {
-    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
-    margin-left: 0;
-    padding: 8px 20px 12px 40px;
-}
-*/
