@@ -1,0 +1,136 @@
+@media (min-width: 860px) {
+
+	.thumbnail {
+		margin-bottom: 5em;
+	}
+
+	.navbar-header {
+		margin-left: -5% !important;
+	}
+	.navbar-brand, .navbar-brand:hover, .navbar-brand:focus {
+		font-size: 2em;
+	}
+	.main-menu, a[class*="btn-"] {
+		font-size: 1.5em;
+	}
+
+	.ico {
+		padding-left: 32px;
+		background: url(iconset.png) no-repeat top left;
+	}
+	#nav-Alumnos .ico {
+		background-position: 0 -549px;
+		width: 31px;
+		height: 32px;
+	}
+	#nav-Alumnos:hover .ico, #nav-Alumnos:hover .ico, #nav-Alumnos.active .ico {
+		background-position: 0 -234px;
+		width: 31px;
+		height: 32px;
+	}
+	#nav-Calificaciones .ico {
+		background-position: 0 -316px;
+		width: 32px;
+		height: 27px;
+	}
+	#nav-Calificaciones:hover .ico, #nav-Calificaciones:hover .ico, #nav-Calificaciones.active .ico {
+		background-position: 0 0;
+		width: 32px;
+		height: 28px;
+	}
+	#nav-Cursos .ico {
+		background-position: 0 -395px;
+		width: 30px;
+		height: 32px;
+	}
+	#nav-Cursos:hover .ico, #nav-Cursos:hover .ico, #nav-Cursos.active .ico {
+		background-position: 0 -80px;
+		width: 30px;
+		height: 32px;
+	}
+	#nav-Profesores .ico {
+		background-position: 0 -475px;
+		width: 32px;
+		height: 24px;
+	}
+	#nav-Profesores:hover .ico, #nav-Profesores:hover .ico, #nav-Profesores.active .ico {
+		background-position: 0 -160px;
+		width: 32px;
+		height: 24px;
+	}
+
+}
+/***Termina media**/
+
+.thumbnail {
+	border: none;
+}
+
+.navbar-brand, .navbar-brand:hover, .navbar-brand:focus {
+	text-transform: uppercase;
+	color: #6E6E6E !important;
+	font-weight: bold;
+	text-shadow: 1px 2px 4px #000;
+	/*
+	 background: #000;
+	 -webkit-background-clip: text;
+	 -moz-background-clip: text;
+	 background-clip: text;
+
+	 color: transparent;
+	 text-shadow: 1px 2px 3px #000,0px -1px 1px #6E6E6E;
+	 */
+
+}
+
+#nav-Alumnos a:hover, #nav-Alumnos.active a {
+	color: #FACC2E;
+}
+
+#nav-Calificaciones a:hover, #nav-Calificaciones.active a {
+	color: #088A08;
+}
+#nav-Cursos a:hover, #nav-Cursos.active a {
+	color: #563D7C;
+}
+#nav-Profesores a:hover, #nav-Profesores.active a {
+	color: #428BCA;
+}
+a[class*="btn-"] {
+	color: #fff;
+	padding: 1em;
+}
+
+a[class*="btn-"]:hover {
+	color: #333;
+}
+
+.btn-Alumnos {
+	background: #B18904;
+}
+.btn-Alumnos:hover, .btn-Alumnos.active {
+
+	background: #FACC2E;
+}
+
+.btn-Calificaciones {
+	background: #043804;
+}
+.btn-Calificaciones:hover, .btn-Calificaciones.active {
+	background: #088A08;
+}
+.btn-Cursos {
+
+	background: #231932;
+}
+
+.btn-Cursos:hover, .btn-Cursos.active {
+	backgroud: #563D7C;
+}
+.btn-Profesores {
+	background: #0B3861;
+}
+.btn-Profesores:hover, .btn-Profesores.active {
+	background: #428BCA;
+}
+
