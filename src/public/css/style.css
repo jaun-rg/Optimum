@@ -14,15 +14,32 @@ body {
 	.main-menu {
 		float: right;
 	}
-	.navbar-brand {
+	.navbar-brand, .navbar-brand:hover, .navbar-brand:focus {
 		font-size: 2em;
 	}
-	.main-menu,a[class*="btn-"] {
+	.main-menu, a[class*="btn-"] {
 		font-size: 1.5em;
 	}
 }
 
 /****/
+
+.navbar-brand, .navbar-brand:hover, .navbar-brand:focus {
+	text-transform: uppercase;
+	color: #6E6E6E !important;
+	font-weight: bold;
+	text-shadow: 1px 2px 4px #000;
+	/*
+	 background: #000;
+	 -webkit-background-clip: text;
+	 -moz-background-clip: text;
+	 background-clip: text;
+
+	 color: transparent;
+	 text-shadow: 1px 2px 3px #000,0px -1px 1px #6E6E6E;
+	 */
+
+}
 .main-container {
 	height: 89%;
 	max-width: 100%;
@@ -51,10 +68,54 @@ body {
 }
 
 .section-menu {
-
 	bottom: 4%;
 	left: 0;
 	position: absolute;
+}
+
+.ico {
+	padding-left: 32px;
+	background: url(iconset.png) no-repeat top left;
+}
+#nav-Alumnos .ico {
+	background-position: 0 -549px;
+	width: 31px;
+	height: 32px;
+}
+#nav-Alumnos:hover .ico, #nav-Alumnos:hover .ico, #nav-Alumnos.active .ico {
+	background-position: 0 -234px;
+	width: 31px;
+	height: 32px;
+}
+#nav-Calificaciones .ico {
+	background-position: 0 -316px;
+	width: 32px;
+	height: 27px;
+}
+#nav-Calificaciones:hover .ico, #nav-Calificaciones:hover .ico, #nav-Calificaciones.active .ico {
+	background-position: 0 0;
+	width: 32px;
+	height: 28px;
+}
+#nav-Cursos .ico {
+	background-position: 0 -393px;
+	width: 30px;
+	height: 32px;
+}
+#nav-Cursos:hover .ico, #nav-Cursos:hover .ico, #nav-Cursos.active .ico {
+	background-position: 0 -78px;
+	width: 30px;
+	height: 32px;
+}
+#nav-Profesores .ico {
+	background-position: 0 -475px;
+	width: 32px;
+	height: 24px;
+}
+#nav-Profesores:hover .ico, #nav-Profesores:hover .ico, #nav-Profesores.active .ico {
+	background-position: 0 -160px;
+	width: 32px;
+	height: 24px;
 }
 
 #nav-Alumnos a:hover, #nav-Alumnos.active a {
