@@ -1,15 +1,8 @@
 <?php
 include_once ("layout-header.phtml");
-?>
-		
-
-<div class="row">
-
-<?php
 include_once ("aside-menu.phtml");
 ?>
-	 
-		 <div class="main-content  col-xs-12 col-sm-6 col-md-7">
+<div class="main-content  col-xs-12 col-sm-7 col-md-8">
 		 
 <table class="table">
 <tr>
@@ -23,8 +16,8 @@ include_once ("aside-menu.phtml");
 <tr>
     
      <td><?php echo $this -> escapeHtml($alumno -> idAlumno); ?></td>
-	 <td><?php echo $this -> escapeHtml($alumno -> aPaterno), 
-	 				$this -> escapeHtml($alumno -> aMaterno),
+	 <td><?php echo $this -> escapeHtml($alumno -> aPaterno),' ', 
+	 				$this -> escapeHtml($alumno -> aMaterno),' ',
 	 				$this -> escapeHtml($alumno -> nombres); ?>
 	 </td>
     <td><?php echo $this -> escapeHtml($alumno -> mail); ?></td>
@@ -40,4 +33,3 @@ include_once ("aside-menu.phtml");
 </table>
 </div>
 		 
-</div>

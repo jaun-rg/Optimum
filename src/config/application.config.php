@@ -5,50 +5,10 @@
  *
  * @see https://github.com/zendframework/ZFTool
  */
- /*
-return array(
-    'modules' => array(
-	'ZendDeveloperTools',
-        'Application',
-        'Alumnos',
-        'Calificaciones',
-        'Cursos',
-        'Profesores',
-        'Login'
-        ),
-    'module_listener_options' => array(
-        'module_paths' => array(
-            './module',
-            './vendor'
-            ),
-        'config_glob_paths' => array('config/autoload/{,*.}{global,local}.php')
-        )
-		
-		
-    );
-	*/
-//$env = getenv('APP_ENV') ?: 'production';
-
-// Use the $env value to determine which modules to load
-/*
- $modules = array(
-    	'ZendDeveloperTools',
-        'Application',
-        'Alumnos',
-        'Calificaciones',
-        'Cursos',
-        'Profesores',
-        'Login'
-);
- */
  
-//if ($env == 'development') {
-//    $modules[] = 'ZendDeveloperTools';
-//}
-
 return array(
     'modules' => array(
-	'ZendDeveloperTools',
+		'ZendDeveloperTools',
         'Application',
         'Alumnos',
         'Calificaciones',
@@ -66,6 +26,16 @@ return array(
         'config_glob_paths' => array(
             'config/autoload/{,*.}{global,local}.php',
         ),
+        
+		
+		//'config_cache_enabled' => TRUE,
+		'config_cache_key' => 'app_config',
+		
+		//'module_map_cache_enabled' => TRUE,
+		'module_map_cache_key' => 'module_map',
+		
+		'check_dependencies' => FALSE,
+		'cache_dir' => 'data/cache/',
 /*
         // Use the $env value to determine the state of the flag
        // 	'config_cache_enabled' => ($env == 'production'),

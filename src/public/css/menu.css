@@ -88,7 +88,10 @@
 	 */
 
 }
-
+li[id*="nav-"].active a{
+	pointer-events: none;
+   cursor: default;
+}
 #nav-Alumnos a:hover, #nav-Alumnos.active a {
 	color: #FACC2E;
 }

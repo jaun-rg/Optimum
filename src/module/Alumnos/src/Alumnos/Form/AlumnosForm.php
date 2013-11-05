@@ -38,10 +38,14 @@ namespace Alumnos\Form;
 	         ));
 	    $this->add(array(
 	             'name' => 'mail',
-	             'type' => 'Text',
+	             'type' => 'email',
 	             'options' => array(
 	                 'label' => 'Correo',
 	             ),
+	             'attributes' => array(
+        			'type' => 'email',
+        			//'required' => 'required',
+    			),
 	         ));
 	    $this->add(array(
 	             'name' => 'tipoEstudiante',
