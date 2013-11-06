@@ -32,6 +32,12 @@ class Alumnos implements InputFilterAwareInterface
          throw new \Exception("Not used");
      }
 
+	// Add the following method:
+     public function getArrayCopy()
+     {
+         return get_object_vars($this);
+     }
+	 
      public function getInputFilter()
      {
          if (!$this->inputFilter) {

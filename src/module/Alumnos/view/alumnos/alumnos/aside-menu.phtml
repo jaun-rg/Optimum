@@ -6,9 +6,12 @@
 		</div>
 		
 		
-		<a  class="btn btn-Alumnos btn-block" role="button" href="<?php echo $this -> url('alumnos', array('action' => 'agregar')); ?>">Inscribir</a>
-		<a href="#" class="btn btn-Alumnos btn-block" role="button">Actualizar Datos</a>
-		<a href="#" class="btn btn-Alumnos btn-block" role="button">Borrar</a>
+		<a  class="btn btn-Alumnos btn-block" role="button" 
+			href="<?php echo $this -> url('alumnos', array('action' => 'inscripcion')); ?>">Inscribir</a>
+		<a class="btn btn-Alumnos btn-block" role="button"
+			href="<?php echo $this -> url('alumnos', array('action' => 'editar')); ?>">Editar Datos</a>
+		<a class="btn btn-Alumnos btn-block" role="button"
+			href="<?php echo $this -> url('alumnos', array('action' => 'borrar')); ?>">Borrar</a>
 	</div>
 
 </div>
