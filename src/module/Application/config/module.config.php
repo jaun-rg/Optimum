@@ -52,15 +52,38 @@ return array(
             ),
         ),
     ),
-    'service_manager' => array(
+	'service_manager' => array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
+        /*
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
+		 */
+		 
+     	'factories' => array(
+		 'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory', // <-- add this
+         'cache' => function () {
+            return Zend\Cache\StorageFactory::factory(array(
+                'storage' => array(
+                    'adapter' => 'Filesystem',
+                    'options' => array(
+                        'cache_dir' => __DIR__ . '/../../../data/cache',
+                        'ttl' => 100
+                    ),
+                ),
+                'plugins' => array(
+                    'IgnoreUserAbort' => array(
+                        'exitOnAbort' => true
+                    ),
+                ),
+            ));
+        },
+      ), //data-caching
     ),
+    
     'translator' => array(
         'locale' => 'en_US',
         'translation_file_patterns' => array(
@@ -71,6 +94,8 @@ return array(
             ),
         ),
     ),
+	 
+	 
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',

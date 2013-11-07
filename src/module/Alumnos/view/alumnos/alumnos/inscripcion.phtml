@@ -1,0 +1,88 @@
+<?php
+$title = 'Inscribir';
+$this->headTitle($title);
+ 
+include_once ("layout-header.phtml");
+include_once ("aside-menu.phtml");
+?>
+
+<div class="main-content col-sm-offset-1  col-xs-12 col-sm-6 col-md-7"> 
+
+ <h2><?php echo $this->escapeHtml('Inscribir'); ?></h2>
+ <?php
+ $form->setAttribute('class','form-horizontal');
+ $form->setAttribute('role','form');
+ $form->setAttribute('method', 'POST');
+ $form->setAttribute('action', $this->url('alumnos', array('action' => 'inscripcion')));
+ $formLabel = $this->plugin('formLabel');
+ 
+ 
+ $form->prepare();
+
+ echo $this->form()->openTag($form);
+ echo $this->formHidden($form->get('idAlumno'));
+ 
+ ?>
+  <div class="form-group">
+  	<div class="col-sm-2 control-label">
+    <?php echo $formLabel->openTag() . $form->get('nombres')->getOption('label'), $formLabel->closeTag();?>
+    </div>
+    <div class="col-sm-7">
+      <?php echo $this->formInput($form->get('nombres')); ?>
+    </div>
+  </div>
+  <div class="form-group">
+  	<div class="col-sm-2 control-label">
+    <?php echo $formLabel->openTag() . $form->get('aPaterno')->getOption('label'), $formLabel->closeTag();?>
+    </div>
+    <div class="col-sm-7">
+      <?php echo $this->formInput($form->get('aPaterno')); ?>
+    </div>
+  </div>
+  <div class="form-group">
+  	<div class="col-sm-2 control-label">
+    <?php echo $formLabel->openTag() . $form->get('aMaterno')->getOption('label'), $formLabel->closeTag();?>
+    </div>
+    <div class="col-sm-7">
+      <?php echo $this->formInput($form->get('aMaterno')); ?>
+    </div>
+  </div>
+  <div class="form-group">
+  	<div class="col-sm-2 control-label">
+    <?php echo $formLabel->openTag() . $form->get('mail')->getOption('label'), $formLabel->closeTag();?>
+    </div>
+    <div class="col-sm-7">
+      <?php echo $this->formInput($form->get('mail')); ?>
+    </div>
+  </div>
+  <div class="form-group">
+  	<div class="col-sm-2 control-label">
+    <?php echo $formLabel->openTag() . $form->get('tipoEstudiante')->getOption('label'), $formLabel->closeTag();?>
+    </div>
+    <div class="col-sm-7">
+      <?php echo $this->formSelect($form->get('tipoEstudiante')); ?>
+    </div>
+  </div>
+  <div class="form-group">
+   
+    <div class="col-sm-offset-2 col-sm-7">
+      <?php echo $this->formSubmit($form->get('submit')); ?>
+    </div>
+  </div>
+  
+  
+ <?php echo $this->form()->closeTag(); ?>
+ <?php
+ /*
+ echo $this->formRow($form->get('nombres'));
+ echo $this->formRow($form->get('aPaterno'));
+ echo $this->formRow($form->get('aMaterno'));
+ echo $this->formRow($form->get('mail'));
+ echo $this->formRow($form->get('tipoEstudiante'));
+ echo $this->formSubmit($form->get('submit'));
+  */
+ //muestra TODOS
+ // echo $this->formCollection($form);
+?>
+</div>
+		 

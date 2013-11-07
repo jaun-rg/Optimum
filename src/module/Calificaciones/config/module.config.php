@@ -14,7 +14,7 @@ return array(
             'calificaciones' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/calificaciones[/][/:action][/:id]',
+                    'route'    => '/calificaciones[/:action][/:id]',
                     'constraints' => array(
                         'action' 		=> '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     		=> '[0-9]+',
@@ -27,7 +27,13 @@ return array(
             ),
         ),
      ),
-   
+   	'service_manager' => array(
+        'abstract_factories' => array(
+            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
+            'Zend\Log\LoggerAbstractServiceFactory',
+        ),       
+    ),  
+    
     'view_manager' => array(
         'template_path_stack' => array(
             'calificaciones' => __DIR__ . '/../view',

@@ -4,12 +4,12 @@ namespace Cursos\Model;
 
 class Cursos
 {
-    public $idCurso;
-	public $idProfesor;
-	public $idAlumno;
-	public $curso;
-	public $salon;
-	public $horario;
+			    public $idCurso;
+				public $idProfesor;
+				public $idAlumno;
+				public $curso;
+				public $salon;
+				public $horario;
 
     public function exchangeArray($data)
     {

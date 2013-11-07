@@ -20,12 +20,9 @@
 		 </div>
 =======
 <?php
-include_once("layout-header.phtml");
-?>
-		
-	<div class="row">
-<?php
+include_once ("layout-header.phtml");
 include_once ("aside-menu.phtml");
+<<<<<<< HEAD
 ?>		
 		 	
 <<<<<<< HEAD
@@ -41,3 +38,35 @@ include_once ("aside-menu.phtml");
   	</div>
 	
 
+=======
+?>
+	 
+		  <div class="main-content  col-xs-12 col-sm-7 col-md-8">
+		 
+<table class="table">
+<tr>
+     <th>idProfesor</th>
+	<th>aPaterno</th>
+	<th>aMaterno</th>
+	<th>nombres</th>
+    <th>mail</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($profesores as $profesor) : ?>
+<tr>
+    <td><?php echo $this -> escapeHtml($profesor -> idProfesor); ?></td>
+	<td><?php echo $this -> escapeHtml($profesor -> aPaterno); ?></td>
+	<td><?php echo $this -> escapeHtml($profesor -> aMaterno); ?></td>
+	<td><?php echo $this -> escapeHtml($profesor -> nombres); ?></td>
+    <td><?php echo $this -> escapeHtml($profesor -> mail); ?></td>	
+    <td>
+    	
+        <a href="<?php echo $this -> url('profesores', array('action' => 'editar', 'id' => $profesor -> idCalificaciones)); ?>">Edit</a>
+        <a href="<?php echo $this -> url('profesores', array('action' => 'borrar', 'id' => $profesor -> idCalificaciones)); ?>">Delete</a>
+           
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+</div>
+>>>>>>> origin/ramirez

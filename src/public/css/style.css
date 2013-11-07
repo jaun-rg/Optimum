@@ -5,6 +5,7 @@ html, body {
 	height: 100%;
 	overflow: hidden;
 }
+
 body {
 	padding-top: 50px;
 }
@@ -14,11 +15,10 @@ body {
 	.main-menu {
 		float: right;
 	}
-	
+
 }
 
 /****/
-
 
 .main-container {
 	height: 89%;
@@ -58,11 +58,13 @@ body {
 	-o-animation: myAnimation2 1.5s 1; /* Opera 12.00 */
 	animation: myAnimation2 1.5s 1; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
 }
-.aside-content{
+.aside-content {
 	top: 15%;
 }
+
 .main-content {
 	height: 100%;
+	overflow-y: scroll;
 	-webkit-animation: myAnimation 2s 1; /* Chrome, Safari 5+ */
 	-moz-animation: myAnimation 2s 1; /* Firefox 5-15 */
 	-o-animation: myAnimation 2s 1; /* Opera 12.00 */
@@ -74,8 +76,6 @@ body {
 	left: 0;
 	position: absolute;
 }
-
-
 
 @-webkit-keyframes myAnimation {
 0%   { opacity: 0.0; -webkit-transform: translate(20%, 0);}

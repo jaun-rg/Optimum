@@ -30,7 +30,7 @@ class AlumnosTable
         return $row;
     }
 
-    public function saveAlumno(Alumno $alumno)
+    public function saveAlumno(Alumnos $alumno)
     {
         $data = array(
             'idAlumno' => $alumno->idAlumno,
@@ -38,7 +38,7 @@ class AlumnosTable
             'aMaterno' => $alumno->aMaterno,
             'nombres' => $alumno->nombres,
             'mail' => $alumno->mail,
-            'tipoEstudiante' => $alumno->TipoEstudiante,
+            'tipoEstudiante' => $alumno->tipoEstudiante,
         );
 
         $id = (int)$alumno->id;

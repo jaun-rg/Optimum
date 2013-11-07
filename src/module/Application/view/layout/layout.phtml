@@ -15,6 +15,7 @@
 											href' => $this->basePath() . '/img/favicon.png'))
 		->prependStylesheet($this->basePath() . '/css/style.css')
 		->prependStylesheet($this->basePath() . '/css/menu.css')
+		->prependStylesheet($this->basePath() . '/css/scroll.css')
 		//->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
 		->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
 		
@@ -105,8 +106,10 @@
 		</nav>
 	
 		<div class="container main-container">
+			<div class="row">
 			<?php echo $this -> content; ?>
-			
+			</div>
+		
 			
 			
 		</div>

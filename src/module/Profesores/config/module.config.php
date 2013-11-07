@@ -14,7 +14,7 @@ return array(
             'profesores' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/profesores[/][/:action][/:id]',
+                    'route'    => '/profesores[/:action][/:id]',
                     'constraints' => array(
                         'action' 		=> '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     		=> '[0-9]+',
@@ -27,7 +27,12 @@ return array(
             ),
         ),
      ),
-   
+   	'service_manager' => array(
+        'abstract_factories' => array(
+            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
+            'Zend\Log\LoggerAbstractServiceFactory',
+        ),       
+    ),  
     'view_manager' => array(
         'template_path_stack' => array(
             'profesores' => __DIR__ . '/../view',

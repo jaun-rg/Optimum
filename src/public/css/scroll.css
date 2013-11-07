@@ -1,0 +1,45 @@
+/**IE***/
+body{
+	scrollbar-track-color: rgba(0,0,0,0.3);
+	/*scrollbar-face-color: #999;*/
+	scrollbar-face-color: rgba(255,255,255,0.4);
+}
+/**Chrome & safari***/
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+    -webkit-border-radius: 0;
+    background-color:rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar {
+    width: 15px;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb ,
+::-webkit-scrollbar-thumb:hover {
+    height: 50px;
+    /*background-color: #999;*/
+    background-color: rgba(255,255,255,0.4);
+}
+
+/***Firefox***/
+scrollbar {
+   -moz-appearance: none !important;
+   background-color:rgba(0,0,0,0.3);
+}
+
+scrollbarbutton {
+   -moz-appearance: none !important;
+}
+/* the sliding part*/
+thumb{
+   -moz-appearance: none !important;
+    background-color: rgba(255,255,255,0.4);
+}
+scrollcorner {
+   -moz-appearance: none !important;
+   resize:both;
+}
+/* vertical or horizontal */
+scrollbar[orient="vertical"] {
+    background-color:rgba(0,0,0,0.3);
+}
