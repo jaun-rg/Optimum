@@ -1,0 +1,101 @@
+<?php echo $this -> doctype(); ?>
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<?php echo $this->headTitle($this->translate('Cursos Propedéuticos'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+		<?php echo $this->headMeta()
+		->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+		?>
+
+		<!-- Le styles -->
+		<?php echo $this->headLink(array(	'rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', '
+											href' => $this->basePath() . '/img/favicon.png'))
+		->prependStylesheet($this->basePath() . '/css/style.css')
+		->prependStylesheet($this->basePath() . '/css/menu.css')
+		->prependStylesheet($this->basePath() . '/css/scroll.css')
+		//->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+		->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+		?>
+		<!-- Scripts -->
+		<?php echo $this -> headScript();
+ 		?>
+	</head>
+	<body>
+		
+
+
+		
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<span class="navbar-brand">&nbsp;Cursos Propedéuticos</span>
+				</div>
+
+			<!--	<div class="collapse navbar-collapse pull-right"> -->
+				<div class="collapse navbar-collapse main-menu">	
+					<ul class="nav navbar-nav main-navbar">
+						<li id="nav-Alumnos">
+							<a href="<?php echo $this->url('alumnos', array('action'=>'index'));?>">
+								<span class="ico">&nbsp;Alumnos</span></a>
+						</li>
+						<li id="nav-Profesores">
+							<a href="<?php echo $this->url('profesores', array('action'=>'index'));?>">
+								<span class="ico">&nbsp;Profesores</span></a>
+						</li>
+						<li id="nav-Cursos">
+							<a href="<?php echo $this->url('cursos', array('action'=>'index'));?>">
+								<span class="ico">&nbsp;Cursos</span></a>
+						</li>
+						<li id="nav-Calificaciones">
+							<a href="<?php echo $this->url('calificaciones', array('action'=>'index'));?>">
+								<span class="ico">&nbsp;Calificaciones</span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	
+		<div class="container main-container">
+			<div class="row">
+			<?php echo $this -> content; ?>
+			</div>
+		
+			
+			
+		</div>
+		<!-- /container -->
+		
+		<!-- Scripts -->
+		<?php echo $this -> inlineScript()
+			-> prependFile($this -> basePath() . '/js/bootstrap.min.js')
+			-> prependFile($this -> basePath() . '/js/jquery.min.js')
+			-> prependFile($this -> basePath() . '/js/fullscreen.js')			
+			-> prependFile($this -> basePath() . '/js/respond.min.js', 	'text/javascript', array('conditional' => 'lt IE 9', )) 
+			-> prependFile($this -> basePath() . '/js/html5shiv.js', 	'text/javascript', array('conditional' => 'lt IE 9', ));
+ 		?>
+		
+		<?php $this->inlineScript()->captureStart() ?>
+			$(".alert").alert('close');
+		<?php $this->headScript()->captureEnd() ?>
+		<!--
+			<hr>
+		<footer class="navbar navbar-fixed-bottom" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<p>
+						&copy; <?php echo date('Y') ?> by Cursos Propedéuticos Ltd.
+					</p>
+				</div>
+			</div>
+		</footer>
+		-->
+	</body>
+</html>

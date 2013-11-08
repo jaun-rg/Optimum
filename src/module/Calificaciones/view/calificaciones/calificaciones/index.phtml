@@ -1,0 +1,50 @@
+<?php
+
+include_once("layout-header.phtml");
+include_once ("aside-menu.phtml");
+?>
+	 
+		  <div class="main-content  col-xs-12 col-sm-7 col-md-8">
+<h1><?php echo $this->escapeHtml('Calificaciones'); ?></h1>		 
+<table class="table">
+<tr>
+    <th>id Alumno</th>
+    <th>id Calif</th>
+    <th>id Curso</th>
+    <th>id Alumno</th>
+    <th>fecha</th>
+    <th>Calific</th>
+    <th>Tipo Calific</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($calificaciones as $calificacion) : ?>
+<tr>
+    
+    
+	<td><?php echo $this -> escapeHtml($calificacion -> idCalificaciones); ?></td>	
+    <td><?php echo $this -> escapeHtml($calificacion -> idCurso); ?></td>
+	<td><?php echo $this -> escapeHtml($calificacion -> idAlumno); ?></td>
+	<td><?php echo $this -> escapeHtml($calificacion -> fecha); ?></td>
+	<td><?php echo $this -> escapeHtml($calificacion -> calificacion); ?></td>
+	<td><?php echo $this -> escapeHtml($calificacion -> tipoCalificacion); ?></td>
+    <td>
+    	
+        <a href="<?php echo $this -> url('calificaciones', array('action' => 'editar', 'id' => $calificacion -> idCalificaciones)); ?>">Edit</a>
+        <a href="<?php echo $this -> url('calificaciones', array('action' => 'borrar', 'id' => $calificacion -> idCalificaciones)); ?>">Delete</a>
+           
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+</div>
+
+<?php $this->headScript()->captureStart() ?>
+			function activeSection() {
+				document.getElementById('aside-menu').className = "index well col-xs-12 col-md-4 col-sm-5";
+			}
+
+			window.addEventListener('load', activeSection, false);
+		<?php $this->headScript()->captureEnd() ?>		
+		 
+

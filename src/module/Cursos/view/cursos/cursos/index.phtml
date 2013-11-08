@@ -1,0 +1,43 @@
+<?php
+include_once ("layout-header.phtml");
+include_once ("aside-menu.phtml");
+?>	 
+		  <div class="main-content  col-xs-12 col-sm-7 col-md-8">
+<h1><?php echo $this->escapeHtml('Cursos'); ?></h1>
+		 
+<table class="table">
+<tr>
+     <th>idCurso</th>
+				<th>idProfesor</th>
+				<th>idAlumno</th>
+				<th>curso</th>
+				<th>salon</th>
+				<th>horario</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($cursos as $curso) : ?>
+<tr>
+      			<td><?php echo $this -> escapeHtml($curso -> idCurso); ?></td>	
+				<td><?php echo $this -> escapeHtml($curso -> idProfesor); ?></td>	
+				<td><?php echo $this -> escapeHtml($curso -> idAlumno); ?></td>	
+				<td><?php echo $this -> escapeHtml($curso -> curso); ?></td>	
+				<td><?php echo $this -> escapeHtml($curso -> salon); ?></td>	
+				<td><?php echo $this -> escapeHtml($curso -> horario); ?></td>	
+    <td>
+    	
+        <a href="<?php echo $this -> url('cursos', array('action' => 'editar', 'id' => $curso -> idCalificaciones)); ?>">Edit</a>
+        <a href="<?php echo $this -> url('cursos', array('action' => 'borrar', 'id' => $curso -> idCalificaciones)); ?>">Delete</a>
+           
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+</div>
+<?php $this->headScript()->captureStart() ?>
+			function activeSection() {
+				document.getElementById('aside-menu').className = "index well col-xs-12 col-md-4 col-sm-5";
+			}
+
+			window.addEventListener('load', activeSection, false);
+		<?php $this->headScript()->captureEnd() ?>
