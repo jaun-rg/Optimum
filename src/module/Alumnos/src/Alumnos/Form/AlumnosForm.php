@@ -27,10 +27,10 @@ namespace Alumnos\Form;
         			'placeholder' => 'Apellido Paterno',
 	                'min'      => 1,
                     'max'      => 100,
-                    'pattern'  => '[a-zA-Z][a-zA-Z]*',
+                    'pattern'  => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                     // 'value'	   => ' ',
                     'class' => 'form-control',
-        			//'required' => 'required',
+        			'required' => 'required',
     			),
 	         ));
 		$this->add(array(
@@ -45,10 +45,10 @@ namespace Alumnos\Form;
         			'placeholder' => 'Apellido Materno',
         			'min'      => 1,
                     'max'      => 100,
-                    'pattern'  => '[a-zA-Z][a-zA-Z]*',                    
+                    'pattern'  => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',                    
                     // 'value'	   => ' ',
                     'class' => 'form-control',
-        			//'required' => 'required',
+        			'required' => 'required',
     			),
 	         ));
 		$this->add(array(
@@ -63,11 +63,11 @@ namespace Alumnos\Form;
         			'placeholder' => 'Nombre',
         			'min'      => 1,
                     'max'      => 100,
-                    'pattern'  => '[a-zA-Z][a-zA-Z]*',
+                    'pattern'  => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                     'messages' => 'ingresa un dato',
                     // 'value'	   => ' ',
                     'class' => 'form-control',
-        			//'required' => 'required',
+        			'required' => 'required',
     			),
 	         ));
 	    $this->add(array(
@@ -82,7 +82,7 @@ namespace Alumnos\Form;
         			'placeholder' => 'example@server.domain',
                     'value'	   	  => ' ',
                     'class' 	  => 'form-control',
-        			//'required' => 'required',
+        			'required' => 'required',
     			),
 	         ));
 	    $this->add(array(
@@ -100,7 +100,7 @@ namespace Alumnos\Form;
 	             'attributes' => array(
 	             	  'class' 	 => 'form-control',
 	             	  'type' => 'Select',
-        			//'required' => 'required',
+        			  'required' => 'required',
     			),
 	         ));
 			 
@@ -115,5 +115,6 @@ namespace Alumnos\Form;
 	                 'class'=>'btn btn-default',	         
 	             ),
 	         ));
+			 
 	     }
  }

@@ -8,7 +8,8 @@
  
 return array(
     'modules' => array(
-	'ZendDeveloperTools',
+		'ZendDeveloperTools',
+		'BjyProfiler',
         'Application',
         'Alumnos',
         'Calificaciones',
@@ -28,28 +29,10 @@ return array(
         ),
         
 		
-		//'config_cache_enabled' => TRUE,
+		
 		'config_cache_key' => 'app_config',
-		
-		//'module_map_cache_enabled' => TRUE,
 		'module_map_cache_key' => 'module_map',
-		
 		'check_dependencies' => FALSE,
-		'cache_dir' => 'data/cache/',
-/*
-        // Use the $env value to determine the state of the flag
-       // 	'config_cache_enabled' => ($env == 'production'),
-        	'config_cache_key' => 'app_config',
-
-        // Use the $env value to determine the state of the flag
-        //	'module_map_cache_enabled' => ($env == 'production'),
-        	'module_map_cache_key' => 'module_map',
-
-        	'cache_dir' => 'data/config/',
-
-        // Use the $env value to determine the state of the flag
-        //	'check_dependencies' => ($env != 'production'),
-        
-*/        
+		'cache_dir' => 'data/cache/',   
     ),
 );

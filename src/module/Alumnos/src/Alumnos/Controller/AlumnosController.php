@@ -15,37 +15,17 @@ class AlumnosController extends AbstractActionController {
     {
         if (!$this->alumnosTable) {
             $sm = $this->getServiceLocator();
-            $this->albumTable = $sm->get('Alumnos\Model\AlumnosTable');
+            $this->alumnosTable = $sm->get('Alumnos\Model\AlumnosTable');
         }
-        return $this->albumTable;
+        return $this->alumnosTable;
     }
 	
 	
 	public function indexAction() {
 		return new ViewModel(array(
             'alumnos' => $this->getAlumnosTable()->fetchAll(),
+            /*'message' => 'Hello world',*/
         ));
-	}
-
-	public function agregarAction() {
-		$form = new AlumnosForm();
-         $form->get('submit')->setValue('Inscribir');
-
-         $request = $this->getRequest();
-         if ($request->isPost()) {
-             $alumno = new Alumnos();
-             $form->setInputFilter($alumno->getInputFilter());
-             $form->setData($request->getPost());
-
-             if ($form->isValid()) {
-                 $alumno->exchangeArray($form->getData());
-                 $this->getAlumnosTable()->saveAlumno($alumno);
-
-                 // Redirect to list of albums
-                 return $this->redirect()->toRoute('alumnos');
-             }
-         }
-         return array('form' => $form);
 	}
 
 	public function inscripcionAction() {
@@ -69,15 +49,16 @@ class AlumnosController extends AbstractActionController {
          return array('form' => $form);
 	
 	}
-	public function actualizarAction(){
+	 public function editarAction(){
+	 	
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
              return $this->redirect()->toRoute('alumnos', array(
-                 'action' => 'inscribir'
+                 'action' => 'inscripcion'
              ));
          }
 
-         // Get the Alumnos with the specified id.  An exception is thrown
+         // Get the Usuario with the specified id.  An exception is thrown
          // if it cannot be found, in which case go to the index page.
          try {
              $alumno = $this->getAlumnosTable()->getAlumno($id);
@@ -110,6 +91,33 @@ class AlumnosController extends AbstractActionController {
              'form' => $form,
          );
 	} 
+	
+	public function borrarAction() {
+		 $id = (int) $this->params()->fromRoute('id', 0);
+         if (!$id) {
+             return $this->redirect()->toRoute('alumnos');
+         }
+
+         $request = $this->getRequest();
+         if ($request->isPost()) {
+             $del = $request->getPost('del', 'No');
+
+             if ($del == 'Si') {
+                 $id = (int) $request->getPost('id');
+                 $this->getAlumnosTable()->deleteAlumno($id);
+             }
+
+             // Redirect to list of albums
+             return $this->redirect()->toRoute('alumnos');
+         }
+
+         return array(
+             'id'    => $id,
+             'alumno' => $this->getAlumnosTable()->getAlumno($id),
+         );
+	}
+	
+	
 	public function pagoAction() {
 		return new ViewModel();
 	}
@@ -122,8 +130,6 @@ class AlumnosController extends AbstractActionController {
 		return new ViewModel();
 	}
 
-	public function borrarAction() {
-		return new ViewModel();
-	}
+	
 
 }

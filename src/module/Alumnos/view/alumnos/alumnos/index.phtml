@@ -3,7 +3,8 @@ include_once ("layout-header.phtml");
 include_once ("aside-menu.phtml");
 ?>
 <div class="main-content  col-xs-12 col-sm-7 col-md-8">
-		 
+		 <h1><?php echo $this->escapeHtml('Alumnos'); ?></h1>
+
 <table class="table">
 <tr>
     <th>id</th>
@@ -16,20 +17,27 @@ include_once ("aside-menu.phtml");
 <tr>
     
      <td><?php echo $this -> escapeHtml($alumno -> idAlumno); ?></td>
-	 <td><?php echo $this -> escapeHtml($alumno -> aPaterno),' ', 
-	 				$this -> escapeHtml($alumno -> aMaterno),' ',
-	 				$this -> escapeHtml($alumno -> nombres); ?>
+	 <td><?php echo $this -> escapeHtml($alumno -> nombres),' ',
+	 				$this -> escapeHtml($alumno -> aPaterno),' ', 
+	 				$this -> escapeHtml($alumno -> aMaterno);
+	 				 ?>
 	 </td>
     <td><?php echo $this -> escapeHtml($alumno -> mail); ?></td>
     <td><?php echo $this -> escapeHtml($alumno -> tipoEstudiante); ?></td>
     <td>
     	
-        <a href="<?php echo $this -> url('alumnos', array('action' => 'editar', 'id' => $alumno -> idAlumno)); ?>">Edit</a>
-        <a href="<?php echo $this -> url('alumnos', array('action' => 'borrar', 'id' => $alumno -> idAlumno)); ?>">Delete</a>
+        <a href="<?php echo $this -> url('alumnos', array('action' => 'editar', 'id' => $alumno -> idAlumno)); ?>">Editar</a>
+        <a href="<?php echo $this -> url('alumnos', array('action' => 'borrar', 'id' => $alumno -> idAlumno)); ?>">Borrar</a>
            
     </td>
 </tr>
 <?php endforeach; ?>
 </table>
 </div>
-		 
+<?php $this->headScript()->captureStart() ?>
+			function activeSection() {
+				document.getElementById('aside-menu').className = "index well col-xs-12 col-md-4 col-sm-5";
+			}
+
+			window.addEventListener('load', activeSection, false);
+		<?php $this->headScript()->captureEnd() ?>

@@ -1,37 +1,36 @@
 <?php
+$mytitle = 'Borrar';
+$this->headTitle($mytitle);
+ 
 include_once ("layout-header.phtml");
-?>
-		
-
-<div class="row">
-
-<?php
 include_once ("aside-menu.phtml");
 ?>
 	 
-		 <div class="main-content  col-xs-12 col-sm-6 col-md-7">
-		 
-<table class="table">
-<tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>&nbsp;</th>
-</tr>
-<?php foreach ($alumnos as $alumno) : ?>
-<tr>
-    <td><?php echo $this -> escapeHtml($alumno -> idAlumno); ?></td>
-    <td><?php echo $this -> escapeHtml($alumno -> nombres); ?></td>
-    <td>
-    	<!--
-        <a href="<?php echo $this->url('alumnos',
-            array('action'=>'editar', 'id' => $alumno->idAlumno));?>">Edit</a>
-        <a href="<?php echo $this->url('alumnos',
-            array('action'=>'borrar', 'id' => $alumno->idAlumno));?>">Delete</a>
-           -->
-    </td>
-</tr>
-<?php endforeach; ?>
-</table>
-</div>
+<div class="main-content col-sm-offset-1  col-xs-12 col-sm-6 col-md-7"> 
+
+ <h2><?php echo $this->escapeHtml($mytitle); ?></h2>
+ <p>
+ 	Estas seguro de querer borrar al alumno 
+ </p>
+ <p> 
+ 	<strong>
+     '<?php echo $this -> escapeHtml($alumno -> nombres),' ',
+	 			 $this -> escapeHtml($alumno -> aPaterno),' ', 
+	 			 $this -> escapeHtml($alumno -> aMaterno);?>' 
+	</strong>? 
+</p>
+ <?php
+ $url = $this->url('alumnos', array(
+     'action' => 'borrar',
+     'id'     => $this->id,
+ ));
+ ?>
+ <form action="<?php echo $url; ?>" method="post">
+ <div>
+     <input type="hidden" name="id" value="<?php echo (int) $alumno->idAlumno; ?>" />
+     <input class="btn btn-default" type="submit" name="del" value="Si" />
+     <input class="btn btn-default" type="submit" name="del" value="No" />
+ </div>
+ </form>
 		 
 </div>

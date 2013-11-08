@@ -26,18 +26,18 @@ class Alumnos implements InputFilterAwareInterface
 		$this->tipoEstudiante 	= (!empty($data['tipoEstudiante'])) ? $data['tipoEstudiante'] 	: null;
     }
 	
-	// Add content to these methods:
-     public function setInputFilter(InputFilterInterface $inputFilter)
-     {
-         throw new \Exception("Not used");
-     }
-
 	// Add the following method:
      public function getArrayCopy()
      {
          return get_object_vars($this);
      }
 	 
+	// Add content to these methods:
+     public function setInputFilter(InputFilterInterface $inputFilter)
+     {
+         throw new \Exception("Not used");
+     }
+
      public function getInputFilter()
      {
          if (!$this->inputFilter) {

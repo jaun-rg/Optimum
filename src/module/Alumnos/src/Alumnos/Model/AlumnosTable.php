@@ -3,6 +3,7 @@
 namespace Alumnos\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Alumnos\Model\Alumnos; 
 
 class AlumnosTable
 {
@@ -21,13 +22,15 @@ class AlumnosTable
 
     public function getAlumno($id)
     {
-        $id  = (int) $id;
-        $rowset = $this->tableGateway->select(array('id' => $id));
-        $row = $rowset->current();
-        if (!$row) {
-            throw new \Exception("Could not find row $id");
-        }
-        return $row;
+       $id = (int)$id;
+		$rowset = $this -> tableGateway -> select(array('idAlumno' => $id));
+		$row = $rowset -> current();
+		
+		if (!$row) {
+			throw new \Exception("No se pudo encontrar en Alumno con id  $id");
+		}
+		
+		return $row;
     }
 
     public function saveAlumno(Alumnos $alumno)
@@ -41,12 +44,12 @@ class AlumnosTable
             'tipoEstudiante' => $alumno->tipoEstudiante,
         );
 
-        $id = (int)$alumno->id;
+        $id = (int)$alumno->idAlumno;
         if ($id == 0) {
             $this->tableGateway->insert($data);
         } else {
-            if ($this->getAlbum($id)) {
-                $this->tableGateway->update($data, array('id' => $id));
+            if ($this->getAlumno($id)) {
+                $this->tableGateway->update($data, array('idAlumno' => $id));
             } else {
                 throw new \Exception('El alumno no existe');
             }
@@ -54,7 +57,7 @@ class AlumnosTable
     }
 
     public function deleteAlumno($id)
-    {
-        $this->tableGateway->delete(array('id' => $id));
-    }
+     {
+         $this->tableGateway->delete(array('idAlumno' => (int) $id));
+     }
 }
