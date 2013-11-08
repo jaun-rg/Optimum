@@ -55,7 +55,7 @@ class ProfesoresController extends AbstractActionController {
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
          	// Redirect to index
-             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_WARNING);
+             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
              $this->flashMessenger()	->addMessage('Has intentado editar a un profesor que no ha sido agregado');
              return $this->redirect()->toRoute('profesor', array(
                  'action' => 'agregar'
@@ -69,7 +69,7 @@ class ProfesoresController extends AbstractActionController {
          }
          catch (\Exception $ex) {
          	 //view status messages
-             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DANGER);
+             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_ERROR);
              $this->flashMessenger()->addMessage('Error al obtener los datos del profesor');
              return $this->redirect()->toRoute('profesores', array(
                  'action' => 'index'
@@ -106,7 +106,7 @@ class ProfesoresController extends AbstractActionController {
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
          	//view status messages
-             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_WARNING);
+             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
              $this->flashMessenger()->addMessage('Has intentado borrar a un profesor que no ha sido agregado');
 			 // Redirect to index
              return $this->redirect()->toRoute('profesores');

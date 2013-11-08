@@ -55,7 +55,7 @@ class AlumnosController extends AbstractActionController {
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
          	// Redirect to index
-             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_WARNING);
+             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
              $this->flashMessenger()	->addMessage('Has intentado editar a un alumno que no esta inscrito');
              return $this->redirect()->toRoute('alumnos', array(
                  'action' => 'inscripcion'
@@ -69,7 +69,7 @@ class AlumnosController extends AbstractActionController {
          }
          catch (\Exception $ex) {
          	 //view status messages
-             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DANGER);
+             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_ERROR);
              $this->flashMessenger()->addMessage('Error al obtener los datos del alumno');
              return $this->redirect()->toRoute('alumnos', array(
                  'action' => 'index'
@@ -106,7 +106,7 @@ class AlumnosController extends AbstractActionController {
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
          	//view status messages
-             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_WARNING);
+             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
              $this->flashMessenger()->addMessage('Has intentado borrar a un alumno que no ha sido registrado');
 			 // Redirect to index
              return $this->redirect()->toRoute('alumnos');
