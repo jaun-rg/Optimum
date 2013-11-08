@@ -2,6 +2,7 @@
 namespace Profesores\Model;
 
  use Zend\Db\TableGateway\TableGateway;
+ use Profesores\Model\Profesores;
 
  class ProfesoresTable
  {
@@ -18,42 +19,42 @@ namespace Profesores\Model;
          return $resultSet;
      }
 
-     public function getProfesores($id)
+     public function getProfesor($id)
      {
          $id  = (int) $id;
-         $rowset = $this->tableGateway->select(array('id' => $id));
+         $rowset = $this->tableGateway->select(array('idProfesor' => $id));
          $row = $rowset->current();
          if (!$row) {
-             throw new \Exception("No encontramos el registro  del Profesor solicitada");
+             throw new \Exception("No encontramos el registro  del Profesor solicitado");
          }
          return $row;
      }
 
-     public function saveProfesores(Profesores $profesores)
+     public function saveProfesor(Profesores $profesor)
      {
          $data = array(
-             'idProfesor' 	=> $profesores->idCalificaciones,
-             'aPaterno' 	=> $profesores->aPaterno,
-             'aMaterno' 	=> $profesores->aMaterno,
-             'nombres' 		=> $profesores->nombres,
-             'mail' 		=> $profesores->mail,
+             'idProfesor' 	=> $profesor->idProfesor,
+             'aPaterno' 	=> $profesor->aPaterno,
+             'aMaterno' 	=> $profesor->aMaterno,
+             'nombres' 		=> $profesor->nombres,
+             'mail' 		=> $profesor->mail,
              
          );
 
-         $id = (int) $calificaciones->id;
+         $id = (int) $profesor->idProfesor;
          if ($id == 0) {
              $this->tableGateway->insert($data);
          } else {
-             if ($this->getCalificaciones($id)) {
-                 $this->tableGateway->update($data, array('id' => $id));
+             if ($this->getProfesor($id)) {
+                 $this->tableGateway->update($data, array('idProfesor' => $id));
              } else {
-                 throw new \Exception('El registro del profesor solicitado no existe');
+                 throw new \Exception('El registro del Profesor solicitado no existe');
              }
          }
      }
 
-     public function deleteProfesores($id)
+     public function deleteProfesor($id)
      {
-         $this->tableGateway->delete(array('id' => (int) $id));
+         $this->tableGateway->delete(array('idProfesor' => (int) $id));
      }
  }

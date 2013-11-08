@@ -1,49 +1,27 @@
-<<<<<<< HEAD
-		<!-- Le styles -->
-		<?php 
-			echo $this->headLink()
-						->prependStylesheet($this->basePath() . '/css/blue-bootstrap.min.css')	
-		?>
-		
-				
-		<?php
-		$title = 'Profesores';
-		$this -> headTitle($title);
-		?>
-
-	
-	<div class="row">
-		 <div class="aside-menu well col-xs-6 col-md-5" style="">
-		 	<header>
-		 		<h2><?php echo $this -> escapeHtml($title); ?></h2>
-		 	</header>
-		 </div>
-=======
 <?php
 include_once ("layout-header.phtml");
 include_once ("aside-menu.phtml");
-<<<<<<< HEAD
-?>		
-		 	
-<<<<<<< HEAD
-		 </div>
-  		
-  			
->>>>>>> origin/ramirez
-=======
->>>>>>> ramirez
-  		<div class="main-content col-xs-12 col-sm-6 col-md-7">
-  				Action "index", controller "Profesores", module "Profesores".
-  		</div>
-  	</div>
-	
-
-=======
+?>
+<div class="main-content  col-xs-12 col-sm-7 col-md-8">
+		 <h1><?php echo $this->escapeHtml($title); ?></h1>
+		 
+		<?php 
+		
+		$flash = $this->flashMessenger();
+ 		$flash->setMessageOpenFormat(
+ 		'<div%s>
+ 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+ 				&times;
+ 			</button>
+    	<ul><li><strong>')
+     				->setMessageSeparatorString('</strong></li><li><strong>')
+     				->setMessageCloseString('</strong></li></ul></div>');
+ echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
+ echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
+ echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+ echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
 ?>
 	 
-		  <div class="main-content  col-xs-12 col-sm-7 col-md-8">
-<h1><?php echo $this->escapeHtml('Profesores'); ?></h1>
-		 
 <table class="table">
 <tr>
      <th>idProfesor</th>
@@ -62,17 +40,15 @@ include_once ("aside-menu.phtml");
     <td><?php echo $this -> escapeHtml($profesor -> mail); ?></td>	
     <td>
     	
-        <a href="<?php echo $this -> url('profesores', array('action' => 'editar', 'id' => $profesor -> idCalificaciones)); ?>">Edit</a>
-        <a href="<?php echo $this -> url('profesores', array('action' => 'borrar', 'id' => $profesor -> idCalificaciones)); ?>">Delete</a>
+        <a href="<?php echo $this -> url('profesores', array('action' => 'editar', 'id' => $profesor -> idProfesor)); ?>">Editar</a>
+        <a href="<?php echo $this -> url('profesores', array('action' => 'borrar', 'id' => $profesor -> idProfesor)); ?>">Borrar</a>
            
     </td>
 </tr>
 <?php endforeach; ?>
 </table>
 </div>
-<<<<<<< HEAD
->>>>>>> origin/ramirez
-=======
+
 <?php $this->headScript()->captureStart() ?>
 			function activeSection() {
 				document.getElementById('aside-menu').className = "index well col-xs-12 col-md-4 col-sm-5";
@@ -80,4 +56,3 @@ include_once ("aside-menu.phtml");
 
 			window.addEventListener('load', activeSection, false);
 		<?php $this->headScript()->captureEnd() ?>
->>>>>>> ramirez

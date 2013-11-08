@@ -1,0 +1,70 @@
+<?php
+$mytitle = 'Editar';
+$this->headTitle($mytitle);
+ 
+include_once ("layout-header.phtml");
+include_once ("aside-menu.phtml");
+?>
+	 
+<div class="main-content col-sm-offset-1  col-xs-12 col-sm-6 col-md-7"> 
+
+ <h2><?php echo $this->escapeHtml($mytitle); ?></h2>
+ <?php
+ $form->setAttribute('class','form-horizontal');
+ $form->setAttribute('role','form');
+ $form->setAttribute('method', 'POST');
+ $form->setAttribute('action', $this->url('profesores', array('action' => 'editar','id' => $this->id,)));
+ $formLabel = $this->plugin('formLabel');
+ 
+ 
+ $form->prepare();
+
+ echo $this->form()->openTag($form);
+ echo $this->formHidden($form->get('idProfesor'));
+ 
+ ?>
+  <div class="form-group">
+  	<div class="col-sm-2 control-label">
+    <?php echo $formLabel->openTag() . $form->get('nombres')->getOption('label'), $formLabel->closeTag();?>
+    </div>
+    <div class="col-sm-7">
+      <?php echo $this->formInput($form->get('nombres')); ?>
+    </div>
+  </div>
+  <div class="form-group">
+  	<div class="col-sm-2 control-label">
+    <?php echo $formLabel->openTag() . $form->get('aPaterno')->getOption('label'), $formLabel->closeTag();?>
+    </div>
+    <div class="col-sm-7">
+      <?php echo $this->formInput($form->get('aPaterno')); ?>
+    </div>
+  </div>
+  <div class="form-group">
+  	<div class="col-sm-2 control-label">
+    <?php echo $formLabel->openTag() . $form->get('aMaterno')->getOption('label'), $formLabel->closeTag();?>
+    </div>
+    <div class="col-sm-7">
+      <?php echo $this->formInput($form->get('aMaterno')); ?>
+    </div>
+  </div>
+  <div class="form-group">
+  	<div class="col-sm-2 control-label">
+    <?php echo $formLabel->openTag() . $form->get('mail')->getOption('label'), $formLabel->closeTag();?>
+    </div>
+    <div class="col-sm-7">
+      <?php echo $this->formInput($form->get('mail')); ?>
+    </div>
+  </div>
+     
+    <div class="col-sm-offset-2 col-sm-7">
+      <?php echo $this->formSubmit($form->get('submit')); ?>
+      <a  class="btn btn-default" role="button" 
+			href="<?php echo $this -> url('profesores'); ?>">Cancelar</a>
+    </div>
+  </div>
+  
+  
+ <?php echo $this->form()->closeTag(); ?>
+
+		 
+</div>

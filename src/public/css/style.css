@@ -22,37 +22,15 @@ body {
 
 .main-container {
 	height: 89%;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-	
-	-webkit-animation: myAnimation 2s 1 linear; /* Chrome, Safari 5+ */
-	-moz-animation: myAnimation 2s 1 linear; /* Firefox 5-15 */
-	-o-animation: myAnimation 2s 1 linear; /* Opera 12.00 */
-	animation: myAnimation 2s 1 linear; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
->>>>>>> origin/ramirez
-=======
 	max-width: 100%;
->>>>>>> ramirez
+
 }
 .row {
 	height: 113%;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-.aside-menu{
-<<<<<<< HEAD
-	margin-left: -8.4%;
-	height: 100%;
-}
-=======
-=======
-.aside-menu {
-=======
-#aside-menu {
->>>>>>> ramirez
 
->>>>>>> ramirez
+#aside-menu {
+
 	color: #fff;
 	text-align: center;
 	/*margin-left: -8.4%;*/
@@ -83,6 +61,7 @@ body {
 	position: absolute;
 }
 
+
 @-webkit-keyframes myAnimation {
 0%   { opacity: 0.0; -webkit-transform: translate(20%, 0);}
 75%   { opacity: 0.5;}
@@ -104,9 +83,6 @@ body {
 100% { opacity: 1.0; transform: translate(0, 0);}
 }
 
-<<<<<<< HEAD
->>>>>>> origin/ramirez
-=======
 @-webkit-keyframes myAnimation2 {
 0%   { opacity: 0.0; -webkit-transform: translate(-60%, 0);}
 >>>>>>> ramirez
