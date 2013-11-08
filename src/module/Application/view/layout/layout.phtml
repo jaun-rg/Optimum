@@ -19,30 +19,9 @@
 		//->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
 		->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
 		?>
-<<<<<<< HEAD
-
 		<!-- Scripts -->
-		<?php echo $this -> headScript()
-			-> prependFile($this -> basePath() . '/js/bootstrap.min.js')
-<<<<<<< HEAD
-			-> prependFile($this -> basePath() . '/js/jquery.min.js')		
-			-> prependFile($this -> basePath() . '/js/respond.min.js', 	'text/javascript', array('conditional' => 'lt IE 9', )) 
-			-> prependFile($this -> basePath() . '/js/html5shiv.js', 	'text/javascript', array('conditional' => 'lt IE 9', ));
- ?>
-
-=======
-			-> prependFile($this -> basePath() . '/js/jquery.min.js')
-			-> prependFile($this -> basePath() . '/js/fullscreen.js')			
-			-> prependFile($this -> basePath() . '/js/respond.min.js', 	'text/javascript', array('conditional' => 'lt IE 9', )) 
-			-> prependFile($this -> basePath() . '/js/html5shiv.js', 	'text/javascript', array('conditional' => 'lt IE 9', ));
- ?>
-		
-		
->>>>>>> origin/ramirez
-=======
 		<?php echo $this -> headScript();
  		?>
->>>>>>> ramirez
 	</head>
 	<body>
 		
@@ -59,29 +38,9 @@
 					</button>
 					<span class="navbar-brand">&nbsp;Cursos Propedéuticos</span>
 				</div>
-<<<<<<< HEAD
-				<div class="collapse navbar-collapse pull-right">
-<<<<<<< HEAD
-					<ul class="nav navbar-nav">
-						<li>
-							<a id="nav-students" href="<?php echo $this->url('alumnos', array('action'=>'index'));?>">
-								Alumnos</a>
-						</li>
-						<li>
-							<a id="nav-teachers" href="<?php echo $this->url('profesores', array('action'=>'index'));?>">
-								Profesores</a>
-						</li>
-						<li>
-							<a id="nav-courses" href="<?php echo $this->url('cursos', array('action'=>'index'));?>">
-								Cursos</a>
-						</li>
-						<li>
-							<a id="nav-califc" href="<?php echo $this->url('calificaciones', array('action'=>'index'));?>">
-=======
-=======
+
 			<!--	<div class="collapse navbar-collapse pull-right"> -->
 				<div class="collapse navbar-collapse main-menu">	
->>>>>>> ramirez
 					<ul class="nav navbar-nav main-navbar">
 						<li id="nav-Alumnos">
 							<a href="<?php echo $this->url('alumnos', array('action'=>'index'));?>">
@@ -97,12 +56,7 @@
 						</li>
 						<li id="nav-Calificaciones">
 							<a href="<?php echo $this->url('calificaciones', array('action'=>'index'));?>">
-<<<<<<< HEAD
->>>>>>> origin/ramirez
-								Calificaciones</a>
-=======
 								<span class="ico">&nbsp;Calificaciones</span></a>
->>>>>>> origin/ramirez
 						</li>
 					</ul>
 				</div>
@@ -140,14 +94,5 @@
 			</div>
 		</footer>
 		-->
-<<<<<<< HEAD
-		
-		
-		
-		<?php echo $this->inlineScript() ?>
-		
-=======
-				
->>>>>>> origin/ramirez
 	</body>
 </html>

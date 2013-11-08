@@ -1,55 +1,6 @@
-<<<<<<< HEAD
-		<?php 
-		//estilos para la seccion
-			echo $this->headLink()
-						->prependStylesheet($this->basePath() . '/css/green-bootstrap.min.css')	
-		?>
-		
-				
-		<?php
-			$title = 'Calificaciones';
-			$this -> headTitle($title);
-		?>
-
-<div class="row">
-		 <div class="aside-menu well col-xs-6 col-md-5" style="">
-		 	<header>
-		 		<h2><?php echo $this -> escapeHtml($title); ?></h2>
-		 	</header>
-		 </div>
-=======
 <?php
-<<<<<<< HEAD
+
 include_once("layout-header.phtml");
-?>
-		
-<div class="row">
-<<<<<<< HEAD
-		  <div class="aside-menu well col-xs-6 col-md-5" style="">
-		 	<header>
-		 		<h2><?php echo $this -> escapeHtml($title); ?></h2>
-		 	</header>
-		 	
-		 	<div class="section-menu btn-group">
-		 		<a href="#" class="btn btn-Calificaciones btn-block" role="button">Inscribir</a>
-		 		<a href="#" class="btn btn-Calificaciones btn-block" role="button">Actualizar Datos</a>
-		 		<a href="#" class="btn btn-Calificaciones btn-block" role="button">Borrar</a>
-		 	</div>
-		 	
-		 </div>
-  		
->>>>>>> origin/ramirez
-=======
-<?php
-include_once ("aside-menu.phtml");
-?>
-			 
->>>>>>> ramirez
-  		<div class="main-content col-xs-12 col-sm-6 col-md-7">
-
-Action "index", controller "Calificaciones", module "Calificaciones".
-=======
-include_once ("layout-header.phtml");
 include_once ("aside-menu.phtml");
 ?>
 	 
@@ -85,12 +36,9 @@ include_once ("aside-menu.phtml");
 </tr>
 <?php endforeach; ?>
 </table>
->>>>>>> origin/ramirez
+
 </div>
-<<<<<<< HEAD
-		
-		 
-=======
+
 <?php $this->headScript()->captureStart() ?>
 			function activeSection() {
 				document.getElementById('aside-menu').className = "index well col-xs-12 col-md-4 col-sm-5";
@@ -99,4 +47,4 @@ include_once ("aside-menu.phtml");
 			window.addEventListener('load', activeSection, false);
 		<?php $this->headScript()->captureEnd() ?>		
 		 
->>>>>>> ramirez
+
