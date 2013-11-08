@@ -39,6 +39,7 @@ body {
 	height: 113%;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 .aside-menu{
 <<<<<<< HEAD
 	margin-left: -8.4%;
@@ -47,12 +48,17 @@ body {
 =======
 =======
 .aside-menu {
+=======
+#aside-menu {
+>>>>>>> ramirez
 
 >>>>>>> ramirez
 	color: #fff;
 	text-align: center;
 	/*margin-left: -8.4%;*/
 	height: 100%;
+}
+#aside-menu.index{	
 	-webkit-animation: myAnimation2 1.5s 1; /* Chrome, Safari 5+ */
 	-moz-animation: myAnimation2 1.5s 1; /* Firefox 5-15 */
 	-o-animation: myAnimation2 1.5s 1; /* Opera 12.00 */

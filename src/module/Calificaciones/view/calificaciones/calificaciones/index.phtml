@@ -54,7 +54,7 @@ include_once ("aside-menu.phtml");
 ?>
 	 
 		  <div class="main-content  col-xs-12 col-sm-7 col-md-8">
-		 
+<h1><?php echo $this->escapeHtml('Calificaciones'); ?></h1>		 
 <table class="table">
 <tr>
     <th>id Alumno</th>
@@ -87,5 +87,16 @@ include_once ("aside-menu.phtml");
 </table>
 >>>>>>> origin/ramirez
 </div>
+<<<<<<< HEAD
 		
 		 
+=======
+<?php $this->headScript()->captureStart() ?>
+			function activeSection() {
+				document.getElementById('aside-menu').className = "index well col-xs-12 col-md-4 col-sm-5";
+			}
+
+			window.addEventListener('load', activeSection, false);
+		<?php $this->headScript()->captureEnd() ?>		
+		 
+>>>>>>> ramirez

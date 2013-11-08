@@ -14,10 +14,10 @@ return array(
             'alumnos' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/alumnos[/:action][/:id]',
+                    'route'    => '/alumnos[/][:action][/:id]',
                     'constraints' => array(
-                        'action' 		=> '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     		=> '[0-9]+',
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Alumnos\Controller\Alumnos',
