@@ -1,0 +1,36 @@
+<?php
+$mytitle = 'Borrar';
+$this->headTitle($mytitle);
+ 
+include_once ("layout-header.phtml");
+include_once ("aside-menu.phtml");
+?>
+	 
+<div class="main-content col-sm-offset-1  col-xs-12 col-sm-6 col-md-7"> 
+
+ <h2><?php echo $this->escapeHtml($mytitle); ?></h2>
+ <p>
+ 	Estas seguro de querer borrar al Profesor 
+ </p>
+ <p> 
+ 	<strong>
+     '<?php echo $this -> escapeHtml($profesor -> nombres),' ',
+	 			 $this -> escapeHtml($profesor -> aPaterno),' ', 
+	 			 $this -> escapeHtml($profesor -> aMaterno);?>' 
+	</strong>? 
+</p>
+ <?php
+ $url = $this->url('profesores', array(
+     'action' => 'borrar',
+     'id'     => $this->id,
+ ));
+ ?>
+ <form action="<?php echo $url; ?>" method="post">
+ <div>
+     <input type="hidden" name="id" value="<?php echo (int) $profesor->idProfesor; ?>" />
+     <input class="btn btn-default" type="submit" name="del" value="Si" />
+     <input class="btn btn-default" type="submit" name="del" value="No" />
+ </div>
+ </form>
+		 
+</div>

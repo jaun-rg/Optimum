@@ -59,6 +59,7 @@ body {
 	position: absolute;
 }
 
+
 @-webkit-keyframes myAnimation {
 0%   { opacity: 0.0; -webkit-transform: translate(20%, 0);}
 75%   { opacity: 0.5;}

@@ -4,6 +4,7 @@ namespace Alumnos\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Mvc\Controller\Plugin\FlashMessenger;
 use Alumnos\Model\Alumnos;          // <-- Add this import
 use Alumnos\Form\AlumnosForm; 
 
@@ -24,7 +25,6 @@ class AlumnosController extends AbstractActionController {
 	public function indexAction() {
 		return new ViewModel(array(
             'alumnos' => $this->getAlumnosTable()->fetchAll(),
-            /*'message' => 'Hello world',*/
         ));
 	}
 
@@ -42,7 +42,9 @@ class AlumnosController extends AbstractActionController {
                  $alumno->exchangeArray($form->getData());
                  $this->getAlumnosTable()->saveAlumno($alumno);
 
-                 // Redirect to list of albums
+                 // Redirect to index
+                 $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+                 $this->flashMessenger()	->addMessage('Has inscrito a un nuevo alumno');
                  return $this->redirect()->toRoute('alumnos');
              }
          }
@@ -50,9 +52,11 @@ class AlumnosController extends AbstractActionController {
 	
 	}
 	 public function editarAction(){
-	 	
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
+         	// Redirect to index
+             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_WARNING);
+             $this->flashMessenger()	->addMessage('Has intentado editar a un alumno que no esta inscrito');
              return $this->redirect()->toRoute('alumnos', array(
                  'action' => 'inscripcion'
              ));
@@ -64,6 +68,9 @@ class AlumnosController extends AbstractActionController {
              $alumno = $this->getAlumnosTable()->getAlumno($id);
          }
          catch (\Exception $ex) {
+         	 //view status messages
+             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DANGER);
+             $this->flashMessenger()->addMessage('Error al obtener los datos del alumno');
              return $this->redirect()->toRoute('alumnos', array(
                  'action' => 'index'
              ));
@@ -81,7 +88,10 @@ class AlumnosController extends AbstractActionController {
              if ($form->isValid()) {
                  $this->getAlumnosTable()->saveAlumno($alumno);
 
-                 // Redirect to list of albums
+                 //view status messages
+                 $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+                 $this->flashMessenger()->addMessage('Los datos del alumno han sido actualizados');
+				 // Redirect to index
                  return $this->redirect()->toRoute('alumnos');
              }
          }
@@ -95,6 +105,10 @@ class AlumnosController extends AbstractActionController {
 	public function borrarAction() {
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
+         	//view status messages
+             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_WARNING);
+             $this->flashMessenger()->addMessage('Has intentado borrar a un alumno que no ha sido registrado');
+			 // Redirect to index
              return $this->redirect()->toRoute('alumnos');
          }
 
@@ -108,6 +122,9 @@ class AlumnosController extends AbstractActionController {
              }
 
              // Redirect to list of albums
+             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+              $this->flashMessenger()	->addMessage('El alumno ha sido eliminado');
+              
              return $this->redirect()->toRoute('alumnos');
          }
 
