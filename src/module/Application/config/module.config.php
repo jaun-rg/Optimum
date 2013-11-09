@@ -6,6 +6,8 @@
  * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
+use Zend\Authentication\AuthenticationService;
+use Application\Authentication\Adapter\AuthTableAdapter;
 
 return array(
     'router' => array(
@@ -80,12 +82,33 @@ return array(
                     ),
                 ),
             ));
-        },
+        },//cache
+        
+        /*autentificacion 1. Damos de alta el servicio, ir a Application/Module.php
+        'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
+        'AuthService' => function($sm) {
+                $authServiceManager = new AuthenticationService();
+                 
+                // Obtenemos el adaptador de Base de datos
+                $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                 
+                // Configuramos el adaptador auth
+                $authAdapter = new AuthTableAdapter($dbAdapter);
+                $authAdapter->setTableName('admin')
+                    ->setIdentityColumn('username')
+                    ->setCredentialColumn('pass');
+                 
+                // Y se lo pasamos a nuestro servicio
+                $authServiceManager->setAdapter($authAdapter);
+                return $authServiceManager;
+            },
+        */
+			
       ), //data-caching
     ),
     
     'translator' => array(
-        'locale' => 'en_US',
+        'locale' => 'es_ES',
         'translation_file_patterns' => array(
             array(
                 'type'     => 'gettext',
@@ -98,6 +121,7 @@ return array(
 	 
     'controllers' => array(
         'invokables' => array(
+        	'Application\Controller\Account' => 'Application\Controller\AccountController',
             'Application\Controller\Index' => 'Application\Controller\IndexController',
              'Alumnos\Controller\Alumnos'  => 'Alumnos\Controller\AlumnosController',
              'Calificaciones\Controller\Calificaciones'  => 'Calificaciones\Controller\CalificacionesController',

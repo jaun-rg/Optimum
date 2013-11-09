@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+    <
+        <?php
+        $form = $this->form;
+        $form->prepare();
+         
+        echo $this->form()->openTag($form);
+        // Despliega el campo "Nombre de Usuario", con su label y sus posibles errores
+        echo $this->formLabel($form->get('username'));
+        echo $this->formText($form->get('username'));
+        echo $this->formElementErrors($form->get('username'));
+         
+        // Similar al campo superior
+        echo $this->formLabel($form->get('pass'));
+        echo $this->formPassword($form->get('pass'));
+        echo $this->formElementErrors($form->get('pass'));
+ 
+        // Despliega el elemento CSRF como hidden        
+        echo $this->formHidden($form->get('csrfcheck'));
+        echo $this->formElementErrors($form->get('csrfcheck'));
+         
+        // Muestra el boton
+        echo $this->formSubmit($form->get('submit'));
+         
+        echo $this->form()->closeTag();
+        ?>
+    </div>
+</div>

@@ -12,6 +12,8 @@ namespace Application;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
+use Application\Authentication\AuthenticationListener;
+
 class Module
 {
     public function onBootstrap(MvcEvent $e)
@@ -19,6 +21,16 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+		
+		/*
+		 * 2.Habilitamos el manejo de eventos de autentificacion desde el objeto
+		 *definido para el manejo de la autentificacion
+		 *ver Application/src/application/Authentification/AuthentificationListener.php
+		 */  
+		 /*
+        $authListener  = new AuthenticationListener();
+        $authListener->attach($eventManager);
+		*/
 		
 		/*
 		//inicia data-caching

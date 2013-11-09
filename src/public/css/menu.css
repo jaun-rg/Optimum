@@ -19,28 +19,47 @@
 		background: url(iconset.png) no-repeat top left;
 	}
 	#nav-Alumnos .ico {
-		background-position: 0 -328px; width: 29px; height: 30px;
+		background-position: 0 -328px;
+		width: 29px;
+		height: 30px;
 	}
 	#nav-Alumnos:hover .ico, #nav-Alumnos:hover .ico, #nav-Alumnos.active .ico {
-		background-position: 0 -141px; width: 29px; height: 30px;
+		background-position: 0 -141px;
+		width: 29px;
+		height: 30px;
 	}
 	#nav-Calificaciones .ico {
-		background-position: 0 -188px; width: 30px; height: 26px;
+		background-position: 0 -188px;
+		width: 30px;
+		height: 26px;
 	}
 	#nav-Calificaciones:hover .ico, #nav-Calificaciones:hover .ico, #nav-Calificaciones.active .ico {
-		background-position: 0 0; width: 30px; height: 26px;
+		background-position: 0 0;
+		width: 30px;
+		height: 26px;
 	}
 	#nav-Cursos .ico {
-		background-position: 0 -236px; width: 28px; height: 30px;background-position: 0 -234px; width: 28px; height: 30px;
+		background-position: 0 -236px;
+		width: 28px;
+		height: 30px;
+		background-position: 0 -234px;
+		width: 28px;
+		height: 30px;
 	}
 	#nav-Cursos:hover .ico, #nav-Cursos:hover .ico, #nav-Cursos.active .ico {
-		 background-position: 0 -46px; width: 28px; height: 30px;
+		background-position: 0 -46px;
+		width: 28px;
+		height: 30px;
 	}
 	#nav-Profesores .ico {
-		background-position: 0 -284px; width: 30px; height: 22px;
+		background-position: 0 -284px;
+		width: 30px;
+		height: 22px;
 	}
 	#nav-Profesores:hover .ico, #nav-Profesores:hover .ico, #nav-Profesores.active .ico {
-		background-position: 0 -96px; width: 30px; height: 22px;
+		background-position: 0 -96px;
+		width: 30px;
+		height: 22px;
 	}
 
 }
@@ -53,14 +72,12 @@
 .navbar-brand, .navbar-brand:hover, .navbar-brand:focus {
 	text-transform: uppercase;
 	font-weight: bold;
-	
 	color: #000 !important;
 	text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
 	/*
 	 color: #6E6E6E !important;
 	 text-shadow: 1px 2px 4px #000;
-	 
-	 
+
 	 /*
 	 background: #000;
 	 -webkit-background-clip: text;
@@ -72,9 +89,9 @@
 	 */
 
 }
-li[id*="nav-"].active a{
+li[id*="nav-"].active a {
 	pointer-events: none;
-   cursor: default;
+	cursor: default;
 }
 #nav-Alumnos a:hover, #nav-Alumnos.active a {
 	color: #FACC2E;
@@ -96,6 +113,14 @@ a[class*="my-btn-"] {
 
 a[class*="my-btn-"]:hover {
 	color: #333;
+	border: 1px  rgba(130,130,130,.7);
+	box-shadow: -1px -1px 1px rgba(130,130,130,.4);
+	-webkit-box-shadow: -1px -1px 1px rgba(130,130,130,.4);
+	-moz-box-shadow:-1px -1px 1px rgba(130,130,130,.4);
+	-o-box-shadow: -1px -1px 1px rgba(130,130,130,.4);
+	-ms-box-shadow: -1px -1px 1px rgba(130,130,130,.4);
+	
+	
 }
 
 .my-btn-Alumnos {
