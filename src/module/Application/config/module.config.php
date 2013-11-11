@@ -66,6 +66,7 @@ return array(
 		 */
 		 
      	'factories' => array(
+     	 //'Application\Cache' => 'Zend\Cache\Service\StorageCacheFactory',
 		 'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory', // <-- add this
          'cache' => function () {
             return Zend\Cache\StorageFactory::factory(array(
@@ -80,6 +81,9 @@ return array(
                     'IgnoreUserAbort' => array(
                         'exitOnAbort' => true
                     ),
+                    'exception_handler' => array(
+                   		'throw_exceptions' => false
+                	),
                 ),
             ));
         },//cache
@@ -102,7 +106,7 @@ return array(
                 $authServiceManager->setAdapter($authAdapter);
                 return $authServiceManager;
             },
-        */
+        //*/
 			
       ), //data-caching
     ),
@@ -123,11 +127,12 @@ return array(
         'invokables' => array(
         	'Application\Controller\Account' => 'Application\Controller\AccountController',
             'Application\Controller\Index' => 'Application\Controller\IndexController',
+            /*
              'Alumnos\Controller\Alumnos'  => 'Alumnos\Controller\AlumnosController',
              'Calificaciones\Controller\Calificaciones'  => 'Calificaciones\Controller\CalificacionesController',
              'Cursos\Controller\Cursos'    => 'Cursos\Controller\CursosController',
              'Profesores\Controller\Profesores'  => 'Profesores\Controller\ProfesoresController',
-             
+             */
         ),
     ),
     'view_manager' => array(

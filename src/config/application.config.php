@@ -30,11 +30,14 @@ return array(
             'config/autoload/{,*.}{global,local}.php',
         ),
         
-		
-		
-		'config_cache_key' => 'app_config',
-		'module_map_cache_key' => 'module_map',
-		'check_dependencies' => FALSE,
-		'cache_dir' => 'data/cache/',   
     ),
+    
+	'config_cache_enabled' => TRUE,
+	'config_cache_key' => 'app_config',
+		
+	'module_map_cache_enabled' => TRUE,
+	'module_map_cache_key' => 'module_map',
+		
+	'check_dependencies' => FALSE,
+	'cache_dir' => 'data/cache/',	
 );

@@ -31,48 +31,6 @@ class Module
         $authListener  = new AuthenticationListener();
         $authListener->attach($eventManager);
 		*/
-		
-		/*
-		//inicia data-caching
-		// A list of routes to be cached
-        $routes = array('/profesores', '/alumnos', '/cursos','/calificaciones');
-
-        $app = $e->getApplication();
-        $em  = $app->getEventManager();
-        $sm  = $app->getServiceManager();
-
-        $em->attach(MvcEvent::EVENT_ROUTE, function($e) use ($sm) {
-            $route = $e->getRouteMatch()->getMatchedRouteName();
-            $cache = $sm->get('cache-service');
-            $key   = 'route-cache-' . $route;
-
-            if ($cache->hasItem($key)) {
-                // Handle response
-                $content  = $cache->getItem($key);
-
-                $response = $e->getResponse();
-                $response->setContent($content);
-
-                return $response;
-            }
-        }, -1000); // Low, then routing has happened
-
-        $em->attach(MvcEvent::EVENT_RENDER, function($e) use ($sm, $routes) {
-            $route = $e->getRouteMatch()->getMatchedRouteName();
-            if (!in_array($route, $routes)) {
-                return;
-            }
-
-            $response = $e->getResponse();
-            $content  = $response->getContent();
-
-            $cache = $sm->get('cache-service');
-            $key   = 'route-cache-' . $route;
-            $cache->setItem($key, $content);
-        }, -1000); // Late, then rendering has happened
-        
-        //termina data-caching
-        */
     }
 
     public function getConfig()
