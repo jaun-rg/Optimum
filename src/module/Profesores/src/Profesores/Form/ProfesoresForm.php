@@ -87,7 +87,7 @@ class ProfesoresForm extends Form {
                 'placeholder' => '56739090',
                 'min' => 1,
                 'max' => 100,
-                'pattern' => '',
+                'pattern' => '*',
                 'messages' => 'ingresa un dato',
                 'class' => 'form-control',
                 'required' => 'required',
