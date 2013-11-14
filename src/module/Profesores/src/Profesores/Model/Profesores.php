@@ -22,7 +22,7 @@ class Profesores implements InputFilterAwareInterface {
         $this->aMaterno = (!empty($data['aMaterno'])) ? $data['aMaterno'] : null;
         $this->nombres = (!empty($data['nombres'])) ? $data['nombres'] : null;
         $this->mail = (!empty($data['mail'])) ? $data['mail'] : null;
-        $this->mail = (!empty($data['telefonos'])) ? $data['telefonos'] : null;
+        $this->telefonos = (!empty($data['telefonos'])) ? $data['telefonos'] : null;
     }
 
     public function getArrayCopy() {
