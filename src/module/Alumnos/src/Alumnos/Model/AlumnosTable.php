@@ -42,6 +42,10 @@ class AlumnosTable
             'nombres' => $alumno->nombres,
             'mail' => $alumno->mail,
             'tipoEstudiante' => $alumno->tipoEstudiante,
+            'telefonos' => $alumno->telefonos,
+            'curp' => $alumno->curp,
+            'folioExamen' => $alumno->folioExamen,
+            'nombreTutor' => $alumno->nombreTutor,
         );
 
         $id = (int)$alumno->idAlumno;

@@ -36,6 +36,10 @@ include_once ("aside-menu.phtml");
     <th>Nombre Completo</th>
     <th>Mail</th>
     <th>Tipo estudiante</th>
+    <th>Teléfonos</th>
+    <th>CURP</th>
+    <th>Número COMIPEMS/CENEVAL</th>
+    <th>Nombre padre ó tutor</th>
     <th>&nbsp;</th>
 </tr>
 <?php foreach ($alumnos as $alumno) : ?>
@@ -49,6 +53,10 @@ include_once ("aside-menu.phtml");
 	 </td>
     <td><?php echo $this -> escapeHtml($alumno -> mail); ?></td>
     <td><?php echo $this -> escapeHtml($alumno -> tipoEstudiante); ?></td>
+    <td><?php echo $this -> escapeHtml($alumno -> telefonos); ?></td>
+    <td><?php echo $this -> escapeHtml($alumno -> curp); ?></td>
+    <td><?php echo $this -> escapeHtml($alumno -> folioExamen); ?></td>
+    <td><?php echo $this -> escapeHtml($alumno -> nombreTutor); ?></td>
     <td>
     	
         <a href="<?php echo $this -> url('alumnos', array('action' => 'editar', 'id' => $alumno -> idAlumno)); ?>">Editar</a>
