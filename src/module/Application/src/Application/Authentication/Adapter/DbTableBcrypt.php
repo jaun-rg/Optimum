@@ -10,7 +10,7 @@ use Zend\Db\Adapter\Adapter as DbAdapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Select as DbSelect;
  
-class AuthTableAdapter extends DbTable
+class DbTableBcrypt extends DbTable
 {
     /**
      * Database Connection
@@ -395,11 +395,15 @@ class AuthTableAdapter extends DbTable
     protected function _authenticateValidateResult($resultIdentity)
     {
         $bcrypt = new Bcrypt();
+		$securePass =(string) $this->credential;
+		$password = (string) $resultIdentity[$this->credentialColumn];
          
         // Compare DB Hash against User generated hash
-        if (!$bcrypt->verify($this->credential, $resultIdentity[$this->credentialColumn])) {
+        //if (!$bcrypt->verify($password, $securePass)) {
+        if ($password != $securePass) {	
             $this->authenticateResultInfo['code'] = AuthenticationResult::FAILURE_CREDENTIAL_INVALID;
             $this->authenticateResultInfo['messages'][] = 'Supplied credential is invalid.';
+			echo "The password is NOT correct.".$password." and ".$securePass."\n";
             return $this->_authenticateCreateAuthResult();
         }
      
@@ -408,6 +412,7 @@ class AuthTableAdapter extends DbTable
      
         $this->authenticateResultInfo['code'] = AuthenticationResult::SUCCESS;
         $this->authenticateResultInfo['messages'][] = 'Authentication successful.';
+		echo "hemos autentificado";
         return $this->_authenticateCreateAuthResult();
     }
      

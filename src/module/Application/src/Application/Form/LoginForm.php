@@ -17,7 +17,7 @@ class LoginForm extends Form
         // Nombre de usuario
         $this->add(array(
             'type' => 'Zend\Form\Element\Text',
-            'name' => 'username',
+            'name' => 'identity',
             'options' => array(
                 'label' => 'Nombre de usuario',
                 'required' => true,
@@ -25,6 +25,7 @@ class LoginForm extends Form
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
                 )
+				
             ),
             'attributes' => array(
         		'placeholder' => 'Ingresa tu nombre de usuario',
@@ -37,7 +38,7 @@ class LoginForm extends Form
         // Contraseña
         $this->add(array(
             'type' => 'Zend\Form\Element\Password',
-            'name' => 'pass',
+            'name' => 'credential',
             'options' => array(
                 'label' => 'Contraseña',
                 'required' => true,
@@ -63,7 +64,7 @@ class LoginForm extends Form
             'type' => 'Zend\Form\Element\Submit',
             'name' => 'submit',
             'attributes' => array(
-                'value' => 'Ingresar'
+                'value' => 'Log In'
             )
         ));
     }

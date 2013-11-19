@@ -30,7 +30,7 @@ class Module
 		 /*
         $authListener  = new AuthenticationListener();
         $authListener->attach($eventManager);
-		*/
+		//*/
     }
 
     public function getConfig()

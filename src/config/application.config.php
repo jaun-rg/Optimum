@@ -8,10 +8,10 @@
  
 return array(
     'modules' => array(
-		/*
+		//*
 		'ZendDeveloperTools',
 		'BjyProfiler', 
-		 */
+		 //*/
         'Application',
         'Alumnos',
         'Calificaciones',
