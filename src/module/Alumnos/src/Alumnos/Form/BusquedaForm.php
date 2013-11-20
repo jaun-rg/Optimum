@@ -1,19 +1,15 @@
 <?php
 
-namespace Profesores\Form;
+namespace Alumnos\Form;
 
 use Zend\Form\Form;
 
-class ProfesoresForm extends Form {
+class BusquedaForm extends Form {
 
     public function __construct($name = null) {
         // we want to ignore the name passed
-        parent::__construct('profesor');
+        parent::__construct('alumno');
 
-        $this->add(array(
-            'name' => 'idProfesor',
-            'type' => 'Hidden',
-        ));
 
         $this->add(array(
             'name' => 'aPaterno',
@@ -28,7 +24,7 @@ class ProfesoresForm extends Form {
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 // 'value'	   => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
@@ -44,7 +40,7 @@ class ProfesoresForm extends Form {
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 // 'value'	   => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
@@ -61,38 +57,27 @@ class ProfesoresForm extends Form {
                 'messages' => 'ingresa un dato',
                 // 'value'	   => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
+        
         $this->add(array(
-            'name' => 'mail',
-            'type' => 'Zend\Form\Element\Email',
-            'options' => array(
-                'label' => 'Correo',
-            ),
-            'attributes' => array(
-                'placeholder' => 'example@server.domain',
-                'value' => ' ',
-                'class' => 'form-control',
-                'required' => 'required',
-            ),
-        ));
-        $this->add(array(
-            'name' => 'telefonos',
+            'name' => 'folioExamen',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Teléfonos',
+                'label' => 'Número de Folio COMIPEMS/CENEVAL',
             ),
             'attributes' => array(
-                'placeholder' => '56739090',
+                'placeholder' => 'Ingresa folio',
                 'min' => 1,
                 'max' => 100,
                 'pattern' => '*',
                 'messages' => 'ingresa un dato',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
+        
 
         $this->add(array(
             'name' => 'submit',

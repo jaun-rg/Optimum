@@ -7,6 +7,7 @@ use Zend\View\Model\ViewModel;
 use Zend\Mvc\Controller\Plugin\FlashMessenger;
 use Alumnos\Model\Alumnos;          // <-- Add this import
 use Alumnos\Form\AlumnosForm; 
+use Alumnos\Form\BusquedaForm;
 
 class AlumnosController extends AbstractActionController {
 	
@@ -23,9 +24,52 @@ class AlumnosController extends AbstractActionController {
 	
 	
 	public function indexAction() {
+		$form = new AlumnosForm();
+        $form->get('submit')->setValue('Buscar');
+		
+		return new ViewModel(array(
+            //'alumnos' => $this->getAlumnosTable()->fetchAll(),
+            'form'=> $form,
+        ));
+	}
+	
+	public function todosAction() {
+		
 		return new ViewModel(array(
             'alumnos' => $this->getAlumnosTable()->fetchAll(),
         ));
+	}
+	
+	public function buscarAction() {
+		$form = new BusquedaForm();
+        $form->get('submit')->setValue('Buscar');
+		
+		$request = $this->getRequest();
+         if ($request->isPost()) {
+         	
+             $nombre  	= (string) 	$form->get('nombres')->getValue();
+			 $apaterno  = (string) 	$form->get('aPaterno')->getValue();
+			 $amaterno  = (string) 	$form->get('aMaterno')->getValue();
+			 $folio 	= (string) 	$form->get('folioExamen')->getValue();
+
+             try {
+             	return new ViewModel(array(
+             		'alumnos' => $this->getAlumnosTable()->findAlumno($nombre, $apaterno, $amaterno, $folio),
+        		));
+         	}
+         	catch (\Exception $ex) {
+         		 //view status messages
+             	$this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_ERROR);
+             	$this->flashMessenger()->addMessage('Error al obtener los datos del alumno:'.$nombre.', $apaterno, $amaterno, $folio');
+             	return $this->redirect()->toRoute('alumnos', array(
+                 'action' => 'index'
+             	));
+         	}
+		 
+         }
+		
+		return array('form' => $form);
+		
 	}
 
 	public function inscripcionAction() {
@@ -139,10 +183,7 @@ class AlumnosController extends AbstractActionController {
 		return new ViewModel();
 	}
 	
-	public function buscarAction() {
-		return new ViewModel();
-	}
-
+	
 	public function mostrarAction() {
 		return new ViewModel();
 	}

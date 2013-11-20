@@ -92,11 +92,11 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
-        /*
+        
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
-		 */
+		 
 		 
      	'factories' => array(
      	 //'Application\Cache' => 'Zend\Cache\Service\StorageCacheFactory',
@@ -158,7 +158,7 @@ return array(
 	 
     'controllers' => array(
         'invokables' => array(
-        	'Application\Controller\Account' => 'Application\Controller\AccountController',
+        	//'Application\Controller\Account' => 'Application\Controller\AccountController',
             'Application\Controller\Index' => 'Application\Controller\IndexController',
         ),
     ),

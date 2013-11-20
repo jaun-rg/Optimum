@@ -38,6 +38,7 @@ namespace Profesores\Model;
              'aMaterno' 	=> $profesor->aMaterno,
              'nombres' 		=> $profesor->nombres,
              'mail' 		=> $profesor->mail,
+             'telefonos'        => $profesor->telefonos,
              
          );
 
