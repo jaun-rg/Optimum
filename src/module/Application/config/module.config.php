@@ -59,11 +59,11 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
-        /*
+        
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
-		 */
+		 
 		 
      	'factories' => array(
      	 //'Application\Cache' => 'Zend\Cache\Service\StorageCacheFactory',
@@ -125,14 +125,8 @@ return array(
 	 
     'controllers' => array(
         'invokables' => array(
-        	'Application\Controller\Account' => 'Application\Controller\AccountController',
+        	//'Application\Controller\Account' => 'Application\Controller\AccountController',
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            /*
-             'Alumnos\Controller\Alumnos'  => 'Alumnos\Controller\AlumnosController',
-             'Calificaciones\Controller\Calificaciones'  => 'Calificaciones\Controller\CalificacionesController',
-             'Cursos\Controller\Cursos'    => 'Cursos\Controller\CursosController',
-             'Profesores\Controller\Profesores'  => 'Profesores\Controller\ProfesoresController',
-             */
         ),
     ),
     'view_manager' => array(

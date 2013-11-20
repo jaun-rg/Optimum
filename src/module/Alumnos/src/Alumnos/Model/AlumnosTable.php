@@ -32,6 +32,23 @@ class AlumnosTable
 		
 		return $row;
     }
+	
+	public function findAlumno($nombre="",$apaterno="",$amaterno="", $folio="")
+    {
+       $id = (int)$id;
+	   $nombre = (string)$nombre;
+	   $folio = (string)$folio;
+	   $resultSet = $this->tableGateway->select(
+	   		"idAlumno=$id OR folio=$folio OR nombre like '%$nombre%' OR a_paterno like '%$apaterno%' OR a_materno like '%$amaterno%'");
+		//$row = $resultSet -> current();
+		
+		if (!$resultSet -> current()) {
+			throw new \Exception(
+				"No se pudo encontrar en Alumno con los datos proporcionados : id= $id, nombre= $nombre, folio= $folio");
+		}
+		
+		return $resultSet;
+    }
 
     public function saveAlumno(Alumnos $alumno)
     {

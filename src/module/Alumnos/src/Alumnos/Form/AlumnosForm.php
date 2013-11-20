@@ -134,12 +134,12 @@ class AlumnosForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'Ingresa folio',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '*',
                 'messages' => 'ingresa un dato',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
