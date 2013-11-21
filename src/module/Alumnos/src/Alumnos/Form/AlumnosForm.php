@@ -24,7 +24,8 @@ class AlumnosForm extends Form {
             'attributes' => array(
                 'placeholder' => 'Apellido Paterno',
                 'min' => 1,
-                'max' => 100,
+                'max' => 100,                
+                'messages' => 'daaaaaah',
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 // 'value'	   => ' ',
                 'class' => 'form-control',

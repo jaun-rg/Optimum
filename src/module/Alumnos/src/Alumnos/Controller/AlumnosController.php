@@ -41,34 +41,69 @@ class AlumnosController extends AbstractActionController {
 	}
 	
 	public function buscarAction() {
-		$form = new BusquedaForm();
-        $form->get('submit')->setValue('Buscar');
-		
-		$request = $this->getRequest();
-         if ($request->isPost()) {
-         	
-             $nombre  	= (string) 	$form->get('nombres')->getValue();
-			 $apaterno  = (string) 	$form->get('aPaterno')->getValue();
-			 $amaterno  = (string) 	$form->get('aMaterno')->getValue();
-			 $folio 	= (string) 	$form->get('folioExamen')->getValue();
+		$result=NULL;
+		 $form = new BusquedaForm();
+         $form->get('submit')->setValue('Buscar');
 
-             try {
-             	return new ViewModel(array(
-             		'alumnos' => $this->getAlumnosTable()->findAlumno($nombre, $apaterno, $amaterno, $folio),
-        		));
-         	}
-         	catch (\Exception $ex) {
-         		 //view status messages
-             	$this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_ERROR);
-             	$this->flashMessenger()->addMessage('Error al obtener los datos del alumno:'.$nombre.', $apaterno, $amaterno, $folio');
-             	return $this->redirect()->toRoute('alumnos', array(
-                 'action' => 'index'
-             	));
-         	}
-		 
+         $request = $this->getRequest();
+         if ($request->isPost()) {
+             $alumno = new Alumnos();
+             $form->setInputFilter($alumno->getInputFilter());
+             $form->setData($request->getPost())->isValid();
+
+             //if ($form->isValid()) {
+                 $alumno->exchangeArray($form->getData());
+                 //$this->getAlumnosTable()->saveAlumno($alumno);
+                 
+                 $nombre= $alumno->nombres;
+				 $aPaterno= $alumno->aPaterno;
+				 $aMaterno = $alumno->aMaterno;
+				 $folio= $alumno->folioExamen;
+				
+				$result=$this->getAlumnosTable()->findAlumno($nombre,$aPaterno,$aMaterno, $folio);
+				
+				if (!($result->current())){
+					$this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+                	$this->flashMessenger()	->addMessage('tu consulta no ha dado resultados');
+					
+					return new ViewModel( array(
+             		'form' => $form,		
+             		'alumnos'=> NULL,
+					));
+					
+				}else{
+					$this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+                	$this->flashMessenger()	->addMessage('esto son los resultados de la consulta');
+					
+					return new ViewModel( array(
+             		'form' => $form,		
+             		'alumnos'=> $result,
+					));
+				}
+
+             	
+                
+             //}
+			 
+			  /*$alumno->exchangeArray($form->getData());
+                 //$this->getAlumnosTable()->saveAlumno($alumno);
+                 
+                 $nombre= $alumno->nombres;
+				 $aPaterno= $alumno->aPaterno;
+				 $aMaterno = $alumno->aMaterno;
+				 $folio= $alumno->folioExamen;
+			 
+			 $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+             $this->flashMessenger()	->addMessage('ERROR AL VALIDAR'. $nombre);
+			  return array('form' => $form);*/
          }
-		
-		return array('form' => $form);
+
+
+
+			   
+         return array('form' => $form,
+		 'alumnos'=> NULL,
+		 );
 		
 	}
 

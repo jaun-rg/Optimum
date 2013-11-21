@@ -23,7 +23,8 @@ class Module {
 			$tableGateway = $sm -> get('AlumnosTableGateway');
 			$table = new AlumnosTable($tableGateway);
 			return $table;
-		}, 'AlumnosTableGateway' => function($sm) {
+		}, 
+		'AlumnosTableGateway' => function($sm) {
 			$dbAdapter = $sm -> get('Zend\Db\Adapter\Adapter');
 			$resultSetPrototype = new ResultSet();
 			$resultSetPrototype -> setArrayObjectPrototype(new Alumnos());

@@ -10,6 +10,10 @@ class BusquedaForm extends Form {
         // we want to ignore the name passed
         parent::__construct('alumno');
 
+        $this->add(array(
+            'name' => 'idAlumno',
+            'type' => 'Hidden',
+        ));
 
         $this->add(array(
             'name' => 'aPaterno',
@@ -19,7 +23,7 @@ class BusquedaForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'Apellido Paterno',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 // 'value'	   => ' ',
@@ -35,7 +39,7 @@ class BusquedaForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'Apellido Materno',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 // 'value'	   => ' ',
@@ -51,7 +55,7 @@ class BusquedaForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'Nombre',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 'messages' => 'ingresa un dato',
@@ -60,16 +64,33 @@ class BusquedaForm extends Form {
                 //'required' => 'required',
             ),
         ));
-        
+        $this->add(array(
+            'name' => 'mail',
+            'type' => 'Hidden',
+            
+        ));
+        $this->add(array(
+            'name' => 'tipoEstudiante',
+            'type' => 'Hidden',
+            
+        ));
+        $this->add(array(
+            'name' => 'telefonos',
+            'type' => 'Hidden',
+        ));
+        $this->add(array(
+            'name' => 'curp',
+            'type' => 'Hidden',
+        ));
         $this->add(array(
             'name' => 'folioExamen',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Número de Folio COMIPEMS/CENEVAL',
+                'label' => 'folio',
             ),
             'attributes' => array(
                 'placeholder' => 'Ingresa folio',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '*',
                 'messages' => 'ingresa un dato',
@@ -77,7 +98,11 @@ class BusquedaForm extends Form {
                 //'required' => 'required',
             ),
         ));
-        
+        $this->add(array(
+            'name' => 'nombreTutor',
+            'type' => 'Hidden',
+        ));
+
 
         $this->add(array(
             'name' => 'submit',

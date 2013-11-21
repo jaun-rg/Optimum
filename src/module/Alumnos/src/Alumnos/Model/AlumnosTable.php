@@ -3,16 +3,26 @@
 namespace Alumnos\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Adapter\Adapter;
+use Zend\Db\Sql\Select;
+use Zend\Db\Sql\Sql;
+use Zend\Db\Sql\Where;
+
 use Alumnos\Model\Alumnos; 
+
+
 
 class AlumnosTable
 {
     protected $tableGateway;
+    protected $table ='alumnos';
+ 
 
     public function __construct(TableGateway $tableGateway)
     {
         $this->tableGateway = $tableGateway;
     }
+	
 
     public function fetchAll()
     {
@@ -33,21 +43,53 @@ class AlumnosTable
 		return $row;
     }
 	
-	public function findAlumno($nombre="",$apaterno="",$amaterno="", $folio="")
+	public function findAlumno($nombre,$apaterno,$amaterno, $folio)
     {
-       $id = (int)$id;
+       //$id = (int)$id;
 	   $nombre = (string)$nombre;
+	   $apaterno =(string)$apaterno;
+	   $amaterno=(string)$amaterno;
 	   $folio = (string)$folio;
-	   $resultSet = $this->tableGateway->select(
-	   		"idAlumno=$id OR folio=$folio OR nombre like '%$nombre%' OR a_paterno like '%$apaterno%' OR a_materno like '%$amaterno%'");
-		//$row = $resultSet -> current();
+	   $sql= "folioEstudiante LIKE '%".$folio."%' OR a_paterno LIKE '%".$apaterno."%' OR a_materno LIKE '%".$amaterno."%' nombres LIKE '%".$nombre."%'";
+	   
+	    $rowSet = $this -> tableGateway -> select(array('nombres' => $nombre));
+	    return $rowSet;
+	   
+	    
 		
-		if (!$resultSet -> current()) {
-			throw new \Exception(
-				"No se pudo encontrar en Alumno con los datos proporcionados : id= $id, nombre= $nombre, folio= $folio");
-		}
-		
+ 
+        //$where = new  Where();
+        /*
+		 $where->orPredicate(array(
+        		'nombres'=>$nombre,
+				'a_paterno'=> $apaterno,
+				'a_materno'=> $amaterno,
+				'folioEstudiante'=> $folio,
+			));
+			//*/
+			
+			/*
+		$where->orPredicate(array('nombres'=> $nombre));
+		$where->orPredicate(array('a_paterno'=> $apaterno));
+		$where->orPredicate(array('a_materno'=>  $amaterno));
+		$where->orPredicate(array('folioEstudiante'=>  $folio));
+		//*/
+        //$select->where($where);
+ 
+        //$rowSet = $this -> tableGateway -> select($where);
+	    //return $rowSet;
+	    /*
+        $select = new Select;
+		$select->from('alumnos');
+		$select->where($where);
+
+		$statement = $adapter->createStatement();
+		$select->prepareStatement($adapter, $statement);
+
+		$resultSet = new ResultSet();
+		$resultSet->initialize($statement->execute());
 		return $resultSet;
+		 */
     }
 
     public function saveAlumno(Alumnos $alumno)
