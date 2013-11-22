@@ -45,51 +45,58 @@ class AlumnosTable
 	
 	public function findAlumno($nombre,$apaterno,$amaterno, $folio)
     {
-       //$id = (int)$id;
-	   $nombre = (string)$nombre;
-	   $apaterno =(string)$apaterno;
-	   $amaterno=(string)$amaterno;
-	   $folio = (string)$folio;
-	   $sql= "folioEstudiante LIKE '%".$folio."%' OR a_paterno LIKE '%".$apaterno."%' OR a_materno LIKE '%".$amaterno."%' nombres LIKE '%".$nombre."%'";
+       
+       $sql="";
+	   /*
+	   $nombre = strtoupper((string)$nombre);
+	   $apaterno =strtoupper((string)$apaterno);
+	   $amaterno=strtoupper((string)$amaterno);
+	   $folio = strtoupper((string)$folio);
+	   */
+	   $sql.=$nombre!=NULL? "(nombres LIKE '%".strtoupper((string)$nombre)."%')" : ""; 
 	   
-	    $rowSet = $this -> tableGateway -> select(array('nombres' => $nombre));
-	    return $rowSet;
+	   $sql.=$apaterno!=NULL? 
+	   		($sql!=NULL? 	" OR (aPaterno LIKE '%".strtoupper((string)$apaterno)."%')" : 
+	   						"(aPaterno LIKE '%".strtoupper((string)$apaterno)."%')") : 
+	   		"";
+	   $sql.=$amaterno!=NULL? 
+	   		($sql!=NULL? 	" OR (aMaterno LIKE '%".strtoupper((string)$amaterno)."%')" : 
+	   						"(aMaterno LIKE '%".strtoupper((string)$amaterno)."%')") : 
+	   		"";
+	   $sql.=$folio!=NULL? 
+	   		($sql!=NULL? 	" OR (folioExamen LIKE '%".strtoupper((string)$folio)."%')" : 
+	   						"(folioExamen LIKE '%".strtoupper((string)$folio)."%')") : 
+	   		"";
 	   
-	    
-		
- 
-        //$where = new  Where();
-        /*
-		 $where->orPredicate(array(
-        		'nombres'=>$nombre,
-				'a_paterno'=> $apaterno,
-				'a_materno'=> $amaterno,
-				'folioEstudiante'=> $folio,
-			));
-			//*/
-			
-			/*
-		$where->orPredicate(array('nombres'=> $nombre));
-		$where->orPredicate(array('a_paterno'=> $apaterno));
-		$where->orPredicate(array('a_materno'=>  $amaterno));
-		$where->orPredicate(array('folioEstudiante'=>  $folio));
-		//*/
-        //$select->where($where);
- 
-        //$rowSet = $this -> tableGateway -> select($where);
-	    //return $rowSet;
-	    /*
-        $select = new Select;
-		$select->from('alumnos');
-		$select->where($where);
+	   
+	  // $sql= 	"(folioExamen LIKE '%".$folio."%') OR (aPaterno LIKE '%".$apaterno.
+	  // 			"%') OR (aMaterno LIKE '%".$amaterno."%') OR (nombres LIKE '%".$nombre."%')";
+	   
+	   
+	   $select = new \Zend\Db\Sql\Select ;
+       $select->from('alumnos');
+       // $select->join('tracks','tracks.album_id = album.id');
+	   $select->where($sql);
+	   //$select->where(array('album_id'=>$id));
+	   /*
+	   $select->where->NEST->
+                       like('nombres', '%'.$nombre.'%')
+                     //       ->OR->
+                     //  like('a_paterno', '%'.$apaterno.'%')
+                ->UNNEST;
+	  */ 
+	   
+	   //echo $select->getSqlString();
+	    $resultSet=NULL;
+		try{
+       		$resultSet = $this->tableGateway->selectWith($select);
+		}
+		catch (\Exception $ex) {
+         	$resultSet=NULL;	 
+         }
 
-		$statement = $adapter->createStatement();
-		$select->prepareStatement($adapter, $statement);
-
-		$resultSet = new ResultSet();
-		$resultSet->initialize($statement->execute());
-		return $resultSet;
-		 */
+       //echo $resultSet->count();
+     	return $resultSet;
     }
 
     public function saveAlumno(Alumnos $alumno)

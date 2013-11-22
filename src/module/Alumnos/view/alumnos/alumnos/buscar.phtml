@@ -3,9 +3,8 @@ $mytitle = 'Buscar';
 $this->headTitle($mytitle);
 
 include_once ("layout-header.phtml");
-//include_once ("aside-menu.phtml");
 ?>
-<div id="aside-menu" class="index well col-xs-12 col-md-4 col-sm-5">
+<div id="aside-menu" class="well col-xs-12 col-md-4 col-sm-5">
 	
 	<div class="section-menu btn-group col-xs-12 col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1">
 		<div class="thumbnail">	
@@ -20,7 +19,8 @@ include_once ("layout-header.phtml");
 </div>
 
 <div class="main-content  col-xs-12 col-sm-7 col-md-8">
-		 <h1><?php echo $this->escapeHtml($title); ?>- <?php echo $this->escapeHtml($mytitle); ?></h1>
+	<div class="col-sm-offset-1  col-xs-12 col-sm-6 col-md-7">
+		 <h1><?php echo $this->escapeHtml($mytitle); ?> <?php //echo $this->escapeHtml($title); ?></h1>
 		 
 		<?php 
 		
@@ -39,7 +39,7 @@ include_once ("layout-header.phtml");
  echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
 ?>
 
-<div>
+
 	<?php
 	
  $form->setAttribute('class','form-horizontal');
@@ -107,38 +107,41 @@ include_once ("layout-header.phtml");
   
  <?php echo $this->form()->closeTag(); ?>
 </div>
-<?php if ($alumnos != NULL){ ?>
-<table class="table">
+
+<?php if($alumnos!=NULL) { ?>
+	
+<table class="table table-striped">
+	<thead>
 <tr>
-    <th>id</th>
+  <!--  <th>id</th> -->
     <th>Nombre Completo</th>
     <th>Mail</th>
     <th>Tipo estudiante</th>
     <th>Teléfonos</th>
-    <th>CURP</th>
+   <!-- <th>CURP</th> -->
     <th>Número COMIPEMS/CENEVAL</th>
     <th>Nombre padre ó tutor</th>
     <th>&nbsp;</th>
 </tr>
-<?php 
-$alumno=$alumnos->current();
-
-while ($alumno!=NULL) {
-	
-	
-	 ?>
+</thead>
+<tbody>
+<?php foreach ($alumnos as $alumno) : ?>
 <tr>
     
-     <td><?php echo $this -> escapeHtml($alumno -> idAlumno); ?></td>
-	 <td><?php echo $this -> escapeHtml($alumno -> nombres),' ',
+    <!-- <td><?php echo $this -> escapeHtml($alumno -> idAlumno); ?></td> -->
+    
+	 <td>
+	 	<a href="<?php echo $this -> url('alumnos', array('action' => 'mostrar', 'id' => $alumno -> idAlumno)); ?>">
+	 	<?php echo $this -> escapeHtml($alumno -> nombres),' ',
 	 				$this -> escapeHtml($alumno -> aPaterno),' ', 
 	 				$this -> escapeHtml($alumno -> aMaterno);
 	 				 ?>
+	 	</a>			 
 	 </td>
     <td><?php echo $this -> escapeHtml($alumno -> mail); ?></td>
     <td><?php echo $this -> escapeHtml($alumno -> tipoEstudiante); ?></td>
     <td><?php echo $this -> escapeHtml($alumno -> telefonos); ?></td>
-    <td><?php echo $this -> escapeHtml($alumno -> curp); ?></td>
+   <!-- <td><?php echo $this -> escapeHtml($alumno -> curp); ?></td> -->
     <td><?php echo $this -> escapeHtml($alumno -> folioExamen); ?></td>
     <td><?php echo $this -> escapeHtml($alumno -> nombreTutor); ?></td>
     <td>
@@ -148,14 +151,10 @@ while ($alumno!=NULL) {
            
     </td>
 </tr>
-<?php 
-
-$alumno=$alumnos->next();
-
-} ?>
+<?php endforeach; 
+}
+?>
+</tbody>
 </table>
-<?php 
-	
-}?>
 </div>
 

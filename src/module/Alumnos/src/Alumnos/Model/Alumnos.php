@@ -61,6 +61,7 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
                 ),
                 'validators' => array(
                     array(
@@ -80,6 +81,8 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
+                    
                 ),
                 'validators' => array(
                     array(
@@ -98,6 +101,7 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
                 ),
                 'validators' => array(
                     array(
@@ -170,6 +174,7 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
                 ),
                 'validators' => array(
                     array(
@@ -205,6 +210,7 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
                 ),
                 'validators' => array(
                     array(
@@ -242,6 +248,7 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
                 ),
                 'validators' => array(
                     array(
@@ -261,6 +268,7 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
                 ),
                 'validators' => array(
                     array(
@@ -279,6 +287,7 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
                 ),
                 'validators' => array(
                     array(
@@ -351,6 +360,7 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
                 ),
                 'validators' => array(
                     array(
@@ -386,6 +396,7 @@ class Alumnos implements InputFilterAwareInterface {
                 'filters' => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
+                    array('name' => 'StringToUpper'),
                 ),
                 'validators' => array(
                     array(

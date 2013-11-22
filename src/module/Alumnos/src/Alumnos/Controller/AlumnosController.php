@@ -24,7 +24,7 @@ class AlumnosController extends AbstractActionController {
 	
 	
 	public function indexAction() {
-		$form = new AlumnosForm();
+		$form = new BusquedaForm();
         $form->get('submit')->setValue('Buscar');
 		
 		return new ViewModel(array(
@@ -51,57 +51,38 @@ class AlumnosController extends AbstractActionController {
              $form->setInputFilter($alumno->getInputFilter());
              $form->setData($request->getPost())->isValid();
 
-             //if ($form->isValid()) {
-                 $alumno->exchangeArray($form->getData());
-                 //$this->getAlumnosTable()->saveAlumno($alumno);
-                 
-                 $nombre= $alumno->nombres;
-				 $aPaterno= $alumno->aPaterno;
-				 $aMaterno = $alumno->aMaterno;
-				 $folio= $alumno->folioExamen;
+             $alumno->exchangeArray($form->getData());
+                     
+             $nombre= $alumno->nombres;
+			 $aPaterno= $alumno->aPaterno;
+			 $aMaterno = $alumno->aMaterno;
+			 $folio= $alumno->folioExamen;
 				
-				$result=$this->getAlumnosTable()->findAlumno($nombre,$aPaterno,$aMaterno, $folio);
+			$result=$this->getAlumnosTable()->findAlumno($nombre,$aPaterno,$aMaterno, $folio);
 				
-				if (!($result->current())){
-					$this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
-                	$this->flashMessenger()	->addMessage('tu consulta no ha dado resultados');
-					
-					return new ViewModel( array(
+			if (!$result || $result==NULL){
+				$this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+               	$this->flashMessenger()	->addMessage('tu consulta no ha dado resultados');
+				
+				return new ViewModel( array(
              		'form' => $form,		
              		'alumnos'=> NULL,
-					));
+				));
 					
-				}else{
-					$this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
-                	$this->flashMessenger()	->addMessage('esto son los resultados de la consulta');
-					
-					return new ViewModel( array(
+			}else{
+				$this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+               	$this->flashMessenger()	->addMessage('esto son los resultados de la consulta');
+				
+				return new ViewModel( array(
              		'form' => $form,		
              		'alumnos'=> $result,
-					));
-				}
+				));
+			}
 
-             	
-                
-             //}
-			 
-			  /*$alumno->exchangeArray($form->getData());
-                 //$this->getAlumnosTable()->saveAlumno($alumno);
-                 
-                 $nombre= $alumno->nombres;
-				 $aPaterno= $alumno->aPaterno;
-				 $aMaterno = $alumno->aMaterno;
-				 $folio= $alumno->folioExamen;
-			 
-			 $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
-             $this->flashMessenger()	->addMessage('ERROR AL VALIDAR'. $nombre);
-			  return array('form' => $form);*/
          }
 
-
-
-			   
-         return array('form' => $form,
+         return array(
+         'form' => $form,
 		 'alumnos'=> NULL,
 		 );
 		
@@ -213,16 +194,45 @@ class AlumnosController extends AbstractActionController {
          );
 	}
 	
+	public function mostrarAction() {
+		 $id = (int) $this->params()->fromRoute('id', 0);
+         if (!$id) {
+         	// Redirect to index
+             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+             $this->flashMessenger()	->addMessage('Has mostrar información de un alumno que no esta inscrito');
+             return $this->redirect()->toRoute('alumnos', array(
+                 'action' => 'inscripcion'
+             ));
+         }
+
+         // Get the Usuario with the specified id.  An exception is thrown
+         // if it cannot be found, in which case go to the index page.
+         try {
+             $alumno = $this->getAlumnosTable()->getAlumno($id);
+         }
+         catch (\Exception $ex) {
+         	 //view status messages
+             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_ERROR);
+             $this->flashMessenger()->addMessage('Error al obtener los datos del alumno');
+             return $this->redirect()->toRoute('alumnos', array(
+                 'action' => 'index'
+             ));
+         }
+		 
+		 return new ViewModel(array(
+            'alumno'=> $alumno,
+        ));
+
+	}
+	
+	
 	
 	public function pagoAction() {
 		return new ViewModel();
 	}
 	
 	
-	public function mostrarAction() {
-		return new ViewModel();
-	}
-
+	
 	
 
 }
