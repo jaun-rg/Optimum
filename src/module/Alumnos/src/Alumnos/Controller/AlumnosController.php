@@ -152,7 +152,10 @@ class AlumnosController extends AbstractActionController {
                  $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
                  $this->flashMessenger()->addMessage('Los datos del alumno han sido actualizados');
 				 // Redirect to index
-                 return $this->redirect()->toRoute('alumnos');
+                 //return $this->redirect()->toRoute('alumnos');
+				 return $this->redirect()->toRoute('alumnos', array(
+                 'action' => 'mostrar', 'id' => $id,
+             ));
              }
          }
 
@@ -176,15 +179,19 @@ class AlumnosController extends AbstractActionController {
          if ($request->isPost()) {
              $del = $request->getPost('del', 'No');
 
-             if ($del == 'Si') {
+             if ($del == 'Si' || $del == 'Borrar') {
                  $id = (int) $request->getPost('id');
                  $this->getAlumnosTable()->deleteAlumno($id);
+				 
+				 $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+               	 $this->flashMessenger()	->addMessage('El alumno ha sido eliminado');
              }
+			 else{
+			 	 $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+               	 $this->flashMessenger()	->addMessage('Has cancelado el borrado del alumno');
+			 }
 
              // Redirect to list of albums
-             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
-              $this->flashMessenger()	->addMessage('El alumno ha sido eliminado');
-              
              return $this->redirect()->toRoute('alumnos');
          }
 

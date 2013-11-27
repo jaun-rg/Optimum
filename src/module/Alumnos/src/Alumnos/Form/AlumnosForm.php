@@ -92,8 +92,9 @@ class AlumnosForm extends Form {
                 'label' => 'Tipo de Estudiante',
                 'empty_option' => 'Selecciona una opción',
                 'value_options' => array(
-                    'regularizacion' => 'Regularización',
-                    'ceneval' => 'Ceneval',
+                    'CIP' => 'Curso Prepa',
+                    'CIU' => 'Curso Univ',
+                    'REG' => 'Regularización',
                 ),
             ),
             'attributes' => array(

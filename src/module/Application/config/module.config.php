@@ -19,7 +19,7 @@ return array(
                     'route'    => '/',
                     'defaults' => array(
                         'controller' => 'Alumnos\Controller\Alumnos',
-                        'action'     => 'index',
+                        'action'     => 'buscar',
                     ),
                 ),
             ),
