@@ -12,7 +12,8 @@ include_once ("layout-header.phtml");
 			<img data-src="js/bootstrap.min.js" src=<?php echo $this->basePath() .'/img/background-alumnos.png'?>>
 		</div>
 		
-		<input type="submit" name="submit" id="submitbutton" class="btn my-btn-Alumnos btn-block" value="Inscribir" form="alumno" role="button"  />
+		<input type="submit" name="submit" id="submitbutton" class="btn my-btn-Alumnos btn-block" 
+			value="Inscribir" form="alumno" role="button"  />
 	
 		<a class="btn my-btn-Alumnos btn-block" role="button"
 			href="<?php echo $this -> url('alumnos', array('action' => 'index')); ?>">Cancelar</a>
