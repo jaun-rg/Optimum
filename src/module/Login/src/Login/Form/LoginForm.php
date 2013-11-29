@@ -1,6 +1,7 @@
 <?php
 
-//4. Definicion de formulario de logeoo
+
+//4. Definicion de formulario de logeo
 
 namespace Login\Form;
  
@@ -12,14 +13,14 @@ class LoginForm extends Form
     {
         parent::__construct('loginform');
          
-        $this->setAttribute('method', 'post');
+        $this->setAttribute('method', 'POST');
          
         // Nombre de usuario
         $this->add(array(
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Email',
             'name' => 'username',
             'options' => array(
-                'label' => 'Nombre de usuario',
+                'label' => 'Correo Electrónico',
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),
@@ -27,9 +28,10 @@ class LoginForm extends Form
                 )
             ),
             'attributes' => array(
-        		'placeholder' => 'Ingresa tu nombre de usuario',
+        		'placeholder' => 'Ingresa tu correo',
                 'class' => 'form-control',
         		'required' => 'required',
+        		'title'=> 'Ingresa un correo',
     		),
              
         ));
@@ -49,9 +51,9 @@ class LoginForm extends Form
         		'placeholder' => 'Ingresa tu contraseña',
                 'class' => 'form-control',
         		'required' => 'required',
+        		'title'=> 'este campo no puede quedar vacío',
     		),
         ));
-         
         // Proteccion CSRF
         $this->add(array(
             'type' => 'Zend\Form\Element\Csrf',

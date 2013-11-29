@@ -51,6 +51,7 @@ class BusquedaForm extends Form {
             'name' => 'nombres',
             'type' => 'Text',
             'options' => array(
+
                 'label' => 'Nombre del Profesor',
             ),
             'attributes' => array(
@@ -66,7 +67,7 @@ class BusquedaForm extends Form {
         ));
         $this->add(array(
             'name' => 'mail',
-            'type' => 'Text',
+            'type' => 'Mail',
             'options' => array(
                 'label' => 'Correo Electrónico',
             ),
