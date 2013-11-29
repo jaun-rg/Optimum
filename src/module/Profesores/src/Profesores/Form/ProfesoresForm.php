@@ -72,7 +72,7 @@ class ProfesoresForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'example@server.domain',
-                'value' => ' ',
+                //'value' => ' ',
                 'class' => 'form-control',
                 'required' => 'required',
             ),

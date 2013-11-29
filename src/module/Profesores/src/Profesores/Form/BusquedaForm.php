@@ -66,7 +66,20 @@ class BusquedaForm extends Form {
         ));
         $this->add(array(
             'name' => 'mail',
-            'type' => 'Hidden',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Correo Electrónico',
+            ),
+            'attributes' => array(
+                'placeholder' => 'Correo Electrónico',
+                //'min' => 1,
+                'max' => 100,
+                'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
+                'messages' => 'ingresa un dato',
+                // 'value'	   => ' ',
+                'class' => 'form-control',
+                //'required' => 'required',
+            ),
         ));
         $this->add(array(
             'name' => 'telefonos',
