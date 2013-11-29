@@ -70,7 +70,7 @@ class LoginController extends AbstractActionController {
 				$this->session->username =(string) ($user_session->nombres.'  '. $user_session->aPaterno.' '. $user_session->aMaterno);	
 				$this->session->role=(string) $result->role;
 				$this->session->ex = true;
-				//var_dump($this->session->ex);
+				var_dump($this->session->ex);
 				
 				$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
 				$this -> flashMessenger() -> addMessage('has ingresado con exito '.$this->session->offsetGet('username'));
