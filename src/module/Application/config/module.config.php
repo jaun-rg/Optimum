@@ -27,7 +27,8 @@ return array(
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
             // using the path /application/:controller/:action
-            'application' => array(
+            //*
+			 'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/application',
@@ -53,6 +54,7 @@ return array(
                     ),
                 ),
             ),
+			 // */
             
 		    //definido para autentifcacion
 		    /*
@@ -84,7 +86,7 @@ return array(
                     ),
                 ),
             ),//termina auth
-			 */ 
+			 //*/ 
         ),
     ),
 	'service_manager' => array(
@@ -122,7 +124,7 @@ return array(
         },//cache
         
         //*autentificacion 1. Damos de alta el servicio, ir a Application/Module.php
-        /* /'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
+        /*'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
         'AuthService' => function($sm) {
                 $authServiceManager = new AuthenticationService();
                  
@@ -158,13 +160,13 @@ return array(
 	 
     'controllers' => array(
         'invokables' => array(
-        	//'Application\Controller\Account' => 'Application\Controller\AccountController',
+        	'Application\Controller\Account' => 'Application\Controller\AccountController',
             'Application\Controller\Index' => 'Application\Controller\IndexController',
         ),
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,
-        'display_exceptions'       => true,
+        'display_exceptions'       => false,
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',

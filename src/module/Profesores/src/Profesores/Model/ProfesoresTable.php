@@ -77,6 +77,17 @@ namespace Profesores\Model;
      	return $resultSet;
     }
 
+ 	public function findProfesorForEmail($mail)
+     {
+         $mail  = (string) $mail;
+         $rowset = $this->tableGateway->select(array('mail' => $mail));
+         $row = $rowset->current();
+         if (!$row) {
+             throw new \Exception("No encontramos el registro  del Profesor solicitado");
+         }
+         return $row;
+     }
+
      public function saveProfesor(Profesores $profesor)
      {
          $data = array(

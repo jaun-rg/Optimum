@@ -4,7 +4,10 @@ namespace Application\Controller;
  
 use Application\Form\LoginForm;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\Controller\Plugin\FlashMessenger;
+use Zend\Session\Container; // We need this when using sessions
 use Zend\View\Model\ViewModel;
+//use Application\Model\UsuarioModel;
  
 class AccountController extends AbstractActionController
 {
@@ -17,12 +20,15 @@ class AccountController extends AbstractActionController
         // Si el usuario ya inicio sesion, redirige a la home
         if ( $authService->hasIdentity() ) {
         	$identity = $authService->getIdentity();
-            return $this->redirect()->toRoute('alumnos');
+			
+			 $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+             $this->flashMessenger()	->addMessage('Ya has iniciado sesión');
+            return $this->redirect()->toRoute('index');
 			
         }
          
         // Cerramos cualquier sesion que pueda quedar
-        $authService->clearIdentity();
+       // $authService->clearIdentity();
          
         // Obetenemos el formulaio
         $form = new LoginForm();
@@ -31,6 +37,7 @@ class AccountController extends AbstractActionController
         if ( $this->request->isPost() ) {
             $form->setData($this->request->getPost());
             // Validamos el formulario
+            
             if ( $form->isValid() ) {
                 // Preparamos el adaptador auth
                 $authAdapter = $authService->getAdapter();
@@ -44,12 +51,30 @@ class AccountController extends AbstractActionController
 				if ($result->isValid()) {
    					//$result->getIdentity() === $auth->getIdentity();
     				//$result->getIdentity() === $username;
-					 return $this->redirect()->toRoute('alumnos');
+    				
+    				// Store username in session
+					$user_session = new Container('user');
+					$user_session->username = 'administrador';
+					$identity = $authService->getIdentity();
+					
+					$this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+             		$this->flashMessenger()	->addMessage('has iniciado sesion');
+					
+					return $this->redirect()->toRoute('alumnos');
 				}
 				
  
                 // ... con el resultado podemos, ya sea almacenar el usuario en la sesion
                 // O mostrar un mensaje de error si la autentificacion falló
+                
+                	$user_session = new Container('user');
+					$user_session->username = 'administrador';
+					$identity = $authService->getIdentity();
+					
+					//$this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+             		//$this->flashMessenger()	->addMessage('has iniciado sesion');
+					
+					return $this->redirect()->toRoute('alumnos');
             }
         }
  
@@ -57,4 +82,12 @@ class AccountController extends AbstractActionController
             'form' => $form,
         ));
     }
+	
+	/**
+     * Login page, shows and process login form
+     */
+    public function logoutAction()
+    {// Cerramos cualquier sesion que pueda quedar
+        $authService->clearIdentity();
+	}
 }

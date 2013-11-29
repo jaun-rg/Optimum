@@ -35,6 +35,7 @@ class Module {
 		), );
 	}
 
+	
 	/*
 	 * Apoyados con composer degfinimos
 	 *

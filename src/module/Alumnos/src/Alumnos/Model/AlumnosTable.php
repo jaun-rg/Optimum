@@ -74,7 +74,7 @@ class AlumnosTable
 	   
 	   
 	   $select = new \Zend\Db\Sql\Select ;
-       $select->from('alumnos');
+       $select->from($table);
        // $select->join('tracks','tracks.album_id = album.id');
 	   $select->where($sql);
 	   //$select->where(array('album_id'=>$id));
