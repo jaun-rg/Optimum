@@ -67,7 +67,7 @@ class BusquedaForm extends Form {
         ));
         $this->add(array(
             'name' => 'mail',
-            'type' => 'Mail',
+            'type' => 'Zend\Form\Element\Email',
             'options' => array(
                 'label' => 'Correo Electrónico',
             ),

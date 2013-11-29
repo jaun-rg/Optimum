@@ -1,15 +1,10 @@
 <?php
 $mytitle = 'Mostrar';
-<<<<<<< HEAD
 $this->headTitle($mytitle);
-=======
-$this -> headTitle($mytitle);
->>>>>>> 1ee66c13a1147a652cfcaf8e6a52f049ce8efc68
 
 include_once ("layout-header.phtml");
 ?>
 <div id="aside-menu" class="well col-xs-12 col-md-4 col-sm-5">
-<<<<<<< HEAD
 	
 	<div class="section-menu btn-group col-xs-12 col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1">
 		
@@ -147,115 +142,6 @@ include_once ("layout-header.phtml");
 </table>  
 </div>
         
-=======
 
-	<div class="section-menu btn-group col-xs-12 col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1">
-
-		<div class="thumbnail">
-			<img data-src="js/bootstrap.min.js" src=<?php echo $this->basePath() .'/img/background-alumnos.png'?>>
-		</div>
-
-		<a class="btn my-btn-Alumnos btn-block" role="button"
-		href="<?php echo $this -> url('alumnos', array('action' => 'editar', 'id' => $alumno -> idAlumno)); ?>">Editar Datos</a>
-		<a class="btn my-btn-Alumnos btn-block" role="button"
-		href="<?php echo $this -> url('alumnos', array('action' => 'borrar', 'id' => $alumno -> idAlumno)); ?>">Borrar</a>
-		<a class="btn my-btn-Alumnos btn-block" role="button"
-		href="<?php echo $this -> url('alumnos', array('action' => 'index')); ?>">Inicio</a>
-	</div>
-</div>
-
-<div class="main-content  col-xs-12 col-sm-7 col-md-8">
-	<div class="col-sm-offset-1  col-xs-12 col-sm-6 col-md-7">
-	<h1><?php echo $this -> escapeHtml($mytitle); ?></h1>
-
-	<?php
-	$flash = $this -> flashMessenger();
-	$flash -> setMessageOpenFormat('<div%s>
-<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-&times;
-</button>
-<ul><li><strong>') 
-		-> setMessageSeparatorString('</strong></li><li><strong>') 
-		-> setMessageCloseString('</strong></li></ul></div>');
-	echo $flash -> render('error', 	 array('alert', 'alert-dismissable', 'alert-danger'));
-	echo $flash -> render('info', 	 array('alert', 'alert-dismissable', 'alert-info'));
-	echo $flash -> render('default', array('alert', 'alert-dismissable', 'alert-warning'));
-	echo $flash -> render('success', array('alert', 'alert-dismissable', 'alert-success'));
-	?>
-
-	<div class="table-responsive">
-		<table class="table table-striped table-condensed">
-			<thead>
-				<tr>
-					<th> Columna </th>
-					<th> Valor </th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- <tr>
-				<td>ID</td>
-				<td>
-				<?php echo $this -> escapeHtml($alumno -> idAlumno); ?>
-
-				</td>
-				</tr> -->
-
-				<tr>
-					<td>Nombre(s)</td>
-					<td> <?php echo $this -> escapeHtml($alumno -> nombres); ?> </td>
-				</tr>
-				<tr>
-					<td>Apellido
-					<br>
-					Paterno</td>
-					<td> <?php echo $this -> escapeHtml($alumno -> aPaterno); ?> </td>
-				</tr>
-				<tr>
-					<<td>Apellido
-					<br>
-					Materno</td>
-					<td> <?php echo $this -> escapeHtml($alumno -> aMaterno); ?> </td>
-				</tr>
-				<tr>
-					<td>Correo
-					<br>
-					Electrónico</td>
-					<td> <?php echo $this -> escapeHtml($alumno -> mail); ?> </td>
-				</tr>
-				<tr>
-					<td>Tipo de
-					<br>
-					estudiante </td>
-					<td> <?php echo $this -> escapeHtml($alumno -> tipoEstudiante); ?> </td>
-				</tr>
-				<tr>
-					<td>Telefonos</td>
-					<td> <?php echo $this -> escapeHtml($alumno -> telefonos); ?> </td>
-				</tr>
-				<tr>
-					<td>CURP</td>
-					<td> <?php echo $this -> escapeHtml($alumno -> curp); ?> </td>
-				</tr>
-				<tr>
-					<td>Folio Examen</td>
-					<td> <?php echo $this -> escapeHtml($alumno -> folioExamen); ?> </td>
-				</tr>
-				<tr>
-					<td>Tutor</td>
-					<td> <?php echo $this -> escapeHtml($alumno -> nombreTutor); ?> </td>
-				</tr>
-				<!-- <tr class="warning"> -->
-				<tr>
-					<td> &nbsp; </td>
-					<td><a class="btn btn-default"
-					href="<?php echo $this -> url('alumnos', array('action' => 'editar', 'id' => $alumno -> idAlumno)); ?>"> Editar </a><a class="btn btn-default pull-right"
-					href="<?php echo $this -> url('alumnos', array('action' => 'borrar', 'id' => $alumno -> idAlumno)); ?>"> Borrar </a></td>
-				</tr>
-
-			</tbody>
-		</table>
-	</div>
-
->>>>>>> 1ee66c13a1147a652cfcaf8e6a52f049ce8efc68
 </div>
 </div>
