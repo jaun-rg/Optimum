@@ -21,7 +21,7 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'Profesores\Controller\Profesores',
-                     	'action'     => 'index',
+                     	'action'     => 'buscar',
                     ),
                 ),
             ),

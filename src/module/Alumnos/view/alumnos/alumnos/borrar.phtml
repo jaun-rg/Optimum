@@ -3,8 +3,21 @@ $mytitle = 'Borrar';
 $this->headTitle($mytitle);
  
 include_once ("layout-header.phtml");
-include_once ("aside-menu.phtml");
 ?>
+
+<div id="aside-menu" class="well col-xs-12 col-md-4 col-sm-5">
+	
+	<div class="section-menu btn-group col-xs-12 col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1">
+		<div class="thumbnail">	
+			<img data-src="js/bootstrap.min.js" src=<?php echo $this->basePath() .'/img/background-alumnos.png'?>>
+		</div>
+		
+		<input type="submit" name="del" value="Borrar" form="delete" role="button" class="btn my-btn-Alumnos btn-block" />
+		<a class="btn my-btn-Alumnos btn-block" role="button"
+			href="<?php echo $this -> url('alumnos', array('action' => 'index')); ?>">Cancelar</a>
+	</div>
+
+</div>
 	 
 <div class="main-content col-sm-offset-1  col-xs-12 col-sm-6 col-md-7"> 
 
@@ -25,7 +38,7 @@ include_once ("aside-menu.phtml");
      'id'     => $this->id,
  ));
  ?>
- <form action="<?php echo $url; ?>" method="post">
+ <form name="delete" action="<?php echo $url; ?>" method="POST">
  <div>
      <input type="hidden" name="id" value="<?php echo (int) $alumno->idAlumno; ?>" />
      <input class="btn btn-default" type="submit" name="del" value="Si" />

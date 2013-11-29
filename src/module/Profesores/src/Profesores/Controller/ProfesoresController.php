@@ -5,147 +5,226 @@ namespace Profesores\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Mvc\Controller\Plugin\FlashMessenger;
-use Profesores\Model\Profesores;  
-use Profesores\Form\ProfesoresForm; 
+use Profesores\Model\Profesores;
+use Profesores\Form\ProfesoresForm;
+use Profesores\Form\BusquedaForm;
 
 class ProfesoresController extends AbstractActionController {
-	
-	protected $profesoresTable;
-	
-	public function getProfesoresTable()
-    {
+
+    protected $profesoresTable;
+
+    public function getProfesoresTable() {
         if (!$this->profesoresTable) {
             $sm = $this->getServiceLocator();
             $this->profesoresTable = $sm->get('Profesores\Model\ProfesoresTable');
         }
         return $this->profesoresTable;
     }
-	
-	
-	public function indexAction() {
-		return new ViewModel(array(
+
+    public function indexAction() {
+        $form = new BusquedaForm();
+        $form->get('submit')->setValue('Buscar');
+
+        return new ViewModel(array(
+        'form' => $form,
+        ));
+    }
+    
+    public function todosAction() {
+
+        return new ViewModel(array(
             'profesores' => $this->getProfesoresTable()->fetchAll(),
         ));
-	}
+    }
 
-	public function agregarAction() {
-		$form = new ProfesoresForm();
-         $form->get('submit')->setValue('Agregar');
+    public function buscarAction() {
+        $result = NULL;
+        $form = new BusquedaForm();
+        $form->get('submit')->setValue('Buscar');
 
-         $request = $this->getRequest();
-         if ($request->isPost()) {
-             $profesor = new Profesores();
-             $form->setInputFilter($profesor->getInputFilter());
-             $form->setData($request->getPost());
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $profesor = new Profesores();
+            $form->setInputFilter($profesor->getInputFilter());
+            $form->setData($request->getPost())->isValid();
 
-             if ($form->isValid()) {
-                 $profesor->exchangeArray($form->getData());
-                 $this->getProfesoresTable()->saveProfesor($profesor);
+            $profesor->exchangeArray($form->getData());
 
-                 // Redirect to index
-                 $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
-                 $this->flashMessenger()	->addMessage('Has agregado a un nuevo profesor');
-                 return $this->redirect()->toRoute('profesores');
-             }
-         }
-         return array('form' => $form);
-	}
+            $nombre = $profesor->nombres;
+            $aPaterno = $profesor->aPaterno;
+            $aMaterno = $profesor->aMaterno;
+            $mail = $profesor->mail;
 
-	public function editarAction() {
-		 $id = (int) $this->params()->fromRoute('id', 0);
-         if (!$id) {
-         	// Redirect to index
-             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
-             $this->flashMessenger()	->addMessage('Has intentado editar a un profesor que no ha sido agregado');
-             return $this->redirect()->toRoute('profesor', array(
-                 'action' => 'agregar'
-             ));
-         }
+            $result = $this->getAlumnosTable()->findProfesor($nombre, $aPaterno, $aMaterno, $mail);
 
-         // Get the Usuario with the specified id.  An exception is thrown
-         // if it cannot be found, in which case go to the index page.
-         try {
-             $profesor = $this->getProfesoresTable()->getProfesor($id);
-         }
-         catch (\Exception $ex) {
-         	 //view status messages
-             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_ERROR);
-             $this->flashMessenger()->addMessage('Error al obtener los datos del profesor');
-             return $this->redirect()->toRoute('profesores', array(
-                 'action' => 'index'
-             ));
-		 }
+            if (!$result || $result == NULL) {
+                $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+                $this->flashMessenger()->addMessage('tu consulta no ha dado resultados');
 
-         $form  = new ProfesoresForm();
-         $form->bind($profesor);
-         $form->get('submit')->setAttribute('value', 'Editar');
+                return new ViewModel(array(
+                    'form' => $form,
+                    'profesores' => NULL,
+                ));
+            } else {
+                $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+                $this->flashMessenger()->addMessage('esto son los resultados de la consulta');
 
-         $request = $this->getRequest();
-         if ($request->isPost()) {
-             $form->setInputFilter($profesor->getInputFilter());
-             $form->setData($request->getPost());
+                return new ViewModel(array(
+                    'form' => $form,
+                    'profesores' => $result,
+                ));
+            }
+        }
 
-             if ($form->isValid()) {
-                 $this->getProfesoresTable()->saveProfesor($profesor);
+        return array(
+            'form' => $form,
+            'profesores' => NULL,
+        );
+    }
 
-                 //view status messages
-                 $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
-                 $this->flashMessenger()->addMessage('Los datos del profesor han sido actualizados');
-				 // Redirect to index
-                 return $this->redirect()->toRoute('profesores');
-             }
-         }
+    public function agregarAction() {
+        $form = new ProfesoresForm();
+        $form->get('submit')->setValue('Agregar');
 
-         return array(
-             'id' => $id,
-             'form' => $form,
-         );	 
-	}
-	
-	public function borrarAction() {
-		 $id = (int) $this->params()->fromRoute('id', 0);
-         if (!$id) {
-         	//view status messages
-             $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
-             $this->flashMessenger()->addMessage('Has intentado borrar a un profesor que no ha sido agregado');
-			 // Redirect to index
-             return $this->redirect()->toRoute('profesores');
-         }
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $profesor = new Profesores();
+            $form->setInputFilter($profesor->getInputFilter());
+            $form->setData($request->getPost());
 
-         $request = $this->getRequest();
-         if ($request->isPost()) {
-             $del = $request->getPost('del', 'No');
+            if ($form->isValid()) {
+                $profesor->exchangeArray($form->getData());
+                $this->getProfesoresTable()->saveProfesor($profesor);
 
-             if ($del == 'Si') {
-                 $id = (int) $request->getPost('id');
-                 $this->getProfesoresTable()->deleteProfesor($id);
-             }
+                // Redirect to index
+                $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+                $this->flashMessenger()->addMessage('Has agregado a un nuevo profesor');
+                return $this->redirect()->toRoute('profesores');
+            }
+        }
+        return array('form' => $form);
+    }
 
-             // Redirect to index
-             $this->flashMessenger()	->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
-              $this->flashMessenger()	->addMessage('El profesor ha sido eliminado');
-              
-             return $this->redirect()->toRoute('profesores');
-         }
+    public function editarAction() {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            // Redirect to index
+            $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+            $this->flashMessenger()->addMessage('Has intentado editar a un profesor que no ha sido agregado');
+            return $this->redirect()->toRoute('profesores', array(
+                        'action' => 'agregar'
+            ));
+        }
 
-         return array(
-             'id'    => $id,
-             'profesor' => $this->getProfesoresTable()->getProfesor($id),
-         );
-	}
-	
-	public function pagoAction() {
-		return new ViewModel();
-	}
+        // Get the Usuario with the specified id.  An exception is thrown
+        // if it cannot be found, in which case go to the index page.
+        try {
+            $profesor = $this->getProfesoresTable()->getProfesor($id);
+        } catch (\Exception $ex) {
+            //view status messages
+            $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_ERROR);
+            $this->flashMessenger()->addMessage('Error al obtener los datos del profesor');
+            return $this->redirect()->toRoute('profesores', array(
+                        'action' => 'index'
+            ));
+        }
 
-	public function buscarAction() {
-		return new ViewModel();
-	}
+        $form = new ProfesoresForm();
+        $form->bind($profesor);
+        $form->get('submit')->setAttribute('value', 'Editar');
 
-	public function mostrarAction() {
-		return new ViewModel();
-	}
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setInputFilter($profesor->getInputFilter());
+            $form->setData($request->getPost());
 
-	
+            if ($form->isValid()) {
+                $this->getProfesoresTable()->saveProfesor($profesor);
+
+                //view status messages
+                $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+                $this->flashMessenger()->addMessage('Los datos del profesor han sido actualizados');
+                // 
+                // Redirect to index
+//                return $this->redirect()->toRoute('profesores');
+                return $this->redirect()->toRoute('profesores', array(
+                            'action' => 'mostrar', 'id' => $id,
+                ));
+            }
+        }
+
+        return array(
+            'id' => $id,
+            'form' => $form,
+        );
+    }
+
+    public function borrarAction() {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            //view status messages
+            $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+            $this->flashMessenger()->addMessage('Has intentado borrar a un profesor que no ha sido agregado');
+            // Redirect to index
+            return $this->redirect()->toRoute('profesores');
+        }
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'No');
+
+            if ($del == 'Si' || $del == 'Borrar') {
+                $id = (int) $request->getPost('id');
+                $this->getProfesoresTable()->deleteProfesor($id);
+
+                $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+                $this->flashMessenger()->addMessage('El profesor ha sido eliminado');
+            } else {
+                $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+                $this->flashMessenger()->addMessage('Has cancelado la operación');
+            }
+
+
+            return $this->redirect()->toRoute('profesores');
+        }
+
+        return array(
+            'id' => $id,
+            'profesor' => $this->getProfesoresTable()->getProfesor($id),
+        );
+    }
+
+    public function mostrarAction() {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            // Redirect to index
+            $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+            $this->flashMessenger()->addMessage('El profesor solicitado no se encuentra en el sistema');
+            return $this->redirect()->toRoute('profesores', array(
+                        'action' => 'agregar'
+            ));
+        }
+
+        // Get the Usuario with the specified id.  An exception is thrown
+        // if it cannot be found, in which case go to the index page.
+        try {
+            $profesor = $this->getAlumnosTable()->getProfesor($id);
+        } catch (\Exception $ex) {
+            //view status messages
+            $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_ERROR);
+            $this->flashMessenger()->addMessage('Error al obtener los datos del profesor');
+            return $this->redirect()->toRoute('profesores', array(
+                        'action' => 'index'
+            ));
+        }
+
+        return new ViewModel(array(
+            'profesor' => $profesor,
+        ));
+    }
+
+    public function pagoAction() {
+        return new ViewModel();
+    }
 
 }

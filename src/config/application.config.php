@@ -11,7 +11,7 @@ return array(
 		/*
 		'ZendDeveloperTools',
 		'BjyProfiler', 
-		 */
+		 //*/
         'Application',
         'Alumnos',
         'Calificaciones',

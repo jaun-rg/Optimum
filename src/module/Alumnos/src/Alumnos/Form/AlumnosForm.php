@@ -3,6 +3,8 @@
 namespace Alumnos\Form;
 
 use Zend\Form\Form;
+use Zend\Validator;
+use Zend\Validator\Regex;
 
 class AlumnosForm extends Form {
 
@@ -22,13 +24,14 @@ class AlumnosForm extends Form {
                 'label' => 'Apellido Paterno',
             ),
             'attributes' => array(
-                'placeholder' => 'Apellido Paterno',
+                ////'placeholder' => 'Apellido Paterno',
                 'min' => 1,
-                'max' => 100,
+                'max' => 100,   
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
-                // 'value'	   => ' ',
                 'class' => 'form-control',
                 'required' => 'required',
+                'data-toggle'=>'tooltip',
+                'title'=>'No debe estar vacio y solo debe contener letras',
             ),
         ));
         $this->add(array(
@@ -38,13 +41,14 @@ class AlumnosForm extends Form {
                 'label' => 'Apellido Materno',
             ),
             'attributes' => array(
-                'placeholder' => 'Apellido Materno',
+                //'placeholder' => 'Apellido Materno',
                 'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
-                // 'value'	   => ' ',
                 'class' => 'form-control',
                 'required' => 'required',
+                'data-toggle'=>'tooltip',
+                'title'=>'No debe estar vacio y solo debe contener letras',
             ),
         ));
         $this->add(array(
@@ -54,15 +58,16 @@ class AlumnosForm extends Form {
                 'label' => 'Nombre del Alumno',
             ),
             'attributes' => array(
-                'placeholder' => 'Nombre',
+                //'placeholder' => 'Nombre',
                 'min' => 1,
                 'max' => 100,
-                'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
-                'messages' => 'ingresa un dato',
-                // 'value'	   => ' ',
+                'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z\s]*',
                 'class' => 'form-control',
                 'required' => 'required',
+                'data-toggle'=>'tooltip',
+                'title'=>'No debe estar vacio y solo debe contener letras',
             ),
+            
         ));
         $this->add(array(
             'name' => 'mail',
@@ -71,10 +76,13 @@ class AlumnosForm extends Form {
                 'label' => 'Correo',
             ),
             'attributes' => array(
-                'placeholder' => 'example@server.domain',
+                //'placeholder' => 'example@server.domain',
                 'value' => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                'required' => 'required', 
+                'data-toggle'=>'tooltip',
+                'data-html'=>TRUE,
+                'title'=>'debe tener el formato example@server.domain',
             ),
         ));
         $this->add(array(
@@ -84,14 +92,17 @@ class AlumnosForm extends Form {
                 'label' => 'Tipo de Estudiante',
                 'empty_option' => 'Selecciona una opción',
                 'value_options' => array(
-                    'regularizacion' => 'Regularización',
-                    'ceneval' => 'Ceneval',
+                    'CIP' => 'Curso Prepa',
+                    'CIU' => 'Curso Univ',
+                    'REG' => 'Regularización',
                 ),
             ),
             'attributes' => array(
                 'class' => 'form-control',
                 'type' => 'Select',
                 'required' => 'required',
+                'data-toggle'=>'tooltip',
+                'title'=>'selecciona alguna opción de la lista',
             ),
         ));
         $this->add(array(
@@ -101,13 +112,15 @@ class AlumnosForm extends Form {
                 'label' => 'Teléfonos',
             ),
             'attributes' => array(
-                'placeholder' => '56739090',
+                //'placeholder' => '56739090',
                 'min' => 1,
                 'max' => 100,
                 'pattern' => '*',
-                'messages' => 'ingresa un dato',
+                'message' => 'ingresa un dato',
                 'class' => 'form-control',
                 'required' => 'required',
+                'data-toggle'=>'tooltip',
+                'title'=>'agrega los números de telefono separados por comas',
             ),
         ));
         $this->add(array(
@@ -117,29 +130,30 @@ class AlumnosForm extends Form {
                 'label' => 'CURP',
             ),
             'attributes' => array(
-                'placeholder' => 'RORC910520HDFDMR06',
+                //'placeholder' => 'RORC910520HDFDMR06',
                 'min' => 1,
                 'max' => 100,
-                'pattern' => '[A-Z][A-Z][A-Z][A-Z][0-9][0-9][0-9][0-9][0-9][0-9][A-Z][A-Z][A-Z][A-Z][A-Z][A-Z][0-9][0-9]',
-                'messages' => 'ingresa un dato',
+                'pattern' => '[A-Za-z]{4}[0-9]{6}[A-Za-z]{6}[0-9]{2}',
                 'class' => 'form-control',
                 'required' => 'required',
+                'data-toggle'=>'tooltip',
+                'title'=>'debe tener el formato RORC910520HDFDMR06',
             ),
         ));
         $this->add(array(
             'name' => 'folioExamen',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Número COMIPEMS/CENEVAL',
+                'label' => 'Folio de Examen',
             ),
             'attributes' => array(
-                'placeholder' => 'Ingresa folio',
-                'min' => 1,
+                //'placeholder' => 'Ingresa folio',
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '*',
                 'messages' => 'ingresa un dato',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
@@ -149,13 +163,15 @@ class AlumnosForm extends Form {
                 'label' => 'Nombre del padre ó tutor',
             ),
             'attributes' => array(
-                'placeholder' => 'Nombre del padre ó tutor',
+                //'placeholder' => 'Nombre del padre ó tutor',
                 'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑá éíóúÁÉÍÓÚüÜA-Z]*',
                 'messages' => 'ingresa un dato',
                 'class' => 'form-control',
                 'required' => 'required',
+                'data-toggle'=>'tooltip',
+                'title'=>'Solo debe contener letras',
             ),
         ));
 

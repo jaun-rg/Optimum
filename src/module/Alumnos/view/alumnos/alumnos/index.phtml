@@ -1,70 +1,100 @@
-<?php $this->headScript()->captureStart() ?>
-	function activeSection() {
-		document.getElementById('aside-menu').className = "index well col-xs-12 col-md-4 col-sm-5";
-	}
-
-	window.addEventListener('load', activeSection, false);
-<?php $this->headScript()->captureEnd() ?>
-		
 <?php
+$mytitle = 'Inicio';
+$this->headTitle($mytitle);
 include_once ("layout-header.phtml");
-include_once ("aside-menu.phtml");
 ?>
+<div id="aside-menu" class="index well col-xs-12 col-md-4 col-sm-5">
+
+    <div class="section-menu btn-group col-xs-12 col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1">
+        <div class="thumbnail">	
+            <img data-src="js/bootstrap.min.js" src=<?php echo $this->basePath() . '/img/background-alumnos.png' ?>>
+        </div>
+        <a  class="btn my-btn-Alumnos btn-block" role="button" 
+            href="<?php echo $this->url('alumnos', array('action' => 'inscripcion')); ?>">Inscribir</a>
+        <a class="btn my-btn-Alumnos btn-block" role="button"
+           href="<?php echo $this->url('alumnos', array('action' => 'todos')); ?>">Listar Todos</a>
+    </div>
+
+</div>
+
 <div class="main-content  col-xs-12 col-sm-7 col-md-8">
-		 <h1><?php echo $this->escapeHtml($title); ?></h1>
-		 
-		<?php 
-		
-		$flash = $this->flashMessenger();
- 		$flash->setMessageOpenFormat(
- 		'<div%s>
+    <div class=" col-sm-offset-1  col-xs-12 col-sm-6 col-md-7 ">
+        <h1><?php echo $this->escapeHtml($mytitle); ?></h1>
+
+        <?php
+        $flash = $this->flashMessenger();
+        $flash->setMessageOpenFormat(
+                        '<div%s>
  			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
  				&times;
  			</button>
     	<ul><li><strong>')
-     				->setMessageSeparatorString('</strong></li><li><strong>')
-     				->setMessageCloseString('</strong></li></ul></div>');
- echo $flash->render('error',   array('alert', 'alert-dismissable', 'alert-danger'));
- echo $flash->render('info',    array('alert', 'alert-dismissable', 'alert-info'));
- echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
- echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
-?>
+                ->setMessageSeparatorString('</strong></li><li><strong>')
+                ->setMessageCloseString('</strong></li></ul></div>');
+        echo $flash->render('error', array('alert', 'alert-dismissable', 'alert-danger'));
+        echo $flash->render('info', array('alert', 'alert-dismissable', 'alert-info'));
+        echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+        echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+        ?>
 
-<table class="table">
-<tr>
-    <th>id</th>
-    <th>Nombre Completo</th>
-    <th>Mail</th>
-    <th>Tipo estudiante</th>
-    <th>Teléfonos</th>
-    <th>CURP</th>
-    <th>Número COMIPEMS/CENEVAL</th>
-    <th>Nombre padre ó tutor</th>
-    <th>&nbsp;</th>
-</tr>
-<?php foreach ($alumnos as $alumno) : ?>
-<tr>
-    
-     <td><?php echo $this -> escapeHtml($alumno -> idAlumno); ?></td>
-	 <td><?php echo $this -> escapeHtml($alumno -> nombres),' ',
-	 				$this -> escapeHtml($alumno -> aPaterno),' ', 
-	 				$this -> escapeHtml($alumno -> aMaterno);
-	 				 ?>
-	 </td>
-    <td><?php echo $this -> escapeHtml($alumno -> mail); ?></td>
-    <td><?php echo $this -> escapeHtml($alumno -> tipoEstudiante); ?></td>
-    <td><?php echo $this -> escapeHtml($alumno -> telefonos); ?></td>
-    <td><?php echo $this -> escapeHtml($alumno -> curp); ?></td>
-    <td><?php echo $this -> escapeHtml($alumno -> folioExamen); ?></td>
-    <td><?php echo $this -> escapeHtml($alumno -> nombreTutor); ?></td>
-    <td>
-    	
-        <a href="<?php echo $this -> url('alumnos', array('action' => 'editar', 'id' => $alumno -> idAlumno)); ?>">Editar</a>
-        <a href="<?php echo $this -> url('alumnos', array('action' => 'borrar', 'id' => $alumno -> idAlumno)); ?>">Borrar</a>
-           
-    </td>
-</tr>
-<?php endforeach; ?>
-</table>
+
+        <?php
+        $form->setAttribute('class', 'form-horizontal');
+        $form->setAttribute('role', 'form');
+        $form->setAttribute('method', 'POST');
+        $form->setAttribute('action', $this->url('alumnos', array('action' => 'buscar')));
+        $formLabel = $this->plugin('formLabel');
+
+
+        $form->prepare();
+
+        echo $this->form()->openTag($form);
+        ?>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">
+                <?php /* echo $formLabel->openTag() . $form->get('nombres')->getOption('label'), $formLabel->closeTag(); */ ?>
+                <?php echo $this->formLabel($form->get('nombres')); ?>
+            </div>
+            <div class="col-sm-7">
+                <?php echo $this->formInput($form->get('nombres')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">
+                <?php echo $this->formLabel($form->get('aPaterno')); ?>
+            </div>
+            <div class="col-sm-7">
+                <?php echo $this->formInput($form->get('aPaterno')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">
+                <?php echo $this->formLabel($form->get('aMaterno')); ?>
+            </div>
+            <div class="col-sm-7">
+                <?php echo $this->formInput($form->get('aMaterno')); ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">
+                <?php echo $this->formLabel($form->get('folioExamen')); ?>
+            </div>
+            <div class="col-sm-7">
+                <?php echo $this->formInput($form->get('folioExamen')); ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-sm-offset-2 col-sm-7">
+                <?php echo $this->formSubmit($form->get('submit')); ?>
+            </div>
+        </div>
+
+
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+
 </div>
 

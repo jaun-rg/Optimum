@@ -4,7 +4,7 @@ namespace Profesores\Form;
 
 use Zend\Form\Form;
 
-class ProfesoresForm extends Form {
+class BusquedaForm extends Form {
 
     public function __construct($name = null) {
         // we want to ignore the name passed
@@ -23,12 +23,12 @@ class ProfesoresForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'Apellido Paterno',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 // 'value'	   => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
@@ -39,12 +39,12 @@ class ProfesoresForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'Apellido Materno',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 // 'value'	   => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
@@ -55,43 +55,22 @@ class ProfesoresForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'Nombre',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 'messages' => 'ingresa un dato',
                 // 'value'	   => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
             'name' => 'mail',
-            'type' => 'Zend\Form\Element\Email',
-            'options' => array(
-                'label' => 'Correo',
-            ),
-            'attributes' => array(
-                'placeholder' => 'example@server.domain',
-                'value' => ' ',
-                'class' => 'form-control',
-                'required' => 'required',
-            ),
+            'type' => 'Hidden',
         ));
         $this->add(array(
             'name' => 'telefonos',
-            'type' => 'Text',
-            'options' => array(
-                'label' => 'Teléfonos',
-            ),
-            'attributes' => array(
-                'placeholder' => '56739090',
-                'min' => 1,
-                'max' => 100,
-                'pattern' => '*',
-                'messages' => 'ingresa un dato',
-                'class' => 'form-control',
-                'required' => 'required',
-            ),
+            'type' => 'Hidden',
         ));
 
         $this->add(array(

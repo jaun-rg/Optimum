@@ -2,7 +2,7 @@
 
 //4. Definicion de formulario de logeoo
 
-namespace Application\Form;
+namespace Login\Form;
  
 use Zend\Form\Form;
  
@@ -17,7 +17,7 @@ class LoginForm extends Form
         // Nombre de usuario
         $this->add(array(
             'type' => 'Zend\Form\Element\Text',
-            'name' => 'identity',
+            'name' => 'username',
             'options' => array(
                 'label' => 'Nombre de usuario',
                 'required' => true,
@@ -25,7 +25,6 @@ class LoginForm extends Form
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
                 )
-				
             ),
             'attributes' => array(
         		'placeholder' => 'Ingresa tu nombre de usuario',
@@ -38,7 +37,7 @@ class LoginForm extends Form
         // Contraseña
         $this->add(array(
             'type' => 'Zend\Form\Element\Password',
-            'name' => 'credential',
+            'name' => 'pass',
             'options' => array(
                 'label' => 'Contraseña',
                 'required' => true,
@@ -64,7 +63,7 @@ class LoginForm extends Form
             'type' => 'Zend\Form\Element\Submit',
             'name' => 'submit',
             'attributes' => array(
-                'value' => 'Log In'
+                'value' => 'Ingresar'
             )
         ));
     }

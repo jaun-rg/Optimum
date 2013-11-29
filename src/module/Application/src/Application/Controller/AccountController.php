@@ -16,7 +16,9 @@ class AccountController extends AbstractActionController
         $authService = $this->getServiceLocator()->get('AuthService');
         // Si el usuario ya inicio sesion, redirige a la home
         if ( $authService->hasIdentity() ) {
-            return $this->redirect()->toRoute('home');
+        	$identity = $authService->getIdentity();
+            return $this->redirect()->toRoute('alumnos');
+			
         }
          
         // Cerramos cualquier sesion que pueda quedar
@@ -32,11 +34,19 @@ class AccountController extends AbstractActionController
             if ( $form->isValid() ) {
                 // Preparamos el adaptador auth
                 $authAdapter = $authService->getAdapter();
-                $authAdapter->setIdentity($form->get('username')->getValue())
-                    ->setCredential($form->get('pass')->getValue());
+                $authAdapter->setIdentity($form->get('identity')->getValue())
+                    ->setCredential($form->get('credential')->getValue());
                  
                 // Intentamos autentificar el usuario
                 $result = $authAdapter->authenticate();
+				
+				
+				if ($result->isValid()) {
+   					//$result->getIdentity() === $auth->getIdentity();
+    				//$result->getIdentity() === $username;
+					 return $this->redirect()->toRoute('alumnos');
+				}
+				
  
                 // ... con el resultado podemos, ya sea almacenar el usuario en la sesion
                 // O mostrar un mensaje de error si la autentificacion falló

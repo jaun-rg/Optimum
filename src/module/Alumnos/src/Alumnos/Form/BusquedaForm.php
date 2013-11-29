@@ -1,17 +1,17 @@
 <?php
 
-namespace Profesores\Form;
+namespace Alumnos\Form;
 
 use Zend\Form\Form;
 
-class ProfesoresForm extends Form {
+class BusquedaForm extends Form {
 
     public function __construct($name = null) {
         // we want to ignore the name passed
-        parent::__construct('profesor');
+        parent::__construct('alumno');
 
         $this->add(array(
-            'name' => 'idProfesor',
+            'name' => 'idAlumno',
             'type' => 'Hidden',
         ));
 
@@ -23,12 +23,12 @@ class ProfesoresForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'Apellido Paterno',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 // 'value'	   => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
@@ -39,60 +39,70 @@ class ProfesoresForm extends Form {
             ),
             'attributes' => array(
                 'placeholder' => 'Apellido Materno',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 // 'value'	   => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
             'name' => 'nombres',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Nombre del Profesor',
+                'label' => 'Nombre del Alumno',
             ),
             'attributes' => array(
                 'placeholder' => 'Nombre',
-                'min' => 1,
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '[a-zñÑáéíóúÁÉÍÓÚüÜA-Z][a-zñÑáéíóúÁÉÍÓÚüÜA-Z]*',
                 'messages' => 'ingresa un dato',
                 // 'value'	   => ' ',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
         $this->add(array(
             'name' => 'mail',
-            'type' => 'Zend\Form\Element\Email',
-            'options' => array(
-                'label' => 'Correo',
-            ),
-            'attributes' => array(
-                'placeholder' => 'example@server.domain',
-                'value' => ' ',
-                'class' => 'form-control',
-                'required' => 'required',
-            ),
+            'type' => 'Hidden',
+            
+        ));
+        $this->add(array(
+            'name' => 'tipoEstudiante',
+            'type' => 'Hidden',
+            
         ));
         $this->add(array(
             'name' => 'telefonos',
+            'type' => 'Hidden',
+        ));
+        $this->add(array(
+            'name' => 'curp',
+            'type' => 'Hidden',
+        ));
+        $this->add(array(
+            'name' => 'folioExamen',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Teléfonos',
+                'label' => 'folio',
             ),
             'attributes' => array(
-                'placeholder' => '56739090',
-                'min' => 1,
+                'placeholder' => 'Ingresa folio',
+                //'min' => 1,
                 'max' => 100,
                 'pattern' => '*',
                 'messages' => 'ingresa un dato',
                 'class' => 'form-control',
-                'required' => 'required',
+                //'required' => 'required',
             ),
         ));
+        $this->add(array(
+            'name' => 'nombreTutor',
+            'type' => 'Hidden',
+        ));
+
 
         $this->add(array(
             'name' => 'submit',

@@ -108,12 +108,15 @@ li[id*="nav-"].active a {
 #nav-Profesores a:hover, #nav-Profesores.active a {
 	color: #428BCA;
 }
-a[class*="my-btn-"] {
+a[class*="my-btn-"], input[class*="my-btn-"] {
 	color: #fff;
 	padding: 1em;
 }
+input[class*="my-btn-"] {
+	font-size:1.5em;
+}
 
-a[class*="my-btn-"]:hover {
+a[class*="my-btn-"]:hover, input[class*="my-btn-"]:hover {
 	color: #333;
 	border: 1px solid rgba(130,130,130,.2);
 	box-shadow: -1px -1px 1px rgba(130,130,130,.4);
@@ -126,37 +129,38 @@ a[class*="my-btn-"]:hover {
 	 * border-left: 4px solid rgba(130,130,130,.7);
 	 * borderbottom: 4px solid rgba(130,130,130,.7);
 	 * 
-	 */
-	
-	
+	 */	
+}
+a[class*="btn-primary-"]{
+	color: #fff;
 }
 
-.my-btn-Alumnos {
+.my-btn-Alumnos, .btn-primary-Alumnos {
 	background: #B18904;
 }
-.my-btn-Alumnos:hover, .my-btn-Alumnos.active {
+.my-btn-Alumnos:hover, .my-btn-Alumnos.active, .btn-primary-Alumnos:hover {
 
 	background: #FACC2E;
 }
 
-.my-btn-Calificaciones {
+.my-btn-Calificaciones, .btn-primary-Calificaciones {
 	background: #043804;
 }
-.my-btn-Calificaciones:hover, .my-btn-Calificaciones.active {
+.my-btn-Calificaciones:hover, .my-btn-Calificaciones.active, .btn-primary-Califcaciones:hover {
 	background: #088A08;
 }
-.my-btn-Cursos {
+.my-btn-Cursos, .btn-primary-Cursos {
 
 	background: #231932;
 }
 
-.my-btn-Cursos:hover, .my-btn-Cursos.active {
+.my-btn-Cursos:hover, .my-btn-Cursos.active, .btn-primary-Cursos:hover {
 	background: #563D7C;
 }
-.my-btn-Profesores {
+.my-btn-Profesores, .btn-primary-Profesores {
 	background: #0B3861;
 }
-.my-btn-Profesores:hover, .my-btn-Profesores.active {
+.my-btn-Profesores:hover, .my-btn-Profesores.active, .btn-primary-Profesores:hover {
 	background: #428BCA;
 }
 

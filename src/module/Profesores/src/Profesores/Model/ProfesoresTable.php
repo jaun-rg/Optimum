@@ -30,6 +30,53 @@ namespace Profesores\Model;
          return $row;
      }
 
+	public function findProfesor($nombre,$apaterno,$amaterno, $curso)
+    {
+       
+       $sql="";
+	   /*
+	   $nombre = strtoupper((string)$nombre);
+	   $apaterno =strtoupper((string)$apaterno);
+	   $amaterno=strtoupper((string)$amaterno);
+	   $folio = strtoupper((string)$folio);
+	   */
+	   $sql.=$nombre!=NULL? "(nombres LIKE '%".strtoupper((string)$nombre)."%')" : ""; 
+	   
+	   $sql.=$apaterno!=NULL? 
+	   		($sql!=NULL? 	" OR (aPaterno LIKE '%".strtoupper((string)$apaterno)."%')" : 
+	   						"(aPaterno LIKE '%".strtoupper((string)$apaterno)."%')") : 
+	   		"";
+	   $sql.=$amaterno!=NULL? 
+	   		($sql!=NULL? 	" OR (aMaterno LIKE '%".strtoupper((string)$amaterno)."%')" : 
+	   						"(aMaterno LIKE '%".strtoupper((string)$amaterno)."%')") : 
+	   		"";
+	  /*
+	   $sql.=$curso!=NULL? 
+	   		($sql!=NULL? 	" OR (cursos LIKE '%".strtoupper((string)$curso)."%')" : 
+	   						"(cursos LIKE '%".strtoupper((string)$curso)."%')") : 
+	   		"";
+	   */ 
+	   
+	   
+	  
+	   $select = new \Zend\Db\Sql\Select ;
+       $select->from('profesores');
+       // $select->join('tracks','tracks.album_id = album.id');
+	   $select->where($sql);
+	   
+	   $resultSet=NULL;
+		
+		try{
+       		$resultSet = $this->tableGateway->selectWith($select);
+		}
+		catch (\Exception $ex) {
+         	$resultSet=NULL;	 
+         }
+
+       //echo $resultSet->count();
+     	return $resultSet;
+    }
+
      public function saveProfesor(Profesores $profesor)
      {
          $data = array(
