@@ -80,7 +80,7 @@ class ProfesoresController extends AbstractActionController {
             $aMaterno = $profesor->aMaterno;
             $mail = $profesor->mail;
 
-            $result = $this->getAlumnosTable()->findProfesor($nombre, $aPaterno, $aMaterno, $mail);
+            $result = $this->getProfesoresTable()->findProfesor($nombre, $aPaterno, $aMaterno, $mail);
 
             if (!$result || $result == NULL) {
                 $this->flashMessenger()->setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
