@@ -7,65 +7,80 @@ use Zend\Session\Container as SessionContainer;
 use Zend\Mvc\Controller\Plugin\FlashMessenger;
 use Zend\View\Model\ViewModel;
 use Zend\Cache\Storage\StorageInterface;
+use Calificaciones\Model\Calificaciones;          // <-- Add this import
+use Calificaciones\Form\CalificacionesForm; 
+use Calificaciones\Form\BusquedaForm;
 
 class CalificacionesController extends AbstractActionController {
-	
 
-	
 	protected $calificacionesTable;
-	//protected $session;
-	//$session = 
 	
-	public function getCalificacionesTable()
-    {
-        if (!$this->calificacionesTable) {
-            $sm = $this->getServiceLocator();
-            $this->albumTable = $sm->get('Calificaciones\Model\CalificacionesTable');
-        }		
-        return $this->albumTable;
-    }
-	
-	
-	public function indexAction() {
-		$this->session = new SessionContainer('session');
-		//if ($this->sessionoffsetGet('ex')){
-		//if($_SESSION['session']['ex']){
-		if($this->session->offsetGet('ex')){
-				$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
-				$this -> flashMessenger() -> addMessage('has ingresado con exito '.$this->session->offsetGet('username'));
+	private function islogged(){
+		try {
+			$session = new SessionContainer('user');
+			
+			if (!$session -> offsetGet('ex'))
+			{
+				$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+				$this -> flashMessenger() -> addMessage('Es necesario iniciar sesión antes de continuar');
+				return $this -> redirect() -> toRoute('login');
+			}
 				
-				return new ViewModel(	array(
-            		'calificaciones' => $this->getCalificacionesTable()->fetchAll(),
-        		));
-		}else{
+		}
+		catch (\Exception $ex) {
 			$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
-			$this -> flashMessenger() -> addMessage('QUE HACES?');
+			$this -> flashMessenger() -> addMessage('Es necesario iniciar sesión antes de continuar');
 			return $this -> redirect() -> toRoute('login');
 		}
 	}
 
-	public function agregarCalificacionesAction() {
-		return new ViewModel();
+	public function getCalificacionesTable() {
+		if (!$this -> calificacionesTable) {
+			$sm = $this -> getServiceLocator();
+			$this -> albumTable = $sm -> get('Calificaciones\Model\CalificacionesTable');
+		}
+		return $this -> albumTable;
 	}
 
-	public function inscripcionAction() {
-		return new ViewModel();
+	public function indexAction() {
+		$this->islogged();
+				return new ViewModel( array('calificaciones' => $this -> getCalificacionesTable() -> fetchAll(), ));
+			
+	}
+
+	public function agregarCalificacionesAction() {
+		$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+		$this -> flashMessenger() -> addMessage('Estamos haciendo mejoras en esta sección, por lo que no se puede acceder');
+		return $this -> redirect() -> toRoute('calificaciones');
+	}
+
+	public function editarAction() {
+		$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+		$this -> flashMessenger() -> addMessage('Estamos haciendo mejoras en esta sección, por lo que no se puede acceder');
+		return $this -> redirect() -> toRoute('calificaciones');
 	}
 
 	public function pagoAction() {
-		return new ViewModel();
+		$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+		$this -> flashMessenger() -> addMessage('Estamos haciendo mejoras en esta sección, por lo que no se puede acceder');
+		return $this -> redirect() -> toRoute('calificaciones');
 	}
 
 	public function buscarAction() {
-		return new ViewModel();
+		$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+		$this -> flashMessenger() -> addMessage('Estamos haciendo mejoras en esta sección, por lo que no se puede acceder');
+		return $this -> redirect() -> toRoute('calificaciones');
 	}
 
 	public function mostrarAction() {
-		return new ViewModel();
-	}
+		$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+		$this -> flashMessenger() -> addMessage('Estamos haciendo mejoras en esta sección, por lo que no se puede acceder');
+		return $this -> redirect() -> toRoute('calificaciones');	}
 
 	public function borrarAction() {
-		return new ViewModel();
+		$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+		$this -> flashMessenger() -> addMessage('Estamos haciendo mejoras en esta sección, por lo que no se puede acceder');
+		return $this -> redirect() -> toRoute('calificaciones');
 	}
 
 }

@@ -4,9 +4,12 @@
 		<div class="thumbnail">	
 			<img data-src="js/bootstrap.min.js" src=<?php echo $this->basePath() .'/img/background-cursos.png'?>>
 		</div>
-		<a href="#" class="btn my-btn-Cursos btn-block" role="button">Inscribir</a>
-		<a href="#" class="btn my-btn-Cursos btn-block" role="button">Actualizar Datos</a>
-		<a href="#" class="btn my-btn-Cursos btn-block" role="button">Borrar</a>
+		<a  class="btn my-btn-Cursos btn-block" role="button" 
+			href="<?php echo $this -> url('cursos', array('action' => 'agregarCursos')); ?>">Agregar curso</a>
+		<a class="btn my-btn-Cursos btn-block" role="button"
+			href="<?php echo $this -> url('cursos', array('action' => 'editar')); ?>">Editar </a>
+		<a class="btn my-btn-Cursos btn-block" role="button"
+			href="<?php echo $this -> url('cursos', array('action' => 'borrar')); ?>">Borrar</a>
 	</div>
 
 </div>

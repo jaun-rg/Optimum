@@ -3,6 +3,7 @@
 namespace Alumnos\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Session\Container as SessionContainer;
 use Zend\View\Model\ViewModel;
 use Zend\Mvc\Controller\Plugin\FlashMessenger;
 use Alumnos\Model\Alumnos;          // <-- Add this import
@@ -12,8 +13,28 @@ use Alumnos\Form\BusquedaForm;
 class AlumnosController extends AbstractActionController {
 
     protected $alumnosTable;
-
+	
+	private function islogged(){
+		try {
+			$session = new SessionContainer('user');
+			
+			if (!$session -> offsetGet('ex'))
+			{
+				$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+				$this -> flashMessenger() -> addMessage('Es necesario iniciar sesión antes de continuar');
+				return $this -> redirect() -> toRoute('login');
+			}
+				
+		}
+		catch (\Exception $ex) {
+			$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+			$this -> flashMessenger() -> addMessage('Es necesario iniciar sesión antes de continuar');
+			return $this -> redirect() -> toRoute('login');
+		}
+	}
+	
     public function getAlumnosTable() {
+    	
         if (!$this->alumnosTable) {
             $sm = $this->getServiceLocator();
             $this->alumnosTable = $sm->get('Alumnos\Model\AlumnosTable');
@@ -23,16 +44,20 @@ class AlumnosController extends AbstractActionController {
 	
 	
 	public function indexAction() {
-		$form = new BusquedaForm();
-        $form->get('submit')->setValue('Buscar');
+		$this->islogged();
 		
-		return new ViewModel(array(
+			$form = new BusquedaForm();
+        	$form->get('submit')->setValue('Buscar');
+		
+			return new ViewModel(array(
             //'alumnos' => $this->getAlumnosTable()->fetchAll(),
             'form'=> $form,
-        ));
+        	));
+		
 	}
 	
 	public function todosAction() {
+		$this->islogged();
 		
 		return new ViewModel(array(
             'alumnos' => $this->getAlumnosTable()->fetchAll(),
@@ -40,7 +65,9 @@ class AlumnosController extends AbstractActionController {
 	}
 	
 	public function buscarAction() {
-		$result=NULL;
+		$this->islogged();
+		
+		 $result=NULL;
 		 $form = new BusquedaForm();
          $form->get('submit')->setValue('Buscar');
 
@@ -84,10 +111,13 @@ class AlumnosController extends AbstractActionController {
          'form' => $form,
 		 'alumnos'=> NULL,
 		 );
+	  
 		
 	}
 
 	public function inscripcionAction() {
+		$this->islogged();
+		
 		$form = new AlumnosForm();
          $form->get('submit')->setValue('Inscribir');
 
@@ -111,6 +141,8 @@ class AlumnosController extends AbstractActionController {
 	
 	}
 	 public function editarAction(){
+	 	 $this->islogged();
+		
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
          	// Redirect to index
@@ -165,6 +197,8 @@ class AlumnosController extends AbstractActionController {
 	} 
 	
 	public function borrarAction() {
+		$this->islogged();
+		
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
          	//view status messages
@@ -201,6 +235,8 @@ class AlumnosController extends AbstractActionController {
 	}
 	
 	public function mostrarAction() {
+		$this->islogged();
+		
 		 $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
          	// Redirect to index
@@ -234,7 +270,11 @@ class AlumnosController extends AbstractActionController {
 	
 	
 	public function pagoAction() {
-		return new ViewModel();
+		$this->islogged();
+		
+		$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+		$this -> flashMessenger() -> addMessage('Estamos haciendo mejoras en esta sección, por lo que no se puede acceder');
+		return $this -> redirect() -> toRoute('alumnos');
 	}
 
 }

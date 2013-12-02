@@ -3,6 +3,7 @@
 namespace Profesores\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Session\Container as SessionContainer;
 use Zend\View\Model\ViewModel;
 use Zend\Mvc\Controller\Plugin\FlashMessenger;
 use Profesores\Model\Profesores;
@@ -12,6 +13,25 @@ use Profesores\Form\BusquedaForm;
 class ProfesoresController extends AbstractActionController {
 
     protected $profesoresTable;
+	
+	private function islogged(){
+		try {
+			$session = new SessionContainer('user');
+			
+			if (!$session -> offsetGet('ex'))
+			{
+				$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+				$this -> flashMessenger() -> addMessage('Es necesario iniciar sesión antes de continuar');
+				return $this -> redirect() -> toRoute('login');
+			}
+				
+		}
+		catch (\Exception $ex) {
+			$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+			$this -> flashMessenger() -> addMessage('Es necesario iniciar sesión antes de continuar');
+			return $this -> redirect() -> toRoute('login');
+		}
+	}
 
     public function getProfesoresTable() {
         if (!$this->profesoresTable) {
@@ -22,6 +42,8 @@ class ProfesoresController extends AbstractActionController {
     }
 
     public function indexAction() {
+    	$this->islogged();
+		
         $form = new BusquedaForm();
         $form->get('submit')->setValue('Buscar');
 
@@ -31,13 +53,16 @@ class ProfesoresController extends AbstractActionController {
     }
     
     public function todosAction() {
-
+    	$this->islogged();
+	
         return new ViewModel(array(
             'profesores' => $this->getProfesoresTable()->fetchAll(),
         ));
     }
 
     public function buscarAction() {
+    	$this->islogged();
+		
         $result = NULL;
         $form = new BusquedaForm();
         $form->get('submit')->setValue('Buscar');
@@ -83,6 +108,8 @@ class ProfesoresController extends AbstractActionController {
     }
 
     public function agregarAction() {
+    	$this->islogged();
+		
         $form = new ProfesoresForm();
         $form->get('submit')->setValue('Agregar');
 
@@ -106,6 +133,8 @@ class ProfesoresController extends AbstractActionController {
     }
 
     public function editarAction() {
+    	$this->islogged();
+		
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             // Redirect to index
@@ -160,6 +189,8 @@ class ProfesoresController extends AbstractActionController {
     }
 
     public function borrarAction() {
+    	$this->islogged();
+		
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             //view status messages
@@ -195,6 +226,8 @@ class ProfesoresController extends AbstractActionController {
     }
 
     public function mostrarAction() {
+    	$this->islogged();
+		
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             // Redirect to index
@@ -224,7 +257,11 @@ class ProfesoresController extends AbstractActionController {
     }
 
     public function pagoAction() {
-        return new ViewModel();
+    	$this->islogged();
+		
+        $this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_DEFAULT);
+		$this -> flashMessenger() -> addMessage('Estamos haciendo mejoras en esta sección, por lo que no se puede acceder');
+		return $this -> redirect() -> toRoute('profesores');
     }
 
 }

@@ -1,3 +1,4 @@
+<?php use Zend\Session\Container as SessionContainer; ?>
 <?php echo $this -> doctype(); ?>
 
 <html lang="es">
@@ -40,6 +41,12 @@
 				</div>
 
 			<!--	<div class="collapse navbar-collapse pull-right"> -->
+				<?php 
+					
+
+					try {
+						$session = new SessionContainer('user');
+						if ($session -> offsetGet('ex')) { ?>
 				<div class="collapse navbar-collapse main-menu">	
 					<ul class="nav navbar-nav main-navbar">
 						<li id="nav-Alumnos">
@@ -57,9 +64,19 @@
 						<li id="nav-Calificaciones">
 							<a href="<?php echo $this->url('calificaciones');?>">
 								<span class="ico">&nbsp;Calificaciones</span></a>
+						</li>				
+						<li id="nav-Salir">
+							<a href="<?php echo $this -> url('login', array('action' => 'logout')); ?>">
+								<span class="ico-">&nbsp;Salir</span></a>
 						</li>
 					</ul>
 				</div>
+				
+				<?php  
+						}
+					}
+					catch (\Exception $ex) {}
+				?>
 			</div>
 		</nav>
 	
@@ -85,17 +102,6 @@
 		<?php $this->inlineScript()->captureStart() ?>
 			$(".alert").alert('close');
 		<?php $this->headScript()->captureEnd() ?>
-		<!--
-			<hr>
-		<footer class="navbar navbar-fixed-bottom" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<p>
-						&copy; <?php echo date('Y') ?> by Cursos Propedéuticos Ltd.
-					</p>
-				</div>
-			</div>
-		</footer>
-		-->
+		
 	</body>
 </html>

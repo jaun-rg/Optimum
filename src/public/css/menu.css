@@ -86,7 +86,8 @@
 	 -moz-background-clip: text;
 	 background-clip: text;
 
-	 color: transparent;
+	 /*color: transparent;*/
+	 color: #999 !important;
 	 text-shadow: 1px 2px 3px #000,0px -1px 1px #6E6E6E;
 	 
 
@@ -107,6 +108,9 @@ li[id*="nav-"].active a {
 }
 #nav-Profesores a:hover, #nav-Profesores.active a {
 	color: #428BCA;
+}
+#nav-Salir a:hover, #nav-Salir.active a {
+	color: #DF0101;
 }
 a[class*="my-btn-"], input[class*="my-btn-"] {
 	color: #fff;

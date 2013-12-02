@@ -14,7 +14,7 @@ return array(
             'login' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/login[/][/:action]',
+                    'route'    => '/login[/:action]',
                     'constraints' => array(
                         'action' 		=> '[a-zA-Z][a-zA-Z0-9_-]*',
                         
@@ -35,7 +35,7 @@ return array(
         ),       
     ), 
    
-    'view_manager' => array(
+    'view_manager' => array(	
         'template_path_stack' => array(
             'login' => __DIR__ . '/../view',
         ),

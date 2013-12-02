@@ -65,20 +65,17 @@ class LoginController extends AbstractActionController {
 
 				}
 
+				//aqui hay que agregar la sesion
 				$user_session =  $this -> getProfesoresTable() -> findProfesorForEmail($result->username);
-				$this->session = new Container('session');
-				$this->session->username =(string) ($user_session->nombres.'  '. $user_session->aPaterno.' '. $user_session->aMaterno);	
-				$this->session->role=(string) $result->role;
-				$this->session->ex = true;
-				var_dump($this->session->ex);
+				$session = new Container('user');
+				$session->username =(string) ($user_session->nombres.'  '. $user_session->aPaterno.' '. $user_session->aMaterno);	
+				$session->role=(string) $result->role;
+				$session->ex = true;
 				
 				$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
-				$this -> flashMessenger() -> addMessage('has ingresado con exito '.$this->session->offsetGet('username'));
-				
-				//aqui hay que agregar la sesion
-
-				//return $this -> redirect() -> toRoute('home');
-				return array('form' => $form, );
+				$this -> flashMessenger() -> addMessage('has ingresado con exito '.$session->offsetGet('username'));
+				return $this -> redirect() -> toRoute('home');
+				//return array('form' => $form, );
 
 			}
 
@@ -89,7 +86,13 @@ class LoginController extends AbstractActionController {
 	}
 
 	public function logoutAction() {
-
+		$session = new Container('user');
+		//unset($_SESSION['user']); 
+		$session->getManager()->getStorage()->clear('user');
+		//$session->getManager()->destroy('user');
+		session_destroy('user');
+		
+		return $this -> redirect() -> toRoute('login');
 	}
 
 }
