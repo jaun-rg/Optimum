@@ -92,6 +92,8 @@ class LoginController extends AbstractActionController {
 		//$session->getManager()->destroy('user');
 		session_destroy('user');
 		
+		$this -> flashMessenger() -> setNamespace(FlashMessenger::NAMESPACE_SUCCESS);
+		$this -> flashMessenger() -> addMessage('Cerraste sesión de manera exitosa');
 		return $this -> redirect() -> toRoute('login');
 	}
 
